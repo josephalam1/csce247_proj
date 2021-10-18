@@ -1,3 +1,5 @@
+package src;
+
 public class Admin {
     private boolean adminPrivilege = true;
     public String adminName;

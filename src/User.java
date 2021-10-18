@@ -1,3 +1,4 @@
+package src;
 public abstract class User{
     private int accType;
     private int id;

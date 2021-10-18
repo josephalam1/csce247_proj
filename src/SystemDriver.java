@@ -1,9 +1,9 @@
-package lib;
+package src;
 
 public class SystemDriver {
 
     public void run() {
-        System.out.println("x");
+        System.out.println("Compiled");
     }
 
     public static void main(String[] args) {

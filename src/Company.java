@@ -1,3 +1,5 @@
+package src;
+
 import java.util.ArrayList;
 
 public class Company {
@@ -11,8 +13,8 @@ public class Company {
     public String contactInfo;
     private boolean adminPrivilege = false;
 
-    public Company(){
-
+    public Company(int accType, int id, boolean adminPrivilege, String name, String email, String address, String hiringRecruiter, String contactInfo){
+        // COS added above params needed for companyProfile
     }
     public CompanyProfile createProfile(Company a){
         return null;
@@ -40,6 +42,11 @@ public class Company {
     }
     public Student chooseCandidate(Application[] apps){
         return null;
+    }
+
+    // COS not in UML needed for CompanyProfile
+    public String toString(){
+        return "\nCompany";
     }
     
 }
