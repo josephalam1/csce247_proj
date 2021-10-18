@@ -29,7 +29,7 @@ public class Application {
         this.pastJobDuties = pastJobDuties;
         this.pastWorkStrtDate = pastWorkStrtDate;
         this.pastWorkEndDate = pastWorkEndDate;
-        
+
 }
 
     
@@ -94,4 +94,23 @@ public class Application {
         this.pastWorkEndDate = pastWorkEndDate;
     }
     
+    public void getEdu() {
+
+    }
+    public void getWork() {
+        
+    }
+    public void addWork() {
+        
+    }
+    public void addEdu() {
+        
+    }
+    public void buildResume() {
+        
+    }
+    public String toString() {
+        return "Application: ";
+    }
+
 }
