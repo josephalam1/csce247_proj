@@ -1,0 +1,30 @@
+[
+    {
+        "id": 1,
+        "firstName": "Joseph",
+        "lastName": "Alam",
+        "email": "joeyalam@icloud.com",
+        "phone": "123-456-7890",
+        "password": "5f4dcc3b5aa765d61d8327deb882cf99",
+        "dob": "1996-11-01",
+        "GPA": 3.1,
+        "campusLocation": "Columbia",
+        "year": 3,
+        "major": "Computer Information Systems",
+        "available": true
+    },
+    {
+        "id": 2,
+        "firstName": "Becky",
+        "lastName": "Gunter",
+        "email": "beckygunter@icloud.com",
+        "phone": "011-381-9047",
+        "password": "dd04f0cff461c2f1a7355deb9b8048b1",
+        "dob": "1999-04-15",
+        "GPA": 4.0,
+        "campusLocation": "Columbia",
+        "year": 2,
+        "major": "Computer Science",
+        "available": false
+    }
+]

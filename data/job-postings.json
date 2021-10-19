@@ -1,0 +1,36 @@
+[
+    {
+        "id": 1,
+        "companyID": 1,
+        "title": "Junior Developer Intern",
+        "minHours": 10,
+        "maxHours": 40,
+        "pay": 14,
+        "numOpenings": 3,
+        "skillsReq": ["Java", "C++", "MySQL"],
+        "minExp": null,
+        "duties": ["Data entry", "Software devleopment and debugging"],
+        "open": true,
+        "remote": false,
+        "volunteer": false,
+        "expDate": "2021-12-01",
+        "description": "We are looking for a hard-working and motivated student to join our team"
+    },
+    {
+        "id": 2,
+        "companyID": 2,
+        "title": "Custodial Engineer",
+        "minHours": 40,
+        "maxHours": 40,
+        "pay": 12,
+        "numOpenings": 1,
+        "skillsReq": ["Cleanliness", "Organization", "Time management"],
+        "minExp": null,
+        "duties": ["Cleaning rooms", "Sanitation and disinfecting"],
+        "open": true,
+        "remote": false,
+        "volunteer": false,
+        "expDate": "2021-10-30",
+        "description": "Are you interested in joining a fast-paced work environment? This is the perfect company for you!"
+    }
+]

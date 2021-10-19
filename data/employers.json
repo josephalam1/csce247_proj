@@ -1,0 +1,24 @@
+[
+    {
+        "id": 1,
+        "recruiterFirstName": "Ted",
+        "recruiterLastName": "Moseby",
+        "recruiterEmail": "tedmoseby@icloud.com",
+        "recruiterPhone": "098-765-4321",
+        "recruiterDob": "1983-05-20",
+        "password": "51d25b4ae8ce20ad29b25cf4f2e23203",
+        "companyAddress": "110 Job St, Columbia, SC, 29208",
+        "companyName": "SoftwareDocs Inc."
+    },
+    {
+        "id": 2,
+        "recruiterFirstName": "Marion",
+        "recruiterLastName": "Moseby",
+        "recruiterEmail": "marionmoseby@icloud.com",
+        "recruiterPhone": "097-632-1854",
+        "recruiterDob": "1961-02-13",
+        "password": "3afc79b597f88a72528e864cf81856d2",
+        "companyAddress": "583 Hotel Rd, Columbia, SC, 29208",
+        "companyName": "Tipton Hotel"
+    }
+]

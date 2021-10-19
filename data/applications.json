@@ -1,0 +1,16 @@
+[
+    {
+        "id": 1,
+        "studentID": 1,
+        "jobPostingID": 1,
+        "coverLetter": null,
+        "accepted": false
+    },
+    {
+        "id": 2,
+        "studentID": 2,
+        "jobPostingID": 1,
+        "coverLetter": "I am very interested in working for Software Docs Inc, I have multiple years of experience with all the required skills.",
+        "accepted": true
+    }
+]

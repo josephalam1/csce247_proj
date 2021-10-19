@@ -1,0 +1,16 @@
+[
+    {
+        "userID": 1,
+        "companyID": 1,
+        "rating": 5,
+        "comments": "Didn't get accepted for the opportunity, but Ted was an amazing recruiter to speak with and get insight from.",
+        "employerRating": true
+    },
+    {
+        "userID": 2,
+        "companyID": 1,
+        "rating": 5,
+        "comments": "Amazing company to work for!",
+        "employerRating": true
+    }
+]
