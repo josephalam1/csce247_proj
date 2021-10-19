@@ -1,0 +1,24 @@
+[
+    {
+        "ID": 1,
+        "studentID": 1,
+        "pastEduName": "University of South Carolina",
+        "pastEduBegin": "2018-08-23",
+        "pastEduEnd": "0000-00-00",
+        "experience": [["Meyco", "Data Entry", "2021-07-13", "0000-00-00", 
+                ["Entered data", "Assisted with customer support", "Assisted in development of website"]],
+            ["Zaxbys", "Cashier", "2013-07-13", "2020-07-01", ["Took orders", "Cleaned"]]],
+        "skills": ["CSS", "HTML", "Java", "PHP", "Javascript", "C++"],
+        "references": ["Gregory Leblanc", "Former general manager", "132-458-9301", "greglebanc@email.com"]
+    },
+    {
+        "ID": 2,
+        "studentID": 2,
+        "pastEduName": "University of South Carolina",
+        "pastEduBegin": "2019-01-07",
+        "pastEduEnd": "0000-00-00",
+        "experience": null,
+        "skills": ["Java", "C++", "C#", "Lua", "Python", "COBOL", "PostgreSQL"],
+        "references": ["Casey Cole", "Professor", "483-471-9017", "caseycole@email.com"]
+    }
+]
