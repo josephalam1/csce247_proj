@@ -4,7 +4,7 @@ public class StudentProfile implements ProfileSettings {
 
     private double GPA;
     public String campusLocation;
-    public String cirrLevel;
+    public String currLevel;
     public String currMajor;
     public int currYear;
     private double rating;

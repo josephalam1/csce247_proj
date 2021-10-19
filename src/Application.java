@@ -94,10 +94,12 @@ public class Application {
         this.pastWorkEndDate = pastWorkEndDate;
     }
     
-    public void getEdu() {
+    public String getAllEdu() {
+        return "School 1\n"+pastEdu+" In "+pastEduCity+" From: "+pastEduStrtDate+" To: "+pastEduEndDate;
 
     }
-    public void getWork() {
+    public String getAllWork() {
+        return "Job 1\n"+pastWorkName+" Title: "+pastJobTitle+" From: "+pastWorkStrtDate+" To: "+pastWorkEndDate+" Duties: "+pastJobDuties;
         
     }
     public void addWork() {
