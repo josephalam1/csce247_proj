@@ -3,17 +3,18 @@ package src;
 import java.util.ArrayList;
 
 public class Company {
-    private int accType;
     private int id;
     public String name;
-    public String email;
+    public String recruiterEmail;
     protected String password;
     public String address;
     public String hiringRecruiter;
     public String contactInfo;
-    private boolean adminPrivilege = false;
+    public String dateEstablished;
+    public String webSite;
+    private double rating;
 
-    public Company(int accType, int id, boolean adminPrivilege, String name, String email, String address, String hiringRecruiter, String contactInfo){
+    public Company(int id, String name, String email, String address, String hiringRecruiter, String contactInfo){
         // COS added above params needed for companyProfile
     }
     public CompanyProfile createProfile(Company a){
@@ -32,12 +33,14 @@ public class Company {
         return search;
     }
     public double giveRating(StudentProfile aProfile){
-        return accType;
+        return rating;
     }
     public Student chooseCandidate(Application[] apps){
         return null;
     }
+    public void hideFromProfile(String companyProfile) {
 
+    }
     // COS not in UML needed for CompanyProfile
     public String toString(){
         return "\nCompany";
