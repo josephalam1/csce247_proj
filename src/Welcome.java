@@ -40,7 +40,46 @@ public class Welcome {
     }
 
     public void addStudent() {
+        System.out.println("**************************************");
+        System.out.println("*       Welcome new Student!         *");
+        System.out.println("**************************************");
+        System.out.println("\n");
+        System.out.println("Enter 0 at any time for the help Menu: ");
+        System.out.println("");
+        System.out.println("Please enter your name: ");
+        String sName = input.nextLine();  // Read user input
+        s.name = sName;
+        System.out.println("");
+        System.out.println("Please enter your email: ");
+        String sEmail = input.nextLine();  // Read user input
+        s.email = sEmail;
+        System.out.println("");
+        System.out.println("Please enter your password: ");
+        System.out.println("> will set later");
+        System.out.println("");
+        System.out.println("Please enter your sex: M/F ");
+        String cRecruit = input.nextLine();  // Read user input
+        c.hiringRecruiter = cRecruit;
+        System.out.println("");
+        System.out.println("Please enter your prefered gender: M/F/O");
+        String cContact = input.nextLine();  // Read user input
+        c.contactInfo = cContact;
+        System.out.println("");
+        System.out.println("Please enter the company's address: ");
+        String cAddress = input.nextLine();  // Read user input
+        c.address = cAddress;
+        System.out.println("");
+        System.out.println("Please enter the company's date established: ");
+        String cDateEst = input.nextLine();  // Read user input
+        c.dateEstablished = cDateEst;
+        System.out.println("");
+        System.out.println("Please enter the company's website: ");
+        String cWebsite = input.nextLine();  // Read user input
+        c.webSite = cWebsite;
         
+         companyUsers.add(c);
+
+        System.out.println(c.toString());
     }
 
     public void addCompany() {

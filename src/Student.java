@@ -24,8 +24,82 @@ public class Student {
     public int currYear;
     private double rating;
 
-    public Student(String name, Date DOB, String sex, String gender){
+    public Student(int accType, int id, String name, String email, String password, Date dateOfBirth, String sex,
+            String gender, ArrayList<Application> openApplications, Boolean available, ArrayList<JobListing> savedJobs,
+            double gPA, String campusLocation, String currLevel, String currMajor, int currYear, double rating) {
+        this.accType = accType;
+        this.id = id;
+        this.name = name;
+        this.email = email;
+        this.password = password;
+        this.dateOfBirth = dateOfBirth;
+        this.sex = sex;
+        this.gender = gender;
+        this.openApplications = openApplications;
+        this.available = available;
+        this.savedJobs = savedJobs;
+        GPA = gPA;
+        this.campusLocation = campusLocation;
+        this.currLevel = currLevel;
+        this.currMajor = currMajor;
+        this.currYear = currYear;
+        this.rating = rating;
+    }
+    
+    public int getAccType() {
+        return accType;
+    }
 
+    public void setAccType(int accType) {
+        this.accType = accType;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public Date getDateOfBirth() {
+        return dateOfBirth;
+    }
+
+    public void setDateOfBirth(Date dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
+    }
+
+    public String getSex() {
+        return sex;
+    }
+
+    public void setSex(String sex) {
+        this.sex = sex;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    public double getGPA() {
+        return GPA;
+    }
+
+    public void setGPA(double gPA) {
+        GPA = gPA;
+    }
+
+    public double getRating() {
+        return rating;
+    }
+
+    public void setRating(double rating) {
+        this.rating = rating;
     }
 
     public String setPreferredName(String name){
