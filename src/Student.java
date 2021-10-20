@@ -143,7 +143,11 @@ public class Student {
     }
 
     public String toString(){
-        return "";
+        return "Student Account info: " + "\n" +
+        "\nName: " + name + "\nEmail: " + email + 
+        "\nDOB: " + this.getDateOfBirth() + "\nSex: " + this.getSex() + 
+        "\nGender: " + this.getGender() + 
+        "\nGPA: " + this.getGPA() + " Level: " + currLevel + " Year: " + currYear + " Major: " + currMajor;
     }
     
     

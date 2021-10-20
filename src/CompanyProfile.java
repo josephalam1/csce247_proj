@@ -1,18 +1,25 @@
 package src;
 
-public class CompanyProfile extends Company implements ProfileSettings{
+public class CompanyProfile extends Company{
 
     public String dateEstablished;
     public String webSite;
     private double rating;
 
-    public CompanyProfile(int accType, int id, boolean adminPrivilege, String name, String email, String address,
+    public CompanyProfile(int id, String name, String recruiterEmail, String password, String address,
+            String hiringRecruiter, String contactInfo, String dateEstablished, String webSite, double rating) {
+        super(id, name, recruiterEmail, password, address, hiringRecruiter, contactInfo, dateEstablished, webSite, rating);
+        this.dateEstablished = getDateEstablished();
+        this.webSite = getWebSite();
+        this.rating = getRating();
+    }
+    /* public CompanyProfile(int accType, int id, boolean adminPrivilege, String name, String email, String address,
             String hiringRecruiter, String contactInfo, String dateEstablished, String webSite, double rating) {
         super(accType, id, adminPrivilege, name, email, address, hiringRecruiter, contactInfo);
         this.dateEstablished = getDateEstablished();
         this.webSite = getWebSite();
         this.rating = getRating();
-    }
+    }*/
 
     public String getDateEstablished() {
         return dateEstablished;
@@ -44,17 +51,5 @@ public class CompanyProfile extends Company implements ProfileSettings{
 
     public void hideFromProfile(String companyProfile) {
 
-    }
-
-    @Override
-    public void deleteProfile(String aProfile, Boolean adminPrivilege) {
-        // TODO Auto-generated method stub
-        
-    }
-
-    @Override
-    public void overrideRating(Boolean adminPrivilege) {
-        // TODO Auto-generated method stub
-        
     }
 }

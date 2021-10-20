@@ -1,13 +1,17 @@
 package src;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.Date;
 
 public class Welcome {
 
     private ArrayList<Student> studentUsers;
     private ArrayList<Company> companyUsers;
-    private Student s = new Student(null, null, null, null);
+    private Student s = new Student(0, 0, null, null, null, null, null, null, null, null, null, 0, null, null, null, 0, 0);
     private Company c = new Company(0, null, null, null, null, null, null, null, null, 0);
     public Scanner input = new Scanner(System.in);  // Create a Scanner object
     private static Welcome screen;
@@ -16,8 +20,8 @@ public class Welcome {
         this.studentUsers = new ArrayList<>();
         this.companyUsers = new ArrayList<>();
     }
-  
-	public static Welcome getInstance() {
+
+    public static Welcome getInstance() {
 		if (screen == null) {
             System.out.println("**************************************");
 			System.out.println("* Welcome to UofSC Intership System! *");
@@ -50,6 +54,10 @@ public class Welcome {
         String sName = input.nextLine();  // Read user input
         s.name = sName;
         System.out.println("");
+        System.out.println("Please enter your perferred name: ");
+        String sNewName = input.nextLine();  // Read user input
+        s.setPreferredName(sNewName);
+        System.out.println("");
         System.out.println("Please enter your email: ");
         String sEmail = input.nextLine();  // Read user input
         s.email = sEmail;
@@ -57,29 +65,48 @@ public class Welcome {
         System.out.println("Please enter your password: ");
         System.out.println("> will set later");
         System.out.println("");
+        System.out.println("Please enter your DOB yyyy/MM/dd ");
+        String sDOB = input.nextLine();  // Read user input
+        DateFormat formatter = new SimpleDateFormat("yyyy/MM/dd");
+        Date date;
+        try {
+            date = formatter.parse(sDOB);
+            s.setDateOfBirth(date);
+        } catch (ParseException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        //s.setDateOfBirth(date);
+        System.out.println("");
         System.out.println("Please enter your sex: M/F ");
-        String cRecruit = input.nextLine();  // Read user input
-        c.hiringRecruiter = cRecruit;
+        String sSex = input.nextLine();  // Read user input
+        s.setSex(sSex);
         System.out.println("");
         System.out.println("Please enter your prefered gender: M/F/O");
-        String cContact = input.nextLine();  // Read user input
-        c.contactInfo = cContact;
+        String sGender = input.nextLine();  // Read user input
+        s.setGender(sGender);
         System.out.println("");
-        System.out.println("Please enter the company's address: ");
-        String cAddress = input.nextLine();  // Read user input
-        c.address = cAddress;
+        System.out.println("Please enter your GPA: ");
+        double sGPA = input.nextDouble();  // Read user input
+        s.setGPA(sGPA);
+        input.nextLine(); // stops input skips
         System.out.println("");
-        System.out.println("Please enter the company's date established: ");
-        String cDateEst = input.nextLine();  // Read user input
-        c.dateEstablished = cDateEst;
+        System.out.println("Please enter your current level Freshman/sophomore/junior/senior: ");
+        String sLevel = input.nextLine();  // Read user input
+        s.currLevel = sLevel;
         System.out.println("");
-        System.out.println("Please enter the company's website: ");
-        String cWebsite = input.nextLine();  // Read user input
-        c.webSite = cWebsite;
+        System.out.println("Please enter your current year 1/2/3/4/5/6: ");
+        int sYear = input.nextInt();  // Read user input
+        s.currYear = sYear;
+        input.nextLine(); // this stops the skips
+        System.out.println("");
+        System.out.println("Please enter your current major: ");
+        String sMajor = input.nextLine();  // Read user input
+        s.currMajor = sMajor;
         
-         companyUsers.add(c);
+         studentUsers.add(s);
 
-        System.out.println(c.toString());
+        System.out.println(s.toString());
     }
 
     public void addCompany() {
