@@ -1,5 +1,7 @@
 package src;
 
+
+import java.util.Date;
 import java.util.ArrayList;
 
 public class JobListing {
@@ -9,7 +11,7 @@ public class JobListing {
     private int minHours;
     private int maxHours;
     private double pay;
-    private int expDate;
+    private Date expDate;
     public int numOpenings;
     public ArrayList<String> skillsReq;
     public ArrayList<String> description;
@@ -19,7 +21,7 @@ public class JobListing {
     public boolean open;
 
     public JobListing(String title, String location, int minHours, int maxHours,
-            double pay, int expDate, int numOpenings, ArrayList<String> skillsReq, ArrayList<String> description,
+            double pay, Date expDate, int numOpenings, ArrayList<String> skillsReq, ArrayList<String> description,
             ArrayList<String> applicants, String minExp, boolean remote, boolean open) {
         this.title = title;
         this.location = location;
@@ -87,12 +89,12 @@ public class JobListing {
     }
 
 
-    public int getExpDate() {
+    public Date getExpDate() {
         return expDate;
     }
 
 
-    public void setExpDate(int expDate) {
+    public void setExpDate(Date expDate) {
         this.expDate = expDate;
     }
 
@@ -158,12 +160,22 @@ public class JobListing {
 
 
     public boolean isOpen() {
-        return open;
+        if(expDate.before(new Date())){
+            return true;
+        }
+        else{
+            return false;
+        }
     }
 
 
-    public void setOpen(boolean open) {
-        this.open = open;
+    public void setOpen() {
+        if(this.open == true){
+          this.open = false;  
+        }
+        else{
+            this.open = true;
+        }
     }
 
    
