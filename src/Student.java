@@ -1,11 +1,8 @@
 package src;
 
 import java.util.ArrayList;
-<<<<<<< HEAD
-import java.util.Collections;
-=======
 import java.util.Date;
->>>>>>> 3c7ee24cf974d821ea7a98c72a60e520544171b8
+import java.util.Collections;
 
 public class Student {
     private int accType;
