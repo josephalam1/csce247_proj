@@ -13,7 +13,7 @@ public class Student {
     private Date dateOfBirth;
     private String sex;
     private String gender;
-    public StudentProfile profile;
+    // public StudentProfile profile;
     public ArrayList<Application> openApplications;
     public Boolean available;
     public ArrayList<JobListing> savedJobs;

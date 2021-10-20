@@ -7,8 +7,8 @@ public class Welcome {
 
     private ArrayList<Student> studentUsers;
     private ArrayList<Company> companyUsers;
-    private Student s = new Student(null, 0, null, null);
-    private Company c = new Company(0, 0, false, null, null, null, null, null);
+    private Student s = new Student(null, null, null, null);
+    private Company c = new Company(0, null, null, null, null, null, null, null, null, 0);
     public Scanner input = new Scanner(System.in);  // Create a Scanner object
     private static Welcome screen;
 	  
@@ -57,8 +57,7 @@ public class Welcome {
         System.out.println("");
         System.out.println("Please enter your email: ");
         String cEmail = input.nextLine();  // Read user input
-        c.email = cEmail;
-        System.out.println("> " + cEmail);
+        c.recruiterEmail = cEmail;
         System.out.println("");
         System.out.println("Please enter your password: ");
         System.out.println("> will set later");
@@ -67,10 +66,21 @@ public class Welcome {
         String cRecruit = input.nextLine();  // Read user input
         c.hiringRecruiter = cRecruit;
         System.out.println("");
-        System.out.println("Please enter their contact info: ");
+        System.out.println("Please enter their phone number: ");
         String cContact = input.nextLine();  // Read user input
         c.contactInfo = cContact;
         System.out.println("");
+        System.out.println("Please enter the company's address: ");
+        String cAddress = input.nextLine();  // Read user input
+        c.address = cAddress;
+        System.out.println("");
+        System.out.println("Please enter the company's date established: ");
+        String cDateEst = input.nextLine();  // Read user input
+        c.dateEstablished = cDateEst;
+        System.out.println("");
+        System.out.println("Please enter the company's website: ");
+        String cWebsite = input.nextLine();  // Read user input
+        c.webSite = cWebsite;
         
          companyUsers.add(c);
 

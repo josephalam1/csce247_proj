@@ -15,8 +15,21 @@ public class Company {
     public String webSite;
     private double rating;
 
-    public Company(int id, String name, String email, String address, String hiringRecruiter, String contactInfo){
+    //public Company(int id, String name, String email, String address, String hiringRecruiter, String contactInfo){
         // COS added above params needed for companyProfile
+    //}
+    public Company(int id, String name, String recruiterEmail, String password, String address, String hiringRecruiter,
+            String contactInfo, String dateEstablished, String webSite, double rating) {
+        this.id = id;
+        this.name = name;
+        this.recruiterEmail = recruiterEmail;
+        this.password = password;
+        this.address = address;
+        this.hiringRecruiter = hiringRecruiter;
+        this.contactInfo = contactInfo;
+        this.dateEstablished = dateEstablished;
+        this.webSite = webSite;
+        this.rating = rating;
     }
     public CompanyProfile createProfile(Company a){
         return null;
@@ -50,7 +63,10 @@ public class Company {
     }
     // COS not in UML needed for CompanyProfile
     public String toString(){
-        return "\nCompany";
+        return "\nCompany account info: " + "\n" +
+        "\nName: " + name + "\nEstablished: " + dateEstablished + 
+        "\nLocation: " + address + "\nWebsite: " + webSite + 
+        "\nHiring Recruiter: " + hiringRecruiter + " Email: " + recruiterEmail + " Phone: " + contactInfo;
     }
     
 }

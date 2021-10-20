@@ -10,8 +10,10 @@ public class SystemDriver {
         String welcomeOption = input.nextLine();
         if (welcomeOption.equals("3")) {
             screen.addCompany();
+        } else if (welcomeOption.equals("2")) {
+            screen.addStudent();
         }
-        System.out.println("Compiled");
+        
     }
 
     public static void main(String[] args) {
