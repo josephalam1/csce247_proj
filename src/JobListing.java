@@ -155,7 +155,12 @@ public class JobListing {
 
 
     public void setRemote(boolean remote) {
-        this.remote = remote;
+        if(remote == true){
+            remote = false;
+        }
+        else{
+            remote = true;
+        }
     }
 
 
