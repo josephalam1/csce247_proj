@@ -1,6 +1,7 @@
 package src;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class Student {
     private int accType;
@@ -44,8 +45,14 @@ public class Student {
     public ArrayList<String> search(){
         return null;
     }
-    public ArrayList<String> sort(ArrayList<String> search){
-        return null;
+    public void sort(ArrayList<JobListing> jobList){
+        for (int i = 0; i < jobList.size(); i++){
+            for ( int j = 0; j < jobList.size(); j++){
+                if (jobList.get(i).getTitle().compareTo(jobList.get(j).getTitle()) > 0){
+                    Collections.swap(jobList, i, j);
+                }
+            }
+        }
     }
     public ArrayList<String> filter(ArrayList<String> search, String loc, int minHRS, int maxHRS, double pay, Boolean remote, boolean volunteer, ArrayList<String> skills, double rating){
         return skills;

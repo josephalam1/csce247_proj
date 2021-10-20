@@ -1,6 +1,7 @@
 package src;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class Company {
     private int accType;
@@ -25,8 +26,14 @@ public class Company {
     public ArrayList<Application> viewApplications(JobListing job){
         return null;
     }
-    public ArrayList<String> sort(ArrayList<Application> applicant){
-        return null;
+    public void sort(ArrayList<Application> appList){
+        for (int i = 0; i < appList.size(); i++) {
+            for (int j = 0; j < appList.size(); j++) {
+                if (appList.get(i).getPastJobTitle().compareTo(appList.get(j).getPastJobTitle()) > 0) {
+                    Collections.swap(appList, i, j);
+                }
+            }
+        }
     }
     public ArrayList<String> filter(ArrayList<String> search, String level, String major, int year, String[] skills, double rating){
         return search;
