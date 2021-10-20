@@ -63,17 +63,8 @@ public class Application {
         this.pastWorkEndDate = pastWorkEndDate;
     }
     
-    public String getAllWork() {
-        return "Job 1\n"+pastWorkName+"\nTitle: "+pastJobTitle+"\nFrom: "+pastWorkStrtDate+" To: "+pastWorkEndDate+"\nDuties: "+pastJobDuties;
-        
-    }
-    public void addWork() {
-        
-    }
-    public void addEdu() {
-        
-    }
-    public void buildResume() {
+    public ArrayList<Experiences> getAllExperience() {
+        return null; //"Job 1\n"+pastWorkName+"\nTitle: "+pastJobTitle+"\nFrom: "+pastWorkStrtDate+" To: "+pastWorkEndDate+"\nDuties: "+pastJobDuties;
         
     }
     public String toString() {
