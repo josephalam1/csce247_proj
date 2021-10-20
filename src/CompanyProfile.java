@@ -1,11 +1,11 @@
 package src;
 
-public class CompanyProfile extends Company{
+public class CompanyProfile {
 
     public String dateEstablished;
     public String webSite;
     private double rating;
-
+/*
     public CompanyProfile(int id, String name, String recruiterEmail, String password, String address,
             String hiringRecruiter, String contactInfo, String dateEstablished, String webSite, double rating) {
         super(id, name, recruiterEmail, password, address, hiringRecruiter, contactInfo, dateEstablished, webSite, rating);
@@ -13,7 +13,7 @@ public class CompanyProfile extends Company{
         this.webSite = getWebSite();
         this.rating = getRating();
     }
-    /* public CompanyProfile(int accType, int id, boolean adminPrivilege, String name, String email, String address,
+     public CompanyProfile(int accType, int id, boolean adminPrivilege, String name, String email, String address,
             String hiringRecruiter, String contactInfo, String dateEstablished, String webSite, double rating) {
         super(accType, id, adminPrivilege, name, email, address, hiringRecruiter, contactInfo);
         this.dateEstablished = getDateEstablished();

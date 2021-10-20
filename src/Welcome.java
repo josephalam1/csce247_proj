@@ -11,7 +11,7 @@ public class Welcome {
 
     private ArrayList<Student> studentUsers;
     private ArrayList<Company> companyUsers;
-    private Student s = new Student(0, 0, null, null, null, null, null, null, null, null, null, 0, null, null, null, 0, 0);
+    private Student s = new Student(0, null, null, null, null, null, null, null, null, null, 0, null, null, null, 0, 0);
     private Company c = new Company(0, null, null, null, null, null, null, null, null, 0);
     public Scanner input = new Scanner(System.in);  // Create a Scanner object
     private static Welcome screen;
@@ -142,7 +142,15 @@ public class Welcome {
         System.out.println("");
         System.out.println("Please enter the company's date established: ");
         String cDateEst = input.nextLine();  // Read user input
-        c.dateEstablished = cDateEst;
+        DateFormat formatter = new SimpleDateFormat("yyyy/MM/dd");
+        Date date;
+        try {
+            date = formatter.parse(cDateEst);
+            s.setDateOfBirth(date);
+        } catch (ParseException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
         System.out.println("");
         System.out.println("Please enter the company's website: ");
         String cWebsite = input.nextLine();  // Read user input

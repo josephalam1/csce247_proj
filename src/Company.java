@@ -1,6 +1,7 @@
 package src;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Collections;
 
 public class Company {
@@ -11,15 +12,15 @@ public class Company {
     public String address;
     public String hiringRecruiter;
     public String contactInfo;
-    public String dateEstablished;
+    public Date dateEstablished;
     public String webSite;
     private double rating;
 
     //public Company(int id, String name, String email, String address, String hiringRecruiter, String contactInfo){
         // COS added above params needed for companyProfile
     //}
-    public Company(int id, String name, String recruiterEmail, String password, String address, String hiringRecruiter,
-            String contactInfo, String dateEstablished, String webSite, double rating) {
+    public Company(int id, String name, String recruiterEmail, String password, String address, 
+            String hiringRecruiter, String contactInfo, Date dateEstablished, String webSite, double rating) {
         this.id = id;
         this.name = name;
         this.recruiterEmail = recruiterEmail;

@@ -5,7 +5,6 @@ import java.util.Date;
 import java.util.Collections;
 
 public class Student {
-    private int accType;
     private int id;
     public String name;
     public String email;
@@ -24,10 +23,9 @@ public class Student {
     public int currYear;
     private double rating;
 
-    public Student(int accType, int id, String name, String email, String password, Date dateOfBirth, String sex,
+    public Student(int id, String name, String email, String password, Date dateOfBirth, String sex,
             String gender, ArrayList<Application> openApplications, Boolean available, ArrayList<JobListing> savedJobs,
             double gPA, String campusLocation, String currLevel, String currMajor, int currYear, double rating) {
-        this.accType = accType;
         this.id = id;
         this.name = name;
         this.email = email;
@@ -46,14 +44,6 @@ public class Student {
         this.rating = rating;
     }
     
-    public int getAccType() {
-        return accType;
-    }
-
-    public void setAccType(int accType) {
-        this.accType = accType;
-    }
-
     public int getId() {
         return id;
     }
