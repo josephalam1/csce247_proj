@@ -1,7 +1,11 @@
 package src;
 
 import java.util.ArrayList;
+<<<<<<< HEAD
 import java.util.Collections;
+=======
+import java.util.Date;
+>>>>>>> 3c7ee24cf974d821ea7a98c72a60e520544171b8
 
 public class Student {
     private int accType;
@@ -9,18 +13,24 @@ public class Student {
     public String name;
     public String email;
     protected String password;
-    private int dateOfBirth;
+    private Date dateOfBirth;
     private String sex;
     private String gender;
     public StudentProfile profile;
     public ArrayList<Application> openApplications;
     public Boolean available;
-    private boolean adminPrivilege = false;
     public ArrayList<JobListing> savedJobs;
+    private double GPA;
+    public String campusLocation;
+    public String currLevel;
+    public String currMajor;
+    public int currYear;
+    private double rating;
 
-    public Student(String name, int DOB, String sex, String gender){
+    public Student(String name, Date DOB, String sex, String gender){
 
     }
+
     public String setPreferredName(String name){
         return "";
     }
@@ -60,5 +70,10 @@ public class Student {
     public Double giveRating(CompanyProfile aProfile){
         return null;
     }
+
+    public String toString(){
+        return "";
+    }
+    
     
 }
