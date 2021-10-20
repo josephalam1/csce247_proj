@@ -41,9 +41,6 @@ public class Student {
     public ArrayList<JobListing> viewSavedJobs(){
         return savedJobs;
     }
-    public void optOutList(Notifications a, Notifications b){
-
-    }
     public ArrayList<String> search(){
         return null;
     }

@@ -5,10 +5,6 @@ import java.util.ArrayList;
 public class Application {
 
     private int zipCode;
-    private String pastEdu;
-    private String pastEduCity;
-    private int pastEduStrtDate;
-    private int pastEduEndDate;
     private String pastWorkName;
     private String pastJobTitle;
     private ArrayList<String> pastJobDuties;
@@ -20,10 +16,6 @@ public class Application {
     int pastWorkEndDate) {
 
         this.zipCode = zipCode;
-        this.pastEdu = pastEdu;
-        this.pastEduCity = pastEduCity;
-        this.pastEduStrtDate = pastEduStrtDate;
-        this.pastEduEndDate = pastEduEndDate;
         this.pastWorkName = pastWorkName;
         this.pastJobTitle = pastJobTitle;
         this.pastJobDuties = pastJobDuties;
@@ -39,30 +31,7 @@ public class Application {
     public void setZipCode(int zipCode) {
         this.zipCode = zipCode;
     }
-    public String getPastEdu() {
-        return pastEdu;
-    }
-    public void setPastEdu(String pastEdu) {
-        this.pastEdu = pastEdu;
-    }
-    public String getPastEduCity() {
-        return pastEduCity;
-    }
-    public void setPastEduCity(String pastEduCity) {
-        this.pastEduCity = pastEduCity;
-    }
-    public int getPastEduStrtDate() {
-        return pastEduStrtDate;
-    }
-    public void setPastEduStrtDate(int pastEduStrtDate) {
-        this.pastEduStrtDate = pastEduStrtDate;
-    }
-    public int getPastEduEndDate() {
-        return pastEduEndDate;
-    }
-    public void setPastEduEndDate(int pastEduEndDate) {
-        this.pastEduEndDate = pastEduEndDate;
-    }
+    
     public String getPastWorkName() {
         return pastWorkName;
     }
@@ -94,10 +63,6 @@ public class Application {
         this.pastWorkEndDate = pastWorkEndDate;
     }
     
-    public String getAllEdu() {
-        return "School 1\n"+pastEdu+"\nIn: "+pastEduCity+"\nFrom: "+pastEduStrtDate+" To: "+pastEduEndDate;
-
-    }
     public String getAllWork() {
         return "Job 1\n"+pastWorkName+"\nTitle: "+pastJobTitle+"\nFrom: "+pastWorkStrtDate+" To: "+pastWorkEndDate+"\nDuties: "+pastJobDuties;
         

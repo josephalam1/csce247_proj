@@ -25,12 +25,6 @@ public class Company {
     public ArrayList<Application> viewApplications(JobListing job){
         return null;
     }
-    public void optOutAll(){
-        
-    }
-    public void optOutList(Notifications a, Notifications b){
-        
-    }
     public ArrayList<String> sort(ArrayList<Application> applicant){
         return null;
     }

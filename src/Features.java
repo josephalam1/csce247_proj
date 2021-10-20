@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 public interface Features {
     public ArrayList<String> search();
-    public ArrayList<String> sort(ArrayList[] search); 
-    public ArrayList<String> filter(ArrayList[] search);
+    public ArrayList<String> sort(ArrayList<String> search); 
+    public ArrayList<String> filter(ArrayList<String> search);
     public double giveRating(CompanyProfile aProfile);
 }
