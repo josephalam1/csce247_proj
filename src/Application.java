@@ -95,11 +95,11 @@ public class Application {
     }
     
     public String getAllEdu() {
-        return "School 1\n"+pastEdu+" In "+pastEduCity+" From: "+pastEduStrtDate+" To: "+pastEduEndDate;
+        return "School 1\n"+pastEdu+"\nIn: "+pastEduCity+"\nFrom: "+pastEduStrtDate+" To: "+pastEduEndDate;
 
     }
     public String getAllWork() {
-        return "Job 1\n"+pastWorkName+" Title: "+pastJobTitle+" From: "+pastWorkStrtDate+" To: "+pastWorkEndDate+" Duties: "+pastJobDuties;
+        return "Job 1\n"+pastWorkName+"\nTitle: "+pastJobTitle+"\nFrom: "+pastWorkStrtDate+" To: "+pastWorkEndDate+"\nDuties: "+pastJobDuties;
         
     }
     public void addWork() {
