@@ -25,6 +25,10 @@ public class Welcome {
         return studentUsers;
     }
 
+    public ArrayList<Company> CompanyAccess() {
+        return companyUsers;
+    }
+
     public Student getStudentFromID () {
 
     }
