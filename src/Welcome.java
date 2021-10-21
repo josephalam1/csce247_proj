@@ -16,9 +16,17 @@ public class Welcome {
     public Scanner input = new Scanner(System.in);  // Create a Scanner object
     private static Welcome screen;
 	  
-	private Welcome() {
+	public Welcome() {
         this.studentUsers = new ArrayList<>();
         this.companyUsers = new ArrayList<>();
+    }
+
+    public ArrayList<Student> studentAccess() {
+        return studentUsers;
+    }
+
+    public Student getStudentFromID () {
+
     }
 
     public static Welcome getInstance() {
@@ -36,6 +44,14 @@ public class Welcome {
 
 
     public void loginStudent() {
+        System.out.println("**************************************");
+        System.out.println("*          Welcome Student!          *");
+        System.out.println("**************************************");
+        System.out.println("\n");
+        System.out.println("1. View account information");
+        System.out.println("2. Search for Job Listing");
+        System.out.println("3. View Notifications");
+        System.out.println("3. ");
         
     }
 
