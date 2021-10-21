@@ -9,5 +9,4 @@ public interface Features {
     public ArrayList<String> search();
     public ArrayList<String> sort(ArrayList<String> search); 
     public ArrayList<String> filter(ArrayList<String> search);
-    public double giveRating(CompanyProfile aProfile);
 }

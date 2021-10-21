@@ -98,9 +98,6 @@ public class Student {
     public Boolean setAvailable(){
         return true;
     }
-    public StudentProfile createProfile(){
-        return null;
-    }
     public Application createApp(){
         return null;
     }
@@ -128,7 +125,7 @@ public class Student {
     public ArrayList<String> filter(ArrayList<String> search, String loc, int minHRS, int maxHRS, double pay, Boolean remote, boolean volunteer, ArrayList<String> skills, double rating){
         return skills;
     }
-    public Double giveRating(CompanyProfile aProfile){
+    public Double giveRating(Company c){
         return null;
     }
 

@@ -32,9 +32,7 @@ public class Company {
         this.webSite = webSite;
         this.rating = rating;
     }
-    public CompanyProfile createProfile(Company a){
-        return null;
-    }
+    
     public JobListing createJob(JobListing job){
         return job;
     }
@@ -53,7 +51,7 @@ public class Company {
     public ArrayList<String> filter(ArrayList<String> search, String level, String major, int year, String[] skills, double rating){
         return search;
     }
-    public double giveRating(StudentProfile aProfile){
+    public double giveRating(Student s){
         return rating;
     }
     public Student chooseCandidate(Application[] apps){
