@@ -1,5 +1,7 @@
 package src;
 
+import java.lang.ref.Cleaner;
+
 // test
 
 import java.text.DateFormat;
@@ -17,12 +19,14 @@ public class Welcome {
     private Company c = new Company(0, null, null, null, null, null, null, null, null, 0);
     public Scanner input = new Scanner(System.in);  // Create a Scanner object
     private static Welcome screen;
-	  
-	public Welcome() {
+    public static Boolean logout;
+
+    public Welcome() {
         this.studentUsers = new ArrayList<>();
         this.companyUsers = new ArrayList<>();
+        logout = false;
     }
-
+	  
     public ArrayList<Student> studentAccess() {
         return studentUsers;
     }
@@ -32,19 +36,25 @@ public class Welcome {
     }
 
     public Student getStudentFromID () {
+        return s;
+    }
 
+    public Company getCompanyFromID () {
+        return c;
     }
 
     public static Welcome getInstance() {
+        logout = false;
 		if (screen == null) {
             System.out.println("**************************************");
-			System.out.println("* Welcome to UofSC Intership System! *");
+            System.out.println("* Welcome to UofSC Intership System! *");
             System.out.println("**************************************");
             System.out.println("1. Login with Existing Account");
             System.out.println("2. Make an Account: Student");
             System.out.println("3. Make an Account: Company");
-			screen = new Welcome();
-		}
+            System.out.println("   Type L to logout");
+            screen = new Welcome();
+        }
 		return screen;
 	}
 
@@ -54,10 +64,13 @@ public class Welcome {
         System.out.println("*          Welcome Student!          *");
         System.out.println("**************************************");
         System.out.println("\n");
+        System.out.println("Enter L at any time to logout");
+        System.out.println("");
         System.out.println("1. View account information");
         System.out.println("2. Search for Job Listing");
         System.out.println("3. View Notifications");
-        System.out.println("3. ");
+        System.out.println("4. ");
+        
         
     }
 
@@ -70,7 +83,7 @@ public class Welcome {
         System.out.println("*       Welcome new Student!         *");
         System.out.println("**************************************");
         System.out.println("\n");
-        System.out.println("Enter 0 at any time for the help Menu: ");
+        System.out.println("Enter L at any time to logout ");
         System.out.println("");
         System.out.println("Please enter your name: ");
         String sName = input.nextLine();  // Read user input
@@ -125,10 +138,10 @@ public class Welcome {
         System.out.println("Please enter your current major: ");
         String sMajor = input.nextLine();  // Read user input
         s.currMajor = sMajor;
-        
-         studentUsers.add(s);
-
+        System.out.println("");
+        studentUsers.add(s);
         System.out.println(s.toString());
+        System.out.println("");
     }
 
     public void addCompany() {
@@ -137,7 +150,7 @@ public class Welcome {
         System.out.println("*       Welcome new Company!         *");
         System.out.println("**************************************");
         System.out.println("\n");
-        System.out.println("Enter 0 at any time for the help Menu: ");
+        System.out.println("Enter L at any time to logout ");
         System.out.println("");
         System.out.println("Please enter your name: ");
         String cName = input.nextLine();  // Read user input
