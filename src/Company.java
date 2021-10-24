@@ -9,7 +9,7 @@ public class Company {
     private UUID id;
     public String name;
     public String recruiterEmail;
-    public String recruiterUsername;
+    public String username;
     protected String password;
     public String address;
     public String hiringRecruiter;
@@ -40,7 +40,7 @@ public class Company {
         this.id = id;
         this.name = name;
         this.recruiterEmail = recruiterEmail;
-        this.recruiterUsername = recruiterUsername;
+        this.username = recruiterUsername;
         this.password = password;
         this.address = address;
         this.hiringRecruiter = hiringRecruiter;
@@ -68,7 +68,7 @@ public class Company {
         this.id = UUID.randomUUID();
         this.name = name;
         this.recruiterEmail = recruiterEmail;
-        this.recruiterUsername = recruiterUsername;
+        this.username = recruiterUsername;
         this.password = password;
         this.address = address;
         this.hiringRecruiter = hiringRecruiter;
@@ -83,6 +83,13 @@ public class Company {
      */
     public UUID getId() {
         return id;
+    }
+    /**
+     * Returns the password for the company object
+     * @return String of password
+     */
+    public String getPassword() {
+        return password;
     }
     public JobListing createJob(JobListing job){
         return job;
