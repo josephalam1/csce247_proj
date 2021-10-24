@@ -1,7 +1,7 @@
 [
     {
-        "id": 1,
-        "companyID": 1,
+        "id": "496575c4-5d75-4e8e-90b0-9cdc77a57607",
+        "companyID": "496575c4-5d75-4e8e-90b0-9cdc77a57604",
         "title": "Junior Developer Intern",
         "minHours": 10,
         "maxHours": 40,
@@ -18,8 +18,8 @@
         "location": "123 Job St."
     },
     {
-        "id": 2,
-        "companyID": 2,
+        "id": "496575c4-5d75-4e8e-90b0-9cdc77a58058",
+        "companyID": "496575c4-5d75-4e8e-90b0-9cdc77a57608",
         "title": "Custodial Engineer",
         "minHours": 40,
         "maxHours": 40,

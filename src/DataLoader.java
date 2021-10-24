@@ -30,7 +30,7 @@ public class DataLoader {
                 String gender = (String)studentJSON.get("gender");
                 boolean available = (boolean)studentJSON.get("available");
                 double gpa = (double)studentJSON.get("GPA");
-                int year = (int)studentJSON.get("year");
+                int year = ((Long)studentJSON.get("year")).intValue();;
                 String location = (String)studentJSON.get("campusLocation");
                 String major = (String)studentJSON.get("major");
                 double rating = (double)studentJSON.get("rating");
@@ -121,9 +121,5 @@ public class DataLoader {
             e.printStackTrace();
         }
             return null;
-    }
-
-    public static void main(String[] args) {
-        getJobListings();
     }
 }
