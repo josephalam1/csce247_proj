@@ -188,8 +188,59 @@ public class Student {
             }
         }
     }
-    public ArrayList<String> filter(ArrayList<String> search, String loc, int minHRS, int maxHRS, double pay, Boolean remote, boolean volunteer, ArrayList<String> skills, double rating){
-        return skills;
+    public ArrayList<JobListing> filter(ArrayList<JobListing> jobList, String loc, int minHRS, int maxHRS, double pay, Boolean remote, boolean volunteer, ArrayList<String> skills, double rating){
+        ArrayList<JobListing> ret = new ArrayList<JobListing>();
+        int search = 0;
+        if (search == 1) {
+            for (JobListing job : jobList) {
+                if (job.getLocation() == loc) {
+                    ret.add(job);
+                }
+            }
+        } else if (search == 2) {
+            for (JobListing job : jobList) {
+                if (job.getMinHours() == minHRS) {
+                    ret.add(job);
+                }
+            }
+        } else if (search == 3) {
+            for (JobListing job : jobList) {
+                if (job.getMaxHours() == maxHRS) {
+                    ret.add(job);
+                }
+            }
+        } else if (search == 4) {
+            for (JobListing job : jobList) {
+                if (job.getLocation() == loc) {
+                    ret.add(job);
+                }
+            }
+        } else if (search == 5) {
+            for (JobListing job : jobList) {
+                if (job.getPay() >= pay) {
+                    ret.add(job);
+                }
+            }
+        } else if (search == 6) {
+            for (JobListing job : jobList) {
+                if (remote = job.isRemote()) {
+                    ret.add(job);
+                }
+            }
+        } else if (search == 7) {
+            for (JobListing job : jobList) {
+                if (job.getRating() >= rating) {
+                    ret.add(job);
+                }
+            }
+        } else if (search == 8) {
+            for (JobListing job : jobList) {
+                if (job.getPay() >= pay) {
+                    ret.add(job);
+                }
+            }
+        }
+        return ret;
     }
     public Double giveRating(Company c){
         return null;
