@@ -171,7 +171,7 @@ public class Student {
         return openApplications;
     }
     public void saveJobListing(JobListing job){
-
+        savedJobs.add(job);
     }
     public ArrayList<JobListing> viewSavedJobs(){
         return savedJobs;
@@ -188,9 +188,9 @@ public class Student {
             }
         }
     }
-    public ArrayList<JobListing> filter(ArrayList<JobListing> jobList, String loc, int minHRS, int maxHRS, double pay, Boolean remote, boolean volunteer, ArrayList<String> skills, double rating){
+    // User needs to specify what they want to filter by
+    public ArrayList<JobListing> filter(ArrayList<JobListing> jobList, int search, String loc, int minHRS, int maxHRS, double pay, Boolean remote, boolean volunteer, ArrayList<String> skills, double rating){
         ArrayList<JobListing> ret = new ArrayList<JobListing>();
-        int search = 0;
         if (search == 1) {
             for (JobListing job : jobList) {
                 if (job.getLocation() == loc) {
@@ -242,8 +242,8 @@ public class Student {
         }
         return ret;
     }
-    public Double giveRating(Company c){
-        return null;
+    public void giveRating(Company c, int rating){
+        c.setRating(rating);
     }
 
     public String toString(){
