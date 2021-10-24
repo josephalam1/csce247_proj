@@ -14,7 +14,8 @@
         "remote": false,
         "volunteer": false,
         "expDate": "2021-12-01",
-        "description": "We are looking for a hard-working and motivated student to join our team"
+        "description": "We are looking for a hard-working and motivated student to join our team",
+        "location": "123 Job St."
     },
     {
         "id": 2,
@@ -31,6 +32,7 @@
         "remote": false,
         "volunteer": false,
         "expDate": "2021-10-30",
-        "description": "Are you interested in joining a fast-paced work environment? This is the perfect company for you!"
+        "description": "Are you interested in joining a fast-paced work environment? This is the perfect company for you!",
+        "location": "321 Job Dr"
     }
 ]

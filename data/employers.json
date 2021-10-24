@@ -1,8 +1,8 @@
 [
     {
         "id": 1,
-        "recruiterFirstName": "Ted",
-        "recruiterLastName": "Moseby",
+        "recruiterName": "Ted Moseby",
+        "recruiterUsername": "tmoseby",
         "recruiterEmail": "tedmoseby@icloud.com",
         "recruiterPhone": "098-765-4321",
         "dateEstablished": "1983-05-20",
@@ -14,8 +14,8 @@
     },
     {
         "id": 2,
-        "recruiterFirstName": "Marion",
-        "recruiterLastName": "Moseby",
+        "recruiterName": "Marion Moseby",
+        "recruiterUsername": "mmoseby",
         "recruiterEmail": "marionmoseby@icloud.com",
         "recruiterPhone": "097-632-1854",
         "dateEstablished": "1961-02-13",

@@ -3,11 +3,13 @@ package src;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Collections;
+import java.util.UUID;
 
 public class Company {
-    private int id;
+    private UUID id;
     public String name;
     public String recruiterEmail;
+    public String recruiterUsername;
     protected String password;
     public String address;
     public String hiringRecruiter;
@@ -19,11 +21,26 @@ public class Company {
     //public Company(int id, String name, String email, String address, String hiringRecruiter, String contactInfo){
         // COS added above params needed for companyProfile
     //}
-    public Company(int id, String name, String recruiterEmail, String password, String address, 
+    /**
+     * Initializes company object with pre-existing ID
+     * @param id Company's ID
+     * @param name Company's name
+     * @param recruiterUsername Recruiter's username
+     * @param recruiterEmail Recruiter's email
+     * @param password Password for the recruiter
+     * @param address Company's address
+     * @param hiringRecruiter Recruiter's name
+     * @param contactInfo Contact information for recruiter/company
+     * @param dateEstablished Date the company was established
+     * @param webSite URL of the company's website
+     * @param rating Rating
+     */
+    public Company(UUID id, String name, String recruiterUsername, String recruiterEmail, String password, String address, 
             String hiringRecruiter, String contactInfo, Date dateEstablished, String webSite, double rating) {
         this.id = id;
         this.name = name;
         this.recruiterEmail = recruiterEmail;
+        this.recruiterUsername = recruiterUsername;
         this.password = password;
         this.address = address;
         this.hiringRecruiter = hiringRecruiter;
@@ -32,7 +49,41 @@ public class Company {
         this.webSite = webSite;
         this.rating = rating;
     }
-    
+    /**
+     * Initializes company object without a pre-existing ID
+     * @param id Company's ID
+     * @param name Company's name
+     * @param recruiterUsername Recruiter's username
+     * @param recruiterEmail Recruiter's email
+     * @param password Password for the recruiter
+     * @param address Company's address
+     * @param hiringRecruiter Recruiter's name
+     * @param contactInfo Contact information for recruiter/company
+     * @param dateEstablished Date the company was established
+     * @param webSite URL of the company's website
+     * @param rating Rating
+     */
+    public Company(String name, String recruiterUsername, String recruiterEmail, String password, String address, 
+            String hiringRecruiter, String contactInfo, Date dateEstablished, String webSite, double rating) {
+        this.id = UUID.randomUUID();
+        this.name = name;
+        this.recruiterEmail = recruiterEmail;
+        this.recruiterUsername = recruiterUsername;
+        this.password = password;
+        this.address = address;
+        this.hiringRecruiter = hiringRecruiter;
+        this.contactInfo = contactInfo;
+        this.dateEstablished = dateEstablished;
+        this.webSite = webSite;
+        this.rating = rating;
+    }
+    /**
+     * Returns the company object's ID
+     * @return UUID of company ID
+     */
+    public UUID getId() {
+        return id;
+    }
     public JobListing createJob(JobListing job){
         return job;
     }

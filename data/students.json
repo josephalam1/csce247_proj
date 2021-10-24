@@ -1,8 +1,8 @@
 [
     {
         "id": 1,
-        "firstName": "Joseph",
-        "lastName": "Alam",
+        "name": "Joseph Alam",
+        "username": "jalam",
         "gender": "M",
         "sex": "M",
         "email": "joeyalam@icloud.com",
@@ -18,8 +18,8 @@
     },
     {
         "id": 2,
-        "firstName": "Becky",
-        "lastName": "Gunter",
+        "name": "Becky Gunter",
+        "username": "bgunter",
         "gender": "F",
         "sex": "F",
         "email": "beckygunter@icloud.com",

@@ -3,9 +3,10 @@ package src;
 
 import java.util.Date;
 import java.util.ArrayList;
+import java.util.UUID;
 
 public class JobListing {
-
+    public UUID id;
     public String title;
     public String location;
     private int minHours;
@@ -14,15 +15,16 @@ public class JobListing {
     private Date expDate;
     public int numOpenings;
     public ArrayList<String> skillsReq;
-    public ArrayList<String> description;
-    public ArrayList<String> applicants;
+    public String description;
+    public ArrayList<Application> applicants;
     public String minExp;
     public boolean remote;
     public boolean open;
 
-    public JobListing(String title, String location, int minHours, int maxHours,
-            double pay, Date expDate, int numOpenings, ArrayList<String> skillsReq, ArrayList<String> description,
-            ArrayList<String> applicants, String minExp, boolean remote, boolean open) {
+    public JobListing(UUID id, UUID companyID, String title, String location, int minHours, int maxHours,
+            double pay, Date expDate, int numOpenings, ArrayList<String> skillsReq, String description,
+            ArrayList<Application> applicants, String minExp, boolean remote, boolean open) {
+        this.id = id;
         this.title = title;
         this.location = location;
         this.minHours = minHours;
@@ -119,22 +121,22 @@ public class JobListing {
     }
 
 
-    public ArrayList<String> getDescription() {
+    public String getDescription() {
         return description;
     }
 
 
-    public void setDescription(ArrayList<String> description) {
+    public void setDescription(String description) {
         this.description = description;
     }
 
 
-    public ArrayList<String> getApplicants() {
+    public ArrayList<Application> getApplicants() {
         return applicants;
     }
 
 
-    public void setApplicants(ArrayList<String> applicants) {
+    public void setApplicants(ArrayList<Application> applicants) {
         this.applicants = applicants;
     }
 

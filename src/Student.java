@@ -3,10 +3,12 @@ package src;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Collections;
+import java.util.UUID;
 
 public class Student {
-    private int id;
+    private UUID id;
     public String name;
+    public String username;
     public String email;
     protected String password;
     private Date dateOfBirth;
@@ -22,10 +24,68 @@ public class Student {
     public String currMajor;
     public int currYear;
     private double rating;
-
-    public Student(int id, String name, String email, String password, Date dateOfBirth, String sex,
+    /**
+     * Initializes student object without pre-existing ID
+     * @param name Student's name
+     * @param email Student's email
+     * @param password Student's password
+     * @param dateOfBirth Student's birthdate
+     * @param sex Student's sex
+     * @param gender Student's gender
+     * @param openApplications Student's applications
+     * @param available If the student is available to work or not
+     * @param savedJobs Student's saved jobs
+     * @param gPA Student's GPA
+     * @param campusLocation Location of USC campus student attends
+     * @param currLevel Current level of student
+     * @param currMajor Current major of student
+     * @param currYear Current year of student
+     * @param rating Rating
+     * @param username Student's username
+     */
+    public Student(String name, String email, String password, Date dateOfBirth, String sex,
             String gender, ArrayList<Application> openApplications, Boolean available, ArrayList<JobListing> savedJobs,
-            double gPA, String campusLocation, String currLevel, String currMajor, int currYear, double rating) {
+            double gPA, String campusLocation, String currLevel, String currMajor, int currYear, double rating, String username) {
+        this.id = UUID.randomUUID();
+        this.name = name;
+        this.email = email;
+        this.password = password;
+        this.dateOfBirth = dateOfBirth;
+        this.sex = sex;
+        this.gender = gender;
+        this.openApplications = openApplications;
+        this.available = available;
+        this.savedJobs = savedJobs;
+        GPA = gPA;
+        this.campusLocation = campusLocation;
+        this.currLevel = currLevel;
+        this.currMajor = currMajor;
+        this.currYear = currYear;
+        this.rating = rating;
+    }
+    /**
+     * Initializes student object with a pre-existing ID
+     * @param id Student's ID
+     * @param name Student's name
+     * @param email Student's email
+     * @param password Student's password
+     * @param dateOfBirth Student's birthdate
+     * @param sex Student's sex
+     * @param gender Student's gender
+     * @param openApplications Student's applications
+     * @param available If the student is available to work or not
+     * @param savedJobs Student's saved jobs
+     * @param gPA Student's GPA
+     * @param campusLocation Location of USC campus student attends
+     * @param currLevel Current level of student
+     * @param currMajor Current major of student
+     * @param currYear Current year of student
+     * @param rating Rating
+     * @param username Student's username
+     */
+    public Student(UUID id, String name, String email, String password, Date dateOfBirth, String sex,
+            String gender, ArrayList<Application> openApplications, Boolean available, ArrayList<JobListing> savedJobs,
+            double gPA, String campusLocation, String currLevel, String currMajor, int currYear, double rating, String username) {
         this.id = id;
         this.name = name;
         this.email = email;
@@ -44,11 +104,17 @@ public class Student {
         this.rating = rating;
     }
     
-    public int getId() {
+    public UUID getId() {
         return id;
     }
-
-    public void setId(int id) {
+    /**
+     * Returns the student's password
+     * @return String of student password
+     */
+    public String getPassword() {
+        return this.password;
+    }
+    public void setId(UUID id) {
         this.id = id;
     }
 
