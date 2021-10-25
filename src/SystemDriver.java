@@ -23,11 +23,13 @@ public class SystemDriver {
             switch (Option) {
                 case "3":
                     screen.addCompany();
-                    screen.loginCompany(c);
+                    // screen.loginCompany(c);
+                    screen.loginCompany();
                     break;
                 case "2":
                     screen.addStudent();
-                    screen.loginStudent(s);
+                    //screen.loginStudent(s);
+                    screen.loginStudent();
                     break;
                 case "1":
                     screen.whichUser();

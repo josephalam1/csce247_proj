@@ -67,8 +67,9 @@ public class Welcome {
             System.out.println("Enter user password: ");
             String sPassword = input.nextLine();
             s.password = sPassword;
-            Student logon = student.getStudent(sUserName, sPassword);
-            screen.loginStudent(logon);
+            // Student logon = student.getStudent(sUserName, sPassword);
+            // screen.loginStudent(logon);
+            screen.loginStudent();
         } else {
             System.out.println("Enter user name: ");
             String cUserName = input.nextLine();  
@@ -76,8 +77,9 @@ public class Welcome {
             System.out.println("Enter user password: ");
             String cPassword = input.nextLine();
             c.password = cPassword;
-            Company logon = company.getCompany(cUserName, cPassword);
-            screen.loginCompany(logon);
+            // Company logon = company.getCompany(cUserName, cPassword);
+            // screen.loginCompany(logon);
+            screen.loginCompany();
         }
     }
 
@@ -170,7 +172,8 @@ public class Welcome {
         System.out.println("");
     }
 
-    public void loginStudent(Student s) {
+    // public void loginStudent(Student s) {
+    public void loginStudent() {
         System.out.println("\n");
         System.out.println("**************************************");
         System.out.println("*          Welcome Student!          *");
@@ -275,7 +278,8 @@ public class Welcome {
         
     }
 
-    public void loginCompany(Company c) {
+    // public void loginCompany(Company c) {
+    public void loginCompany() {
 
         JobListing job = new JobListing(null, null, null, null, 0, 0, 0.0, null, 0, null, null, null, null, false, true);
         String optCo = input.nextLine();
