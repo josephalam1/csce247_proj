@@ -109,15 +109,22 @@ public class Company {
     public ArrayList<String> filter(ArrayList<String> search, String level, String major, int year, String[] skills, double rating){
         return search;
     }
-    public double giveRating(Student s){
+
+    public void giveRating(Student s, double rating){
+        s.setRating(rating);
+    }
+
+    public double setRating(double rating) {
         return rating;
     }
+
     public Student chooseCandidate(Application[] apps){
         return null;
     }
     public void hideFromProfile(String companyProfile) {
 
     }
+
     // COS not in UML needed for CompanyProfile
     public String toString(){
         return "\nCompany account info: " + "\n" +

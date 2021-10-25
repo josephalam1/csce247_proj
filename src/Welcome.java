@@ -1,7 +1,5 @@
 package src;
 
-import java.lang.ref.Cleaner;
-
 // test
 
 import java.text.DateFormat;
@@ -9,21 +7,28 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.UUID;
+import java.security.*;
+import java.io.Console;
+import java.io.UnsupportedEncodingException;
 import java.util.Date;
 
 public class Welcome {
 
     private ArrayList<Student> studentUsers;
     private ArrayList<Company> companyUsers;
-    private Student s = new Student(0, null, null, null, null, null, null, null, null, null, 0, null, null, null, 0, 0);
-    private Company c = new Company(0, null, null, null, null, null, null, null, null, 0);
+    private Companies company = Companies.getInstance();
+    private Students student = Students.getInstance();
+    private Company c = new Company(null, null, null, null, null, null, null, null, null, 0.0);
+                        // Student(name, email, password, dateOfBirth, sex, gender, openApplications, available, savedJobs, gPA, campusLocation, currLevel, currMajor, currYear, rating, username)
+    private Student s = new Student(null, null, null, null, null, null, null, true, null, 0.0, null, null, null, 0, 0.0, null);
     public Scanner input = new Scanner(System.in);  // Create a Scanner object
     private static Welcome screen;
     public static Boolean logout;
 
     public Welcome() {
-        this.studentUsers = new ArrayList<>();
-        this.companyUsers = new ArrayList<>();
+        studentUsers = student.getStudents();
+        companyUsers = company.getCompanies();
         logout = false;
     }
 	  
@@ -33,14 +38,6 @@ public class Welcome {
 
     public ArrayList<Company> CompanyAccess() {
         return companyUsers;
-    }
-
-    public Student getStudentFromID () {
-        return s;
-    }
-
-    public Company getCompanyFromID () {
-        return c;
     }
 
     public static Welcome getInstance() {
@@ -58,27 +55,34 @@ public class Welcome {
 		return screen;
 	}
 
+    public void whichUser() {
+        System.out.println("1. Login Student");
+        System.out.println("2. Login Company");
+        String opt;
+        opt = input.nextLine();
+        if (opt.equals("1")) {
+            System.out.println("Enter user name: ");
+            String sUserName = input.nextLine();  
+            s.username= sUserName;
+            System.out.println("Enter user password: ");
+            String sPassword = input.nextLine();
+            s.password = sPassword;
+            Student logon = student.getStudent(sUserName, sPassword);
+            screen.loginStudent(logon);
+        } else {
+            System.out.println("Enter user name: ");
+            String cUserName = input.nextLine();  
+            c.username= cUserName;
+            System.out.println("Enter user password: ");
+            String cPassword = input.nextLine();
+            c.password = cPassword;
+            Company logon = company.getCompany(cUserName, cPassword);
+            screen.loginCompany(logon);
+        }
+    }
 
-    public void loginStudent() {
-        System.out.println("**************************************");
-        System.out.println("*          Welcome Student!          *");
-        System.out.println("**************************************");
+    public void addStudent() throws UnsupportedEncodingException, NoSuchAlgorithmException {
         System.out.println("\n");
-        System.out.println("Enter L at any time to logout");
-        System.out.println("");
-        System.out.println("1. View account information");
-        System.out.println("2. Search for Job Listing");
-        System.out.println("3. View Notifications");
-        System.out.println("4. ");
-        
-        
-    }
-
-    public void loginCompany() {
-        
-    }
-
-    public void addStudent() {
         System.out.println("**************************************");
         System.out.println("*       Welcome new Student!         *");
         System.out.println("**************************************");
@@ -86,22 +90,44 @@ public class Welcome {
         System.out.println("Enter L at any time to logout ");
         System.out.println("");
         System.out.println("Please enter your name: ");
-        String sName = input.nextLine();  // Read user input
+        String sName = input.nextLine();  
         s.name = sName;
         System.out.println("");
         System.out.println("Please enter your perferred name: ");
-        String sNewName = input.nextLine();  // Read user input
+        String sNewName = input.nextLine();  
         s.setPreferredName(sNewName);
         System.out.println("");
         System.out.println("Please enter your email: ");
-        String sEmail = input.nextLine();  // Read user input
+        String sEmail = input.nextLine();  
         s.email = sEmail;
         System.out.println("");
+        System.out.println("Please enter your user name: ");
+        String sUserName = input.nextLine();  
+        s.username= sUserName;
+        System.out.println("");
         System.out.println("Please enter your password: ");
+        String sPassword = input.nextLine();
+        s.password = sPassword;
+
+        
+            /*try {
+                java.security.MessageDigest md = java.security.MessageDigest.getInstance("MD5");
+                byte[] array = md.digest(MD5.getBytes());
+                StringBuffer sb = new StringBuffer();
+                for (int i = 0; i < array.length; ++i) {
+                   sb.append(Integer.toHexString((array[i] & 0xFF) | 0x100).substring(1,3));
+                }
+             } catch (java.security.NoSuchAlgorithmException e) {
+             }*/
+
+        byte[] bytesOfMessage = s.password.getBytes("UTF-8");
+        MessageDigest md = MessageDigest.getInstance("MD5");
+        byte[] theMD5digest = md.digest(bytesOfMessage);
         System.out.println("> will set later");
         System.out.println("");
+
         System.out.println("Please enter your DOB yyyy/MM/dd ");
-        String sDOB = input.nextLine();  // Read user input
+        String sDOB = input.nextLine();  
         DateFormat formatter = new SimpleDateFormat("yyyy/MM/dd");
         Date date;
         try {
@@ -144,8 +170,60 @@ public class Welcome {
         System.out.println("");
     }
 
-    public void addCompany() {
+    public void loginStudent(Student s) {
+        System.out.println("\n");
+        System.out.println("**************************************");
+        System.out.println("*          Welcome Student!          *");
+        System.out.println("**************************************");
+        System.out.println("\n");
+        System.out.println("Enter L at any time to logout");
+        System.out.println("");
+        System.out.println("1. View account information");
+        System.out.println("2. Search for Job Listing");
+        System.out.println("3. View saved Job Listings");
+        System.out.println("4. View Companies Worked for");
+        System.out.println("5. View Notifications");
 
+        String optStudent = input.nextLine();
+        switch (optStudent) {
+            case "1":
+                student.getStudent(s.username, s.password);
+                break;
+            case "2":
+                jobListingScreen();
+                break;
+            case "3":
+                ArrayList<JobListing> savedJ = s.savedJobs;
+                System.out.println(savedJ.toString());
+                break;
+            case "4":
+                System.out.println("");
+                break;
+            case "5":
+                System.out.println("No notifications yet");
+                break;
+            default:
+                break;
+        }
+    }
+
+    public void jobListingScreen() {
+        System.out.println("\n");
+        System.out.println("**************************************");
+        System.out.println("*          Search for Jobs!          *");
+        System.out.println("**************************************");
+        System.out.println("\n");
+        System.out.println("Enter L at any time to logout");
+        System.out.println("");
+        System.out.println("1. View all Jobs listed");
+        System.out.println("2. Sort by Title A-Z");
+        System.out.println("3. Filter options: ");
+        System.out.println("\t1. location \n\t2. Min Hours \n\t3. Max Hours \n\t4. Pay rate \n\t5. Remote \n\t6. Skills required \n\t7. Company rating");
+    }
+
+
+    public void addCompany() {
+        System.out.println("\n");
         System.out.println("**************************************");
         System.out.println("*       Welcome new Company!         *");
         System.out.println("**************************************");
@@ -153,30 +231,30 @@ public class Welcome {
         System.out.println("Enter L at any time to logout ");
         System.out.println("");
         System.out.println("Please enter your name: ");
-        String cName = input.nextLine();  // Read user input
+        String cName = input.nextLine();  
         c.name = cName;
         System.out.println("");
         System.out.println("Please enter your email: ");
-        String cEmail = input.nextLine();  // Read user input
+        String cEmail = input.nextLine();  
         c.recruiterEmail = cEmail;
         System.out.println("");
         System.out.println("Please enter your password: ");
         System.out.println("> will set later");
         System.out.println("");
         System.out.println("Please enter your hiring recruiters name: ");
-        String cRecruit = input.nextLine();  // Read user input
+        String cRecruit = input.nextLine();  
         c.hiringRecruiter = cRecruit;
         System.out.println("");
         System.out.println("Please enter their phone number: ");
-        String cContact = input.nextLine();  // Read user input
+        String cContact = input.nextLine();  
         c.contactInfo = cContact;
         System.out.println("");
         System.out.println("Please enter the company's address: ");
-        String cAddress = input.nextLine();  // Read user input
+        String cAddress = input.nextLine();  
         c.address = cAddress;
         System.out.println("");
         System.out.println("Please enter the company's date established: ");
-        String cDateEst = input.nextLine();  // Read user input
+        String cDateEst = input.nextLine();  
         DateFormat formatter = new SimpleDateFormat("yyyy/MM/dd");
         Date date;
         try {
@@ -194,6 +272,56 @@ public class Welcome {
          companyUsers.add(c);
 
         System.out.println(c.toString());
+        
+    }
+
+    public void loginCompany(Company c) {
+
+        JobListing job = new JobListing(null, null, null, null, 0, 0, 0.0, null, 0, null, null, null, null, false, true);
+        String optCo = input.nextLine();
+        
+        System.out.println("\n");
+        System.out.println("**************************************");
+        System.out.println("*          Welcome Company!          *");
+        System.out.println("**************************************");
+        System.out.println("\n");
+        System.out.println("Enter L at any time to logout");
+        System.out.println("");
+        System.out.println("1. View account information");
+        System.out.println("2. Create a Job Listing");
+        System.out.println("3. View Job Listings");
+        System.out.println("4. View applicants");
+        System.out.println("5. View Notifications");
+
+        
+        switch (optCo) {
+            case "1":
+                company.getCompany(c.username, c.password);
+                break;
+            case "2":
+                // JobListing job = new JobListing(id, companyID, title, location, minHours, maxHours, pay, expDate, numOpenings, skillsReq, description, applicants, minExp, remote, open);
+                jobListingScreen(job);
+                break;
+            case "3":
+                // ArrayList<JobListing> cJobs = Companies.;
+                System.out.println("Under construction");
+                System.out.println(job.toString());
+                break;
+            case "4":
+                System.out.println("View applicants for which Job Listing? ");
+                String cJob = input.nextLine();  
+                job.title = cJob;
+                c.viewApplications(job);
+                break;
+            case "5":
+                System.out.println("2. Search for Job Listing");
+                break;
+            default:
+                break;
+        }
+    }
+
+    public void jobListingScreen(JobListing j) {
         
     }
 

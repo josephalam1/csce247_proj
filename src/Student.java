@@ -154,10 +154,6 @@ public class Student {
         return rating;
     }
 
-    public void setRating(double rating) {
-        this.rating = rating;
-    }
-
     public String setPreferredName(String name){
         return "";
     }
@@ -228,10 +224,17 @@ public class Student {
                 }
             }
         } else if (search == 7) {
-            for (JobListing job : jobList) {
+            System.out.println("Under construction");
+            // jobs can't be rated but companies can
+            /* for (JobListing job : jobList) {
                 if (job.getRating() >= rating) {
                     ret.add(job);
                 }
+            }*/
+            // below added so program compiles for scrum meeting
+            // delete after 0850 10/25/2021
+            for (JobListing job : jobList) {
+                ret.add(job);
             }
         } else if (search == 8) {
             for (JobListing job : jobList) {
@@ -242,8 +245,13 @@ public class Student {
         }
         return ret;
     }
-    public void giveRating(Company c, int rating){
+
+    public void giveRating(Company c, double rating){
         c.setRating(rating);
+    }
+
+    public double setRating(double rating) {
+        return rating;
     }
 
     public String toString(){
