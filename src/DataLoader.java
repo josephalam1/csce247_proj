@@ -19,6 +19,7 @@ public class DataLoader {
             for(int i = 0; i < studentsJSON.size(); i++) {
                 JSONObject studentJSON = (JSONObject)studentsJSON.get(i);
                 UUID id = UUID.fromString((String)studentJSON.get("id"));
+                UUID resumeId = UUID.fromString((String)studentJSON.get("resumeID"));
                 String name = (String)studentJSON.get("name");
                 String username = (String)studentJSON.get("username");
                 String email = (String)studentJSON.get("email");
@@ -33,7 +34,8 @@ public class DataLoader {
                 String location = (String)studentJSON.get("campusLocation");
                 String major = (String)studentJSON.get("major");
                 double rating = (double)studentJSON.get("rating");
-                students.add(new Student(id, name, email, password, dob, sex, gender,
+
+                students.add(new Student(id, resumeId, name, email, password, dob, sex, gender,
                      null, available, null, gpa, location, null, major, year, rating, username));
             }
 
@@ -147,45 +149,59 @@ public class DataLoader {
     }
 
     public static ArrayList<Resume> getResumes() {
-        ArrayList<Resume> jobs = new ArrayList<Resume>();
+        ArrayList<Resume> resumes = new ArrayList<Resume>();
         try {
-            FileReader reader = new FileReader("data/job-resumes.json");
-            JSONArray jobsJSON = (JSONArray) new JSONParser().parse(reader);
-            for(int i = 0; i < jobsJSON.size(); i++) {
-                JSONObject jobJSON = (JSONObject)jobsJSON.get(i);
-                UUID id = UUID.fromString((String)jobJSON.get("ID"));
-                UUID companyid = UUID.fromString((String)jobJSON.get("experience"));
-                JSONArray experiences = (JSONArray)jobJSON.get("experience");
+            FileReader reader = new FileReader("data/resumes.json");
+            JSONArray resumesJSON = (JSONArray) new JSONParser().parse(reader);
+            for(int i = 0; i < resumesJSON.size(); i++) {
+                JSONObject resumeJSON = (JSONObject)resumesJSON.get(i);
+                UUID id = UUID.fromString((String)resumeJSON.get("ID"));
+                UUID studentID = UUID.fromString((String)resumeJSON.get("studentID"));
+                JSONArray experiences = (JSONArray)resumeJSON.get("experience");
                 ArrayList<Experiences> experienceList = new ArrayList<Experiences>();
-                for(int j = 0; j < experiences.size(); j++) {
-                    JSONArray experience = (JSONArray)experiences.get(j);
-                    String companyName = (String)experience.get(0);
-                    String jobTitle = (String)experience.get(1);
-                    String jobTitle = (String)experience.get(0);
-                    String jobTitle = (String)experience.get(0);
-                    // experienceList.add(new Experiences((String)experience.get(0), experience.get(1), experience.get(2), experience.get(3), experience.get(4));
+                if(experiences != null) {
+                    for(int j = 0; j < experiences.size(); j++) {
+                        JSONArray experience = (JSONArray)experiences.get(j);
+                        String companyName = (String)experience.get(0);
+                        String jobTitle = (String)experience.get(1);
+                        SimpleDateFormat ft = new SimpleDateFormat ("yyyy-MM-dd"); 
+                        Date pastEduBeginDate = ft.parse((String)experience.get(2));
+                        Date pastEduEndDate = ft.parse((String)experience.get(3));
+                        ArrayList<String> duties = new ArrayList<String>();
+                        JSONArray dutiesJSON = (JSONArray)experience.get(4);
+                        for(int k = 0; k < dutiesJSON.size(); k++) {
+                            duties.add((String)dutiesJSON.get(k));
+                        }
+                        experienceList.add(new Experiences(companyName, jobTitle, pastEduBeginDate, pastEduEndDate, duties));
+                    }
                 }
-                String minExp = (String)jobJSON.get("minExp");
-                JSONArray dutiesJSON = (JSONArray)jobJSON.get("duties");
-                ArrayList<String> duties = new ArrayList<String>();
-                for(int j = 0; j < dutiesJSON.size(); j++) {
-                    duties.add((String)dutiesJSON.get(j));
+                JSONArray skillsJSON = (JSONArray)resumeJSON.get("skills");
+                ArrayList<String> skills = new ArrayList<String>();
+                for(int j = 0; j < skillsJSON.size(); j++) {
+                    skills.add((String)skillsJSON.get(j));
                 }
-                boolean remote = (boolean)jobJSON.get("remote");
-                boolean open = (boolean)jobJSON.get("open");
-                String description = (String)jobJSON.get("description");
-                String location = (String)jobJSON.get("location");
-                SimpleDateFormat ft = new SimpleDateFormat ("yyyy-MM-dd"); 
-                Date expirationDate = ft.parse((String)jobJSON.get("expDate"));
-                jobs.add(new JobListing(id, companyid, title, location, minHours, maxHours, pay, expirationDate,
-                             numOpenings, skillsReq, description, minExp, remote, open));
+                JSONArray referencesJSON = (JSONArray)resumeJSON.get("references");
+                ArrayList<References> references = new ArrayList<References>();
+                for(int j = 0; j < referencesJSON.size(); j++) {
+                    JSONArray referenceJSON = (JSONArray)referencesJSON.get(j);
+                    String referenceName = (String)referenceJSON.get(0);
+                    String relationship = (String)referenceJSON.get(1);
+                    String phoneNum = (String)referenceJSON.get(2);
+                    String email = (String)referenceJSON.get(3);
+                    references.add(new References(referenceName, relationship, phoneNum, email));
+                }
+                resumes.add(new Resume(id, studentID, skills, experienceList, references));
             }
 
-            return jobs;
+            return resumes;
 
         } catch(Exception e) {
             e.printStackTrace();
         }
             return null;
+    }
+
+    public static void main(String[] args) {
+        System.out.println(getStudents());
     }
 }

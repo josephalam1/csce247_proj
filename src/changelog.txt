@@ -64,3 +64,7 @@ Commit 5 - Joseph Alam - 7:08 AM
     Finished method for + addExperiences() : void
   - Added References.java
     Class for helping format resume similar to Experiences.java
+
+  Commit 6 - Joseph Alam - 10:00 AM
+    -Added Resumes.json for a list of Resumes
+    

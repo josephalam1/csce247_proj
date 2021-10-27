@@ -104,6 +104,47 @@ public class Student implements User {
         this.currYear = currYear;
         this.rating = rating;
     }
+    /**
+     * Initializes student object with a pre-existing ID and a resume ID
+     * @param id Student's ID
+     * @param name Student's name
+     * @param email Student's email
+     * @param password Student's password
+     * @param dateOfBirth Student's birthdate
+     * @param sex Student's sex
+     * @param gender Student's gender
+     * @param openApplications Student's applications
+     * @param available If the student is available to work or not
+     * @param savedJobs Student's saved jobs
+     * @param gPA Student's GPA
+     * @param campusLocation Location of USC campus student attends
+     * @param currLevel Current level of student
+     * @param currMajor Current major of student
+     * @param currYear Current year of student
+     * @param rating Rating
+     * @param username Student's username
+     */
+    public Student(UUID id, UUID resumeID, String name, String email, String password, Date dateOfBirth, String sex,
+            String gender, ArrayList<Application> openApplications, Boolean available, ArrayList<JobListing> savedJobs,
+            double gPA, String campusLocation, String currLevel, String currMajor, int currYear, double rating, String username) {
+        this.id = id;
+        this.resumeId = resumeID;
+        this.name = name;
+        this.email = email;
+        this.password = password;
+        this.dateOfBirth = dateOfBirth;
+        this.sex = sex;
+        this.gender = gender;
+        this.openApplications = openApplications;
+        this.available = available;
+        this.savedJobs = savedJobs;
+        GPA = gPA;
+        this.campusLocation = campusLocation;
+        this.currLevel = currLevel;
+        this.currMajor = currMajor;
+        this.currYear = currYear;
+        this.rating = rating;
+    }
     
     public UUID getId() {
         return id;
@@ -117,6 +158,13 @@ public class Student implements User {
     }
     public void setId(UUID id) {
         this.id = id;
+    }
+    /**
+     * Set the Resume ID for Student
+     * @param id UUID of resume
+     */
+    public void setResumeId(UUID id) {
+        this.resumeId = id;
     }
 
     public Date getDateOfBirth() {
