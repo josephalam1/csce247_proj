@@ -119,4 +119,29 @@ public class DataLoader {
         }
             return null;
     }
+
+    public static ArrayList<Application> getApplications() {
+        ArrayList<Application> applications = new ArrayList<Application>();
+        try {
+            FileReader reader = new FileReader("data/applications.json");
+            JSONArray applicationsJSON = (JSONArray) new JSONParser().parse(reader);
+            for(int i = 0; i < applicationsJSON.size(); i++) {
+                JSONObject applicationJSON = (JSONObject)applicationsJSON.get(i);
+                UUID id = UUID.fromString((String)applicationJSON.get("id"));
+                UUID studentID = UUID.fromString((String)applicationJSON.get("studentID"));
+                UUID companyID = UUID.fromString((String)applicationJSON.get("jobPostingID"));
+                String coverLetter = (String)applicationJSON.get("coverLetter");
+                boolean accepted = (boolean)applicationJSON.get("accepted");
+
+                applications.add(new Application(id, studentID, companyID, coverLetter, accepted));
+            }
+
+            return applications;
+
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
+            return null;
+    }
+
 }

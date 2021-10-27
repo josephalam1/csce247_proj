@@ -7,6 +7,7 @@ import java.util.UUID;
 
 public class JobListing {
     public UUID id;
+    public UUID companyId;
     public String title;
     public String location;
     private int minHours;
@@ -25,6 +26,7 @@ public class JobListing {
             double pay, Date expDate, int numOpenings, ArrayList<String> skillsReq, String description,
             ArrayList<Application> applicants, String minExp, boolean remote, boolean open) {
         this.id = id;
+        this.companyId = companyID;
         this.title = title;
         this.location = location;
         this.minHours = minHours;

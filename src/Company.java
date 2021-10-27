@@ -100,7 +100,7 @@ public class Company implements User {
     public void sort(ArrayList<Application> appList){
         for (int i = 0; i < appList.size(); i++) {
             for (int j = 0; j < appList.size(); j++) {
-                if (appList.get(i).getPastJobTitle().compareTo(appList.get(j).getPastJobTitle()) > 0) {
+                if (appList.get(i).getApplicationDate().compareTo(appList.get(j).getApplicationDate()) > 0) {
                     Collections.swap(appList, i, j);
                 }
             }
@@ -134,6 +134,6 @@ public class Company implements User {
     }
     
     public void deleteUser() {
-        
+
     }
 }

@@ -1,0 +1,36 @@
+10/27/21:
+
+Commit 1 - Joseph Alam - 12:02am :
+- Pushed local changes to avoid merge conflict, don't remember what the changes were
+
+Commit 2 - Joseph Alam - 12:51am :
+- Changed User class to interface, removed attributes (just learned interfaces cannot have 
+   attributes, only methods), added deleteUser function to all User classes to add for moderator 
+   to delete later
+
+Commit 3 - Joseph Alam - :
+- Added Applications.java - handles creating a list of application objects to interact with for use 
+   for other classes
+- Changed Application.java:
+  Removed:
+    private String pastWorkName;
+    private String pastJobTitle;
+    private ArrayList<String> pastJobDuties;
+    private int pastWorkStrtDate;
+    private int pastWorkEndDate;
+  As there were already in the Experiences.java class
+
+  Added:
+    - id: UUID
+    - studentId: UUID
+    - jobPostingId: UUID
+    - applicationDate: Date
+    - coverLetter: String
+    - accepted: boolean
+    - getApplicationDate(): Date
+    - setCoverLetter(String coverLetter): void
+   For making connections from applications object to other objects
+
+- Changed Company.java:
+  Because of the changes in Application.java, the sort method for Company had to be changed. Changed to now compare
+  by applicationDate instead of pastJobTitle
