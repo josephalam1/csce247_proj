@@ -1,6 +1,6 @@
 package src;
 
-public class Admin {
+public class Admin implements User {
     private boolean adminPrivilege = true;
     public String adminName;
     protected String adminPassword;
@@ -14,5 +14,7 @@ public class Admin {
     private void overrideRating(){
 
     }
+    public void deleteUser() {
 
+    }
 }

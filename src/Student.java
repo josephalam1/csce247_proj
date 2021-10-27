@@ -5,7 +5,7 @@ import java.util.Date;
 import java.util.Collections;
 import java.util.UUID;
 
-public class Student {
+public class Student implements User {
     private UUID id;
     public String name;
     public String username;
@@ -262,5 +262,8 @@ public class Student {
         "\nGPA: " + this.getGPA() + " Level: " + currLevel + " Year: " + currYear + " Major: " + currMajor;
     }
     
+    public void deleteUser() {
+
+    }
     
 }

@@ -5,7 +5,7 @@ import java.util.Date;
 import java.util.Collections;
 import java.util.UUID;
 
-public class Company {
+public class Company implements User {
     private UUID id;
     public String name;
     public String recruiterEmail;
@@ -133,4 +133,7 @@ public class Company {
         "\nHiring Recruiter: " + hiringRecruiter + " Email: " + recruiterEmail + " Phone: " + contactInfo;
     }
     
+    public void deleteUser() {
+        
+    }
 }
