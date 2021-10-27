@@ -37,6 +37,11 @@ public class Applications {
         return applications;
     }
 
+    /**
+     * Gets an array of all the open applications based on student ID
+     * @param studentId UUID of Student's applications
+     * @return ArrayList<Application> ArrayList containing all the open applications for the student
+     */
     public ArrayList<Application> getOpenApplicationsByStudent(UUID studentId) {
         ArrayList<Application> openApplications  = new ArrayList<Application>();
         for(Application application: applications) {
@@ -46,7 +51,11 @@ public class Applications {
         }
         return openApplications;
     }
-
+    /**
+     * Gets an array of all the open applications based on job posting ID
+     * @param studentId UUID of the job posting for the applications
+     * @return ArrayList<Application> ArrayList containing all the open applications for the job posting
+     */
     public ArrayList<Application> getOpenApplicationsByJob(UUID jobId) {
         ArrayList<Application> openApplications  = new ArrayList<Application>();
         for(Application application: applications) {
@@ -55,5 +64,14 @@ public class Applications {
             }
         }
         return openApplications;
+    }
+
+    /**
+     * Adds an application to the list of applications
+     * @param application Application to be added
+     * @return boolean of whether or not the application was added
+     */
+    public boolean addApplication(Application application) {
+        return false;
     }
 }

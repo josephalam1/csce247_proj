@@ -281,7 +281,7 @@ public class Welcome {
     // public void loginCompany(Company c) {
     public void loginCompany() {
 
-        JobListing job = new JobListing(null, null, null, null, 0, 0, 0.0, null, 0, null, null, null, null, false, true);
+        JobListing job = new JobListing(null, null, null, null, 0, 0, 0.0, null, 0, null, null, null, false, true);
         String optCo = input.nextLine();
         
         System.out.println("\n");

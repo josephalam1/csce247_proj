@@ -19,17 +19,18 @@ public class Application {
      * @param jobPostingID Job posting's ID
      * @param coverLetter String of optional cover letter for the application
      * @param accepted Boolean of whether or not employee is accepted yet
+     * @param applicationDate Date of when applicant applied
      */
-    public Application(UUID id, UUID studentID, UUID jobPostingID, String coverLetter, boolean accepted) {
+    public Application(UUID id, UUID studentID, UUID jobPostingID, String coverLetter, boolean accepted,
+                         Date applicationDate) {
         this.id = id;
         this.studentId = studentID;
         this.jobPostingId = jobPostingID;
-        this.applicationDate = new Date();
+        this.applicationDate = applicationDate;
         this.coverLetter = coverLetter;
     }
     /**
      * Initializes an application without a pre-existing ID
-     * @param id Application's ID
      * @param studentID Student's ID
      * @param jobPostingID Job posting's ID
      * @param coverLetter String of optional cover letter for the application
@@ -65,6 +66,13 @@ public class Application {
         this.coverLetter = coverLetter;
     }
     /**
+     * Gets the ID of this application
+     * @return UUID of application
+     */
+    public UUID getId() {
+        return id;
+    }
+    /**
      * Gets the student id from application
      * @return UUID of Student's ID
      */
@@ -84,6 +92,13 @@ public class Application {
      */
     public boolean getAccepted() {
         return accepted;
+    }
+    /**
+     * Sets whether or not the user was accepted
+     * @param accepted boolean if user was accepted or not
+     */
+    public void setAccepted(boolean accepted) {
+        this.accepted = accepted;
     }
     public String toString() {
         return "Application: ";

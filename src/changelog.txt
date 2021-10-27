@@ -37,3 +37,23 @@ Commit 3 - Joseph Alam - 2:14am :
 - Changed Company.java:
   Because of the changes in Application.java, the sort method for Company had to be changed. Changed to now compare
   by applicationDate instead of pastJobTitle
+
+Commit 4 - Joseph Alam - 6:08am :
+
+  -Changed Company.java
+    Moved chooseCandidate() to JobListing.java - seemed like it would make more sense to have it for the
+    individual job listing instead of the company.
+    -changed to    + chooseCandidate(UUID applicationId) : boolean 
+    Will choose a candidate based on the ID of their application and return a boolean of whether or not it was 
+    successfully added
+  -Changed JobListing.java
+    Removed + applicants : ArrayList<Application> from class
+      Instead of using this attribute, the applications can be got by the following code:
+        Applications applicationsList = Applications.getInstance();
+        ArrayList<Application> applicants = applicationsList.getOpenApplicationsByJob(id);
+       Where id is the UUID of the job posting
+      This way the list of applications will always be automatically updated while the program is running
+
+
+
+  

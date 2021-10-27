@@ -118,13 +118,6 @@ public class Company implements User {
         return rating;
     }
 
-    public Student chooseCandidate(Application[] apps){
-        return null;
-    }
-    public void hideFromProfile(String companyProfile) {
-
-    }
-
     // COS not in UML needed for CompanyProfile
     public String toString(){
         return "\nCompany account info: " + "\n" +

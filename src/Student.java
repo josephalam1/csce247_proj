@@ -7,6 +7,7 @@ import java.util.UUID;
 
 public class Student implements User {
     private UUID id;
+    public UUID resumeId;
     public String name;
     public String username;
     public String email;

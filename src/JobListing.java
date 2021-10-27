@@ -6,25 +6,17 @@ import java.util.ArrayList;
 import java.util.UUID;
 
 public class JobListing {
-    public UUID id;
-    public UUID companyId;
-    public String title;
-    public String location;
-    private int minHours;
-    private int maxHours;
+    public UUID id, companyId;
+    public String title, location, description, minExp;
+    private int minHours, maxHours, numOpenings;
     private double pay;
     private Date expDate;
-    public int numOpenings;
     public ArrayList<String> skillsReq;
-    public String description;
-    public ArrayList<Application> applicants;
-    public String minExp;
-    public boolean remote;
-    public boolean open;
+    public boolean remote, open;
 
     public JobListing(UUID id, UUID companyID, String title, String location, int minHours, int maxHours,
             double pay, Date expDate, int numOpenings, ArrayList<String> skillsReq, String description,
-            ArrayList<Application> applicants, String minExp, boolean remote, boolean open) {
+            String minExp, boolean remote, boolean open) {
         this.id = id;
         this.companyId = companyID;
         this.title = title;
@@ -36,7 +28,6 @@ public class JobListing {
         this.numOpenings = numOpenings;
         this.skillsReq = skillsReq;
         this.description = description;
-        this.applicants = applicants;
         this.minExp = minExp;
         this.remote = remote;
         this.open = open;
@@ -132,17 +123,6 @@ public class JobListing {
         this.description = description;
     }
 
-
-    public ArrayList<Application> getApplicants() {
-        return applicants;
-    }
-
-
-    public void setApplicants(ArrayList<Application> applicants) {
-        this.applicants = applicants;
-    }
-
-
     public String getMinExp() {
         return minExp;
     }
@@ -187,7 +167,19 @@ public class JobListing {
         }
     }
 
-   
+    /**
+     * Choose candidate for job posting based on application ID number
+     * @param applicationId UUID of application ID that is selected
+     * @return boolean of whether or not the candidate was successfully chosen.
+     */
+   public boolean chooseCandidate(UUID applicationId) {
+        Applications applicationsList = Applications.getInstance();
+        ArrayList<Application> applicants = applicationsList.getOpenApplicationsByJob(id);
+        for(Application application : applicants) {
+        }
+        return false;
+   }
+
     public String toString(){
         return super.toString() + " Job Listing";
     }

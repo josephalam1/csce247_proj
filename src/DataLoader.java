@@ -109,7 +109,7 @@ public class DataLoader {
                 SimpleDateFormat ft = new SimpleDateFormat ("yyyy-MM-dd"); 
                 Date expirationDate = ft.parse((String)jobJSON.get("expDate"));
                 jobs.add(new JobListing(id, companyid, title, location, minHours, maxHours, pay, expirationDate,
-                             numOpenings, skillsReq, description, null, minExp, remote, open));
+                             numOpenings, skillsReq, description, minExp, remote, open));
             }
 
             return jobs;
@@ -132,8 +132,10 @@ public class DataLoader {
                 UUID companyID = UUID.fromString((String)applicationJSON.get("jobPostingID"));
                 String coverLetter = (String)applicationJSON.get("coverLetter");
                 boolean accepted = (boolean)applicationJSON.get("accepted");
+                SimpleDateFormat ft = new SimpleDateFormat ("yyyy-MM-dd"); 
+                Date dob = ft.parse((String)applicationJSON.get("application_date"));
 
-                applications.add(new Application(id, studentID, companyID, coverLetter, accepted));
+                applications.add(new Application(id, studentID, companyID, coverLetter, accepted, dob));
             }
 
             return applications;
