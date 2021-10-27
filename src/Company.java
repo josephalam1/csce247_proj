@@ -129,4 +129,7 @@ public class Company implements User {
     public void deleteUser() {
 
     }
+    public double getRating(){
+        return this.rating;
+    }
 }
