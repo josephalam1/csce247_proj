@@ -16,7 +16,6 @@ public class DataLoader {
         try {
             FileReader reader = new FileReader("data/students.json");
             JSONArray studentsJSON = (JSONArray) new JSONParser().parse(reader);
-            
             for(int i = 0; i < studentsJSON.size(); i++) {
                 JSONObject studentJSON = (JSONObject)studentsJSON.get(i);
                 UUID id = UUID.fromString((String)studentJSON.get("id"));
@@ -51,7 +50,6 @@ public class DataLoader {
         try {
             FileReader reader = new FileReader("data/employers.json");
             JSONArray companysJSON = (JSONArray) new JSONParser().parse(reader);
-            
             for(int i = 0; i < companysJSON.size(); i++) {
                 JSONObject companyJSON = (JSONObject)companysJSON.get(i);
                 UUID id = UUID.fromString((String)companyJSON.get("id"));
@@ -84,7 +82,6 @@ public class DataLoader {
         try {
             FileReader reader = new FileReader("data/job-postings.json");
             JSONArray jobsJSON = (JSONArray) new JSONParser().parse(reader);
-            
             for(int i = 0; i < jobsJSON.size(); i++) {
                 JSONObject jobJSON = (JSONObject)jobsJSON.get(i);
                 UUID id = UUID.fromString((String)jobJSON.get("id"));

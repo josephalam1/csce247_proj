@@ -10,11 +10,6 @@ public class SystemDriver {
 
     public void run() throws UnsupportedEncodingException, NoSuchAlgorithmException {
         Welcome screen = Welcome.getInstance();
-        Companies company = Companies.getInstance();
-        Students student = Students.getInstance();
-        Company c = new Company(null, null, null, null, null, null, null, null, null, 0.0);
-        Student s = new Student(null, null, null, null, null, null, null, true, null, 0.0, null, null, null, 0, 0.0, null);
-
         while (Welcome.logout == false) {
             //Welcome screen = Welcome.getInstance();
             Scanner input = new Scanner(System.in);
