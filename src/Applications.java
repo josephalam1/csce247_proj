@@ -72,6 +72,13 @@ public class Applications {
      * @return boolean of whether or not the application was added
      */
     public boolean addApplication(Application application) {
-        return false;
+        for (Application pastApplications : applications) {
+            if(application.getJobId() == pastApplications.getJobId() && application.getStudentId() == pastApplications.getStudentId()) {
+                return false;
+            }
+        }
+        applications.add(application);
+        // this is where method for notification will go
+        return true;
     }
 }

@@ -55,5 +55,12 @@ Commit 4 - Joseph Alam - 6:08am :
       This way the list of applications will always be automatically updated while the program is running
 
 
-
-  
+Commit 5 - Joseph Alam - 7:08 AM
+  -Added addApplication(Application application) : boolean to Applications.java
+    Method for adding applications to list of applications
+  -Changed Experience.java 
+    Changed jobStartDate, jobEndDate to Date format
+  - Changed Resume.java
+    Finished method for + addExperiences() : void
+  - Added References.java
+    Class for helping format resume similar to Experiences.java

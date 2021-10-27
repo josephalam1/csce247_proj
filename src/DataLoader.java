@@ -146,4 +146,46 @@ public class DataLoader {
             return null;
     }
 
+    public static ArrayList<Resume> getResumes() {
+        ArrayList<Resume> jobs = new ArrayList<Resume>();
+        try {
+            FileReader reader = new FileReader("data/job-resumes.json");
+            JSONArray jobsJSON = (JSONArray) new JSONParser().parse(reader);
+            for(int i = 0; i < jobsJSON.size(); i++) {
+                JSONObject jobJSON = (JSONObject)jobsJSON.get(i);
+                UUID id = UUID.fromString((String)jobJSON.get("ID"));
+                UUID companyid = UUID.fromString((String)jobJSON.get("experience"));
+                JSONArray experiences = (JSONArray)jobJSON.get("experience");
+                ArrayList<Experiences> experienceList = new ArrayList<Experiences>();
+                for(int j = 0; j < experiences.size(); j++) {
+                    JSONArray experience = (JSONArray)experiences.get(j);
+                    String companyName = (String)experience.get(0);
+                    String jobTitle = (String)experience.get(1);
+                    String jobTitle = (String)experience.get(0);
+                    String jobTitle = (String)experience.get(0);
+                    // experienceList.add(new Experiences((String)experience.get(0), experience.get(1), experience.get(2), experience.get(3), experience.get(4));
+                }
+                String minExp = (String)jobJSON.get("minExp");
+                JSONArray dutiesJSON = (JSONArray)jobJSON.get("duties");
+                ArrayList<String> duties = new ArrayList<String>();
+                for(int j = 0; j < dutiesJSON.size(); j++) {
+                    duties.add((String)dutiesJSON.get(j));
+                }
+                boolean remote = (boolean)jobJSON.get("remote");
+                boolean open = (boolean)jobJSON.get("open");
+                String description = (String)jobJSON.get("description");
+                String location = (String)jobJSON.get("location");
+                SimpleDateFormat ft = new SimpleDateFormat ("yyyy-MM-dd"); 
+                Date expirationDate = ft.parse((String)jobJSON.get("expDate"));
+                jobs.add(new JobListing(id, companyid, title, location, minHours, maxHours, pay, expirationDate,
+                             numOpenings, skillsReq, description, minExp, remote, open));
+            }
+
+            return jobs;
+
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
+            return null;
+    }
 }
