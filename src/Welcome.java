@@ -167,7 +167,7 @@ public class Welcome {
         String sMajor = input.nextLine();  // Read user input
         s.currMajor = sMajor;
         System.out.println("");
-        studentUsers.add(s);
+        // studentUsers.add(s);
         System.out.println(s.toString());
         System.out.println("");
     }
@@ -263,6 +263,7 @@ public class Welcome {
         try {
             date = formatter.parse(cDateEst);
             s.setDateOfBirth(date);
+           //c.dateEstablished
         } catch (ParseException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
@@ -272,7 +273,7 @@ public class Welcome {
         String cWebsite = input.nextLine();  // Read user input
         c.webSite = cWebsite;
         
-         companyUsers.add(c);
+        // companyUsers.add(c);
 
         System.out.println(c.toString());
         
@@ -282,7 +283,6 @@ public class Welcome {
     public void loginCompany() {
 
         JobListing job = new JobListing(null, null, null, null, 0, 0, 0.0, null, 0, null, null, null, false, true);
-        String optCo = input.nextLine();
         
         System.out.println("\n");
         System.out.println("**************************************");
@@ -297,7 +297,7 @@ public class Welcome {
         System.out.println("4. View applicants");
         System.out.println("5. View Notifications");
 
-        
+        String optCo = input.nextLine();
         switch (optCo) {
             case "1":
                 company.getCompany(c.username, c.password);
@@ -326,8 +326,66 @@ public class Welcome {
     }
 
     public void jobListingScreen(JobListing j) {
-        
+        System.out.println("\n");
+        System.out.println("**************************************");
+        System.out.println("*         Create Job Listing         *");
+        System.out.println("**************************************");
+        System.out.println("\n");
+        System.out.println("Enter L at any time to logout");
+        System.out.println("");
+        System.out.println("Please enter the title: ");
+        String jTitle = input.nextLine();  
+        j.title = jTitle;
+        System.out.println("");
+        System.out.println("Please enter the location: ");
+        String jLoc = input.nextLine();  
+        j.location = jLoc;
+        System.out.println("");
+        System.out.println("Please enter the min hours: ");
+        int jMinHrs = input.nextInt();  
+        j.setMinHours(jMinHrs);
+        input.nextLine();
+        System.out.println("");
+        System.out.println("Please enter the max hours: ");
+        int jMaxHrs = input.nextInt();  
+        j.setMaxHours(jMaxHrs);
+        input.nextLine();
+        System.out.println("");
+        System.out.println("Please enter the pay rate in USD: ");
+        double jPay = input.nextDouble();  
+        j.setPay(jPay);
+        input.nextLine();
+        System.out.println("");
+        System.out.println("Please enter the number of openings: ");
+        int jOpen = input.nextInt();  
+        j.setNumOpenings(jOpen);
+        input.nextLine();
+        System.out.println("");
+        System.out.println("Please enter the job closing date: ");
+        String cDateCl = input.nextLine();  
+        DateFormat formatter = new SimpleDateFormat("yyyy/MM/dd");
+        Date date;
+        try {
+            date = formatter.parse(cDateCl);
+            j.setExpDate(date);
+        } catch (ParseException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        System.out.println("");
+        // System.out.println("Please enter the skills required: ");
+        // String cWebsite = input.nextLine();  // Read user input
+        // c.webSite = cWebsite;
+        System.out.println("Please enter the description: ");
+        String jDesc = input.nextLine();  
+        j.setDescription(jDesc);
+        System.out.println("");
+        System.out.println("Is this job Remote true/false: ");
+        Boolean jRemote = input.nextBoolean();  
+        j.setRemote(jRemote);
+        System.out.println("");
     }
 
     
 }
+
