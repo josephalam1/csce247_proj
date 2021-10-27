@@ -8,7 +8,7 @@ Commit 2 - Joseph Alam - 12:51am :
    attributes, only methods), added deleteUser function to all User classes to add for moderator 
    to delete later
 
-Commit 3 - Joseph Alam - :
+Commit 3 - Joseph Alam - 2:14am :
 - Added Applications.java - handles creating a list of application objects to interact with for use 
    for other classes
 - Changed Application.java:
@@ -28,6 +28,9 @@ Commit 3 - Joseph Alam - :
     - coverLetter: String
     - accepted: boolean
     - getApplicationDate(): Date
+    - getStudentId(): UUID
+    - getJobId(): UUID
+    - getAccepted(): boolean
     - setCoverLetter(String coverLetter): void
    For making connections from applications object to other objects
 
