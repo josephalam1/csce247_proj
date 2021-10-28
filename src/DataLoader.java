@@ -14,7 +14,7 @@ public class DataLoader {
     public static ArrayList<Student> getStudents() {
         ArrayList<Student> students = new ArrayList<Student>();
         try {
-            FileReader reader = new FileReader("data/students.json");
+            FileReader reader = new FileReader("csce247_proj/data/students.json");
             JSONArray studentsJSON = (JSONArray) new JSONParser().parse(reader);
             for(int i = 0; i < studentsJSON.size(); i++) {
                 JSONObject studentJSON = (JSONObject)studentsJSON.get(i);
@@ -50,7 +50,7 @@ public class DataLoader {
     public static ArrayList<Company> getCompanies() {
         ArrayList<Company> companies = new ArrayList<Company>();
         try {
-            FileReader reader = new FileReader("data/employers.json");
+            FileReader reader = new FileReader("csce247_proj/data/employers.json");
             JSONArray companysJSON = (JSONArray) new JSONParser().parse(reader);
             for(int i = 0; i < companysJSON.size(); i++) {
                 JSONObject companyJSON = (JSONObject)companysJSON.get(i);
