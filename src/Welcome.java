@@ -49,11 +49,21 @@ public class Welcome {
             System.out.println("1. Login with Existing Account");
             System.out.println("2. Make an Account: Student");
             System.out.println("3. Make an Account: Company");
-            System.out.println("   Type L to logout");
+            System.out.println("   Type X to exit program");
             screen = new Welcome();
         }
 		return screen;
 	}
+
+    public void mainScreen() {
+        System.out.println("**************************************");
+        System.out.println("* Welcome to UofSC Intership System! *");
+        System.out.println("**************************************");
+        System.out.println("1. Login with Existing Account");
+        System.out.println("2. Make an Account: Student");
+        System.out.println("3. Make an Account: Company");
+        System.out.println("   Type X to exit program");
+    }
 
     public void whichUser() {
         System.out.println("1. Login Student");
@@ -84,92 +94,91 @@ public class Welcome {
     }
 
     public void addStudent() throws UnsupportedEncodingException, NoSuchAlgorithmException {
-        System.out.println("\n");
-        System.out.println("**************************************");
-        System.out.println("*       Welcome new Student!         *");
-        System.out.println("**************************************");
-        System.out.println("\n");
-        System.out.println("Enter L at any time to logout ");
-        System.out.println("");
-        System.out.println("Please enter your name: ");
-        String sName = input.nextLine();  
-        s.name = sName;
-        System.out.println("");
-        System.out.println("Please enter your perferred name: ");
-        String sNewName = input.nextLine();  
-        s.setPreferredName(sNewName);
-        System.out.println("");
-        System.out.println("Please enter your email: ");
-        String sEmail = input.nextLine();  
-        s.email = sEmail;
-        System.out.println("");
-        System.out.println("Please enter your user name: ");
-        String sUserName = input.nextLine();  
-        s.username= sUserName;
-        System.out.println("");
-        System.out.println("Please enter your password: ");
-        String sPassword = input.nextLine();
-        s.password = sPassword;
-
         
-            /*try {
-                java.security.MessageDigest md = java.security.MessageDigest.getInstance("MD5");
-                byte[] array = md.digest(MD5.getBytes());
-                StringBuffer sb = new StringBuffer();
-                for (int i = 0; i < array.length; ++i) {
-                   sb.append(Integer.toHexString((array[i] & 0xFF) | 0x100).substring(1,3));
-                }
-             } catch (java.security.NoSuchAlgorithmException e) {
-             }*/
+            System.out.println("\n");
+            System.out.println("**************************************");
+            System.out.println("*       Welcome new Student!         *");
+            System.out.println("**************************************");
+            System.out.println("\n");
+            // System.out.println("Enter L at any time to logout ");
+            // System.out.println("");
+            System.out.println("Please enter your name: ");
+            String sName = input.nextLine();  
+            s.name = sName;
+            System.out.println("");
+            System.out.println("Please enter your perferred name: ");
+            String sNewName = input.nextLine();  
+            s.setPreferredName(sNewName);
+            System.out.println("");
+            System.out.println("Please enter your email: ");
+            String sEmail = input.nextLine();  
+            s.email = sEmail;
+            System.out.println("");
+            System.out.println("Please enter your user name: ");
+            String sUserName = input.nextLine();  
+            s.username= sUserName;
+            System.out.println("");
+            System.out.println("Please enter your password: ");
+            String sPassword = input.nextLine();
+            s.password = sPassword;
+            
+                /*try {
+                    java.security.MessageDigest md = java.security.MessageDigest.getInstance("MD5");
+                    byte[] array = md.digest(MD5.getBytes());
+                    StringBuffer sb = new StringBuffer();
+                    for (int i = 0; i < array.length; ++i) {
+                    sb.append(Integer.toHexString((array[i] & 0xFF) | 0x100).substring(1,3));
+                    }
+                } catch (java.security.NoSuchAlgorithmException e) {
+                }*/
 
-        byte[] bytesOfMessage = s.password.getBytes("UTF-8");
-        MessageDigest md = MessageDigest.getInstance("MD5");
-        byte[] theMD5digest = md.digest(bytesOfMessage);
-        System.out.println("> will set later");
-        System.out.println("");
+            byte[] bytesOfMessage = s.password.getBytes("UTF-8");
+            MessageDigest md = MessageDigest.getInstance("MD5");
+            byte[] theMD5digest = md.digest(bytesOfMessage);
+            System.out.println("");
 
-        System.out.println("Please enter your DOB yyyy/MM/dd ");
-        String sDOB = input.nextLine();  
-        DateFormat formatter = new SimpleDateFormat("yyyy/MM/dd");
-        Date date;
-        try {
-            date = formatter.parse(sDOB);
-            s.setDateOfBirth(date);
-        } catch (ParseException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-        //s.setDateOfBirth(date);
-        System.out.println("");
-        System.out.println("Please enter your sex: M/F ");
-        String sSex = input.nextLine();  // Read user input
-        s.setSex(sSex);
-        System.out.println("");
-        System.out.println("Please enter your prefered gender: M/F/O");
-        String sGender = input.nextLine();  // Read user input
-        s.setGender(sGender);
-        System.out.println("");
-        System.out.println("Please enter your GPA: ");
-        double sGPA = input.nextDouble();  // Read user input
-        s.setGPA(sGPA);
-        input.nextLine(); // stops input skips
-        System.out.println("");
-        System.out.println("Please enter your current level Freshman/sophomore/junior/senior: ");
-        String sLevel = input.nextLine();  // Read user input
-        s.currLevel = sLevel;
-        System.out.println("");
-        System.out.println("Please enter your current year 1/2/3/4/5/6: ");
-        int sYear = input.nextInt();  // Read user input
-        s.currYear = sYear;
-        input.nextLine(); // this stops the skips
-        System.out.println("");
-        System.out.println("Please enter your current major: ");
-        String sMajor = input.nextLine();  // Read user input
-        s.currMajor = sMajor;
-        System.out.println("");
-        // studentUsers.add(s);
-        System.out.println(s.toString());
-        System.out.println("");
+            System.out.println("Please enter your DOB yyyy/MM/dd ");
+            String sDOB = input.nextLine();  
+            DateFormat formatter = new SimpleDateFormat("yyyy/MM/dd");
+            Date date;
+            try {
+                date = formatter.parse(sDOB);
+                s.setDateOfBirth(date);
+            } catch (ParseException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+            System.out.println("");
+            System.out.println("Please enter your sex: M/F ");
+            String sSex = input.nextLine();  
+            s.setSex(sSex);
+            System.out.println("");
+            System.out.println("Please enter your prefered gender: M/F/O");
+            String sGender = input.nextLine(); 
+            s.setGender(sGender);
+            System.out.println("");
+            System.out.println("Please enter your GPA: ");
+            double sGPA = input.nextDouble();  
+            s.setGPA(sGPA);
+            input.nextLine(); 
+            System.out.println("");
+            System.out.println("Please enter your current level Freshman/sophomore/junior/senior: ");
+            String sLevel = input.nextLine();  
+            s.currLevel = sLevel;
+            System.out.println("");
+            System.out.println("Please enter your current year 1/2/3/4/5/6: ");
+            int sYear = input.nextInt();  
+            s.currYear = sYear;
+            input.nextLine(); 
+            System.out.println("");
+            System.out.println("Please enter your current major: ");
+            String sMajor = input.nextLine();  
+            s.currMajor = sMajor;
+            System.out.println("");
+            studentUsers.add(s);
+            System.out.println(s.toString());
+            System.out.println("");
+        
     }
 
     public void loginStudent(Student s) {
@@ -179,8 +188,8 @@ public class Welcome {
         System.out.println("*          Welcome Student!          *");
         System.out.println("**************************************");
         System.out.println("\n");
-        System.out.println("Enter L at any time to logout");
-        System.out.println("");
+        // System.out.println("Enter L at any time to logout");
+        // System.out.println("");
         System.out.println("1. View account information");
         System.out.println("2. Search for Job Listing");
         System.out.println("3. View saved Job Listings");
@@ -190,7 +199,8 @@ public class Welcome {
         String optStudent = input.nextLine();
         switch (optStudent) {
             case "1":
-                student.getStudent(s.username, s.password);
+                s = student.getStudent(s.username, s.password);
+                s.toString();
                 break;
             case "2":
                 jobListingScreen();
@@ -216,8 +226,8 @@ public class Welcome {
         System.out.println("*          Search for Jobs!          *");
         System.out.println("**************************************");
         System.out.println("\n");
-        System.out.println("Enter L at any time to logout");
-        System.out.println("");
+        // System.out.println("Enter L at any time to logout");
+        // System.out.println("");
         System.out.println("1. View all Jobs listed");
         System.out.println("2. Sort by Title A-Z");
         System.out.println("3. Filter options: ");
@@ -231,8 +241,8 @@ public class Welcome {
         System.out.println("*       Welcome new Company!         *");
         System.out.println("**************************************");
         System.out.println("\n");
-        System.out.println("Enter L at any time to logout ");
-        System.out.println("");
+        // System.out.println("Enter L at any time to logout ");
+        // System.out.println("");
         System.out.println("Please enter your name: ");
         String cName = input.nextLine();  
         c.name = cName;
@@ -289,8 +299,8 @@ public class Welcome {
         System.out.println("*          Welcome Company!          *");
         System.out.println("**************************************");
         System.out.println("\n");
-        System.out.println("Enter L at any time to logout");
-        System.out.println("");
+        // System.out.println("Enter L at any time to logout");
+        // System.out.println("");
         System.out.println("1. View account information");
         System.out.println("2. Create a Job Listing");
         System.out.println("3. View Job Listings");
@@ -331,8 +341,8 @@ public class Welcome {
         System.out.println("*         Create Job Listing         *");
         System.out.println("**************************************");
         System.out.println("\n");
-        System.out.println("Enter L at any time to logout");
-        System.out.println("");
+        // System.out.println("Enter L at any time to logout");
+        // System.out.println("");
         System.out.println("Please enter the title: ");
         String jTitle = input.nextLine();  
         j.title = jTitle;

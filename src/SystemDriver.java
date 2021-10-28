@@ -33,6 +33,10 @@ public class SystemDriver {
                     break;
                 case "l":
                 case "L": // user can type l or L and get the L case
+                    screen.mainScreen();
+                    break;
+                case "x":
+                case "X": // user can type l or L and get the L case
                     Welcome.logout = true;
                     break;
                 default:
