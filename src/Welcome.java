@@ -8,6 +8,8 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.UUID;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import java.security.*;
 import java.io.Console;
 import java.io.UnsupportedEncodingException;
@@ -102,9 +104,12 @@ public class Welcome {
             System.out.println("\n");
             // System.out.println("Enter L at any time to logout ");
             // System.out.println("");
-            System.out.println("Please enter your name: ");
-            String sName = input.nextLine();  
-            s.name = sName;
+            String sName = null;
+            while(sName == null){
+                System.out.println("Please enter your name: ");
+                sName = input.nextLine(); 
+                s.name = sName;
+            }
             System.out.println("");
             System.out.println("Please enter your perferred name: ");
             String sNewName = input.nextLine();  
@@ -136,18 +141,28 @@ public class Welcome {
             MessageDigest md = MessageDigest.getInstance("MD5");
             byte[] theMD5digest = md.digest(bytesOfMessage);
             System.out.println("");
+            String sDOB = null;
+            while(true){
+                System.out.println("Please enter your DOB \"yyyy/MM/dd\" ");
+                sDOB = input.nextLine();  
+                Pattern pattern = Pattern.compile("\\d{4}/\\d{2}/\\d{2}");
+                Matcher matcher = pattern.matcher(sDOB);
+                if(matcher.matches()){
+                    break;
+                }
+            
+                DateFormat formatter = new SimpleDateFormat("yyyy/MM/dd");
+                Date date;
+                try {
+                    date = formatter.parse(sDOB);
+                    s.setDateOfBirth(date);
+                } catch (ParseException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
 
-            System.out.println("Please enter your DOB yyyy/MM/dd ");
-            String sDOB = input.nextLine();  
-            DateFormat formatter = new SimpleDateFormat("yyyy/MM/dd");
-            Date date;
-            try {
-                date = formatter.parse(sDOB);
-                s.setDateOfBirth(date);
-            } catch (ParseException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
             }
+            
             System.out.println("");
             System.out.println("Please enter your sex: M/F ");
             String sSex = input.nextLine();  
@@ -157,11 +172,18 @@ public class Welcome {
             String sGender = input.nextLine(); 
             s.setGender(sGender);
             System.out.println("");
-            System.out.println("Please enter your GPA: ");
-            double sGPA = input.nextDouble();  
-            s.setGPA(sGPA);
-            input.nextLine(); 
-            System.out.println("");
+            double sGPA = 0.0;
+            while(true){
+                System.out.println("Please enter your GPA: ");
+                sGPA = input.nextDouble();  
+                s.setGPA(sGPA);
+                input.nextLine();
+                if(sGPA != 0.0){
+                    break;
+                } 
+                System.out.println("");
+            }
+            
             System.out.println("Please enter your current level Freshman/sophomore/junior/senior: ");
             String sLevel = input.nextLine();  
             s.currLevel = sLevel;
@@ -266,18 +288,39 @@ public class Welcome {
         String cAddress = input.nextLine();  
         c.address = cAddress;
         System.out.println("");
-        System.out.println("Please enter the company's date established: ");
-        String cDateEst = input.nextLine();  
-        DateFormat formatter = new SimpleDateFormat("yyyy/MM/dd");
-        Date date;
-        try {
-            date = formatter.parse(cDateEst);
-            s.setDateOfBirth(date);
-           //c.dateEstablished
-        } catch (ParseException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
+        // System.out.println("Please enter the company's date established: ");
+        // String cDateEst = input.nextLine();  
+        // DateFormat formatter = new SimpleDateFormat("yyyy/MM/dd");
+        // Date date;
+        // try {
+        //     date = formatter.parse(cDateEst);
+        //     s.setDateOfBirth(date);
+        //    //c.dateEstablished
+        // } catch (ParseException e) {
+        //     // TODO Auto-generated catch block
+        //     e.printStackTrace();
+       // }
+       String cDateEst = null;
+            while(true){
+                System.out.println("Please enter your DOB \"yyyy/MM/dd\" ");
+                cDateEst = input.nextLine();  
+                Pattern pattern = Pattern.compile("\\d{4}/\\d{2}/\\d{2}");
+                Matcher matcher = pattern.matcher(cDateEst);
+                if(matcher.matches()){
+                    break;
+                }
+            
+                DateFormat formatter = new SimpleDateFormat("yyyy/MM/dd");
+                Date date;
+                try {
+                    date = formatter.parse(cDateEst);
+                    s.setDateOfBirth(date);
+                } catch (ParseException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
+
+            }
         System.out.println("");
         System.out.println("Please enter the company's website: ");
         String cWebsite = input.nextLine();  // Read user input

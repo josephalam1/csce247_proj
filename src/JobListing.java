@@ -1,6 +1,5 @@
 package src;
 
-
 import java.util.Date;
 import java.util.ArrayList;
 import java.util.UUID;
@@ -176,7 +175,9 @@ public class JobListing {
         Applications applicationsList = Applications.getInstance();
         ArrayList<Application> applicants = applicationsList.getOpenApplicationsByJob(id);
         for(Application application : applicants) {
+            
         }
+    
         return false;
    }
 
