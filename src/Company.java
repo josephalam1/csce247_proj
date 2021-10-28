@@ -17,6 +17,7 @@ public class Company implements User {
     public Date dateEstablished;
     public String webSite;
     private double rating;
+    public ArrayList<JobListing> jobListings;
 
     //public Company(int id, String name, String email, String address, String hiringRecruiter, String contactInfo){
         // COS added above params needed for companyProfile
@@ -94,9 +95,10 @@ public class Company implements User {
     public JobListing createJob(JobListing job){
         return job;
     }
-    public ArrayList<Application> viewApplications(JobListing job){
-        return null;
+    public ArrayList<JobListing> getJobListings(){
+        return jobListings;
     }
+
     public void sort(ArrayList<Application> appList){
         for (int i = 0; i < appList.size(); i++) {
             for (int j = 0; j < appList.size(); j++) {

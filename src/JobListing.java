@@ -12,6 +12,7 @@ public class JobListing {
     private Date expDate;
     public ArrayList<String> skillsReq;
     public boolean remote, open;
+    public ArrayList<Application> applications;
 
     public JobListing(UUID id, UUID companyID, String title, String location, int minHours, int maxHours,
             double pay, Date expDate, int numOpenings, ArrayList<String> skillsReq, String description,
@@ -180,7 +181,16 @@ public class JobListing {
     
         return false;
    }
+   
+   public void addApplication(Application application) {
+       applications.add(application);
+   }
 
+   public void viewApplications() {
+       for (Application app : applications) {
+           System.out.println(app.toString());
+       }
+   }
     public String toString(){
         return super.toString() + " Job Listing";
     }
