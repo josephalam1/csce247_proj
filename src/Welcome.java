@@ -68,21 +68,23 @@ public class Welcome {
     }
 
     public void whichUser() {
-        System.out.println("1. Login Student");
-        System.out.println("2. Login Company");
-        String opt;
-        opt = input.nextLine();
-        if (opt.equals("1")) {
-            System.out.println("Enter user name: ");
-            String sUserName = input.nextLine();  
-            s.username= sUserName;
-            System.out.println("Enter user password: ");
-            String sPassword = input.nextLine();
-            s.password = sPassword;
-            Student logon = student.getStudent(sUserName, sPassword);
-            screen.loginStudent(logon);
-            // screen.loginStudent();
-        } else {
+        while(true){
+            System.out.println("1. Login Student");
+            System.out.println("2. Login Company");
+            String opt;
+            opt = input.nextLine();
+            if (opt.equals("1")) {
+                System.out.println("Enter user name: ");
+                String sUserName = input.nextLine();  
+                s.username= sUserName;
+                System.out.println("Enter user password: ");
+                String sPassword = input.nextLine();
+                s.password = sPassword;
+                Student logon = student.getStudent(sUserName, sPassword);
+                screen.loginStudent(logon);
+                break;
+                // screen.loginStudent();
+            } else if (opt.equals("2")) {
             System.out.println("Enter user name: ");
             String cUserName = input.nextLine();  
             c.username= cUserName;
@@ -92,6 +94,10 @@ public class Welcome {
             Company logon = company.getCompany(cUserName, cPassword);
             screen.loginCompany(logon);
             // screen.loginCompany();
+            break;
+            } else{
+                System.out.println("Please enter the number 1 or 2");
+            }
         }
     }
 
@@ -325,7 +331,7 @@ public class Welcome {
         System.out.println("Please enter the company's website: ");
         String cWebsite = input.nextLine();  // Read user input
         c.webSite = cWebsite;
-        
+        companyUsers.add(c);
         // companyUsers.add(c);
 
         System.out.println(c.toString());
