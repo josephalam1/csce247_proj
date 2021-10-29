@@ -134,4 +134,6 @@ public class Company implements User {
     public double getRating(){
         return this.rating;
     }
+    public void viewApplications(JobListing job) {
+    }
 }

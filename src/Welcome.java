@@ -394,15 +394,30 @@ public class Welcome {
         String jLoc = input.nextLine();  
         j.location = jLoc;
         System.out.println("");
-        System.out.println("Please enter the min hours: ");
-        int jMinHrs = input.nextInt();  
-        j.setMinHours(jMinHrs);
-        input.nextLine();
-        System.out.println("");
-        System.out.println("Please enter the max hours: ");
-        int jMaxHrs = input.nextInt();  
-        j.setMaxHours(jMaxHrs);
-        input.nextLine();
+        int jMinHrs = 0;
+        while(true){
+            System.out.println("Please enter the minimum number of hours: ");
+            jMinHrs = input.nextInt();  
+            if(jMinHrs != 0){
+                j.setMinHours(jMinHrs);
+                input.nextLine();
+                System.out.println("");
+                break;
+            }
+        }
+        System.out.println();
+        int jMaxHrs = 0;
+        while(true){
+            System.out.println("Please enter the maximum number of hours: ");
+            jMaxHrs = input.nextInt();
+            if(jMaxHrs != 0){
+                j.setMaxHours(jMaxHrs);
+                input.nextLine();
+                System.out.println("");
+                break;
+            }
+        }
+          
         System.out.println("");
         System.out.println("Please enter the pay rate in USD: ");
         double jPay = input.nextDouble();  
