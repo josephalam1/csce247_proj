@@ -302,7 +302,7 @@ public class Welcome {
        // }
        String cDateEst = null;
             while(true){
-                System.out.println("Please enter your DOB \"yyyy/MM/dd\" ");
+                System.out.println("Please enter the date your company was established: ");
                 cDateEst = input.nextLine();  
                 Pattern pattern = Pattern.compile("\\d{4}/\\d{2}/\\d{2}");
                 Matcher matcher = pattern.matcher(cDateEst);
