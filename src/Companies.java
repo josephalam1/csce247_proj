@@ -2,13 +2,17 @@ package src;
 import java.util.ArrayList;
 import java.util.UUID;
 
+import javax.xml.crypto.Data;
+
 /**
- * Companies Class for creating a list of company objects to interact with
+ * Companies Class for creating a list of company objects and job objects 
+ *    to interact with
  * @author Joseph Alam
  */
 public class Companies {
     
     private static Companies instance = null;
+    private ArrayList<JobListing> jobs;
     private ArrayList<Company> companies;
 
     /**
@@ -16,6 +20,7 @@ public class Companies {
      */
     private Companies() {
         companies = DataLoader.getCompanies();
+        jobs = DataLoader.getJobListings();
     }
 
     /**
@@ -35,6 +40,13 @@ public class Companies {
      */
     public ArrayList<Company> getCompanies() {
         return companies;
+    }
+    /**
+     * Returns the list of jobs
+     * @return ArrayList<Company>: Array of company objects
+     */
+    public ArrayList<JobListing> getJobs() {
+        return jobs;
     }
     /**
      * Find a Company object by recruiter username and password

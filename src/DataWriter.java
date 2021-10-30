@@ -7,11 +7,15 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import java.util.ArrayList;
 
+import javax.management.remote.JMXProviderException;
+
 /**
  * DataWriter class for writing data to JSON files
  * @author Joseph Alam
  */
 public class DataWriter {
+    private static SimpleDateFormat ft = new SimpleDateFormat ("yyyy-MM-dd");
+
     /**
      * Saves the list of students to the JSON file
      */
@@ -56,23 +60,57 @@ public class DataWriter {
     public static void saveResumes() {
         Resumes resumesInst = Resumes.getInstance();
         ArrayList<Resume> resumes = resumesInst.getResumes();
-        System.out.println(resumes);
         JSONArray resumesJ = new JSONArray();
         // Creating the JSON Objects
         for (int i = 0; i < resumes.size(); i++) {
             resumesJ.add(getResumeJSON(resumes.get(i)));
         }
         // Writing JSON Objects to File
-        System.out.print(resumesJ.toJSONString());
-       // try (FileWriter file = new FileWriter("data/resumes.json")) {
-            // file.write(companiesJ.toJSONString());
-            // file.flush();
-       // } catch (IOException e) {
-            // e.printStackTrace();
-      //  }
+        try (FileWriter file = new FileWriter("data/resumes.json")) {
+             file.write(resumesJ.toJSONString());
+             file.flush();
+        } catch (IOException e) {
+             e.printStackTrace();
+        }
     }
+    /**
+     * Saves the list of applications to JSON file
+     */
     public static void saveApplications() {
+        Applications applicationsInst = Applications.getInstance();
+        ArrayList<Application> applications = applicationsInst.getApplicants();
+        JSONArray applicationsJ = new JSONArray();
+        // Creating the JSON Objects
+        for (int i = 0; i < applications.size(); i++) {
+            applicationsJ.add(getApplicationJSON(applications.get(i)));
+        }
+        // Writing JSON Objects to File
+        try (FileWriter file = new FileWriter("data/applications.json")) {
+            file.write(applicationsJ.toJSONString());
+            file.flush();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
+    /**
+     * Saves the list of job postings to JSON file
+     */
+    public static void saveJobs() {
+        Companies companiesInst = Companies.getInstance();
+        ArrayList<JobListing> jobs = companiesInst.getJobs();
+        JSONArray jobsJ = new JSONArray();
+        // Creating the JSON Objects
+        for (int i = 0; i < jobs.size(); i++) {
+            jobsJ.add(getJobJSON(jobs.get(i)));
+        }
+        // Writing JSON Objects to File
+        try (FileWriter file = new FileWriter("data/job-postings.json")) {
+            file.write(jobsJ.toJSONString());
+            file.flush();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public static JSONObject getStudentsJSON(Student student) {
@@ -85,7 +123,6 @@ public class DataWriter {
         studentDetails.put("sex", student.getSex());
         studentDetails.put("email", student.email);
         studentDetails.put("password", student.getPassword());
-        SimpleDateFormat ft = new SimpleDateFormat ("yyyy-MM-dd");
         studentDetails.put("dob", ft.format(student.getDateOfBirth()));
         studentDetails.put("GPA", student.getGPA());
         studentDetails.put("campusLocation", student.campusLocation);
@@ -102,7 +139,6 @@ public class DataWriter {
         companyDetails.put("recruiterUsername", company.username);
         companyDetails.put("recruiterEmail", company.recruiterEmail);
         companyDetails.put("recruiterPhone", company.contactInfo);
-        SimpleDateFormat ft = new SimpleDateFormat ("yyyy-MM-dd");
         companyDetails.put("dateEstablished", ft.format(company.dateEstablished));
         companyDetails.put("password", company.getPassword());
         companyDetails.put("companyAddress", company.address);
@@ -114,13 +150,45 @@ public class DataWriter {
     public static JSONObject getResumeJSON(Resume resume) {
         JSONObject resumeDetails = new JSONObject();
         resumeDetails.put("ID", resume.getId().toString());
-        resumeDetails.put("studentID", resume.getStudentId());
+        resumeDetails.put("studentID", resume.getStudentId().toString());
         resumeDetails.put("skills", resume.skills);
-        resumeDetails.put("experience", resume.getJsonExperience());
+        resumeDetails.put("experience", resume.getJsonExperience());;
         resumeDetails.put("references", resume.getJsonReference());
         return resumeDetails;
     }
-    public static void main(String[] args) {
-        saveResumes();
+
+    public static JSONObject getApplicationJSON(Application application) {
+        JSONObject applicationDetails = new JSONObject();
+        applicationDetails.put("id", application.getId().toString());
+        applicationDetails.put("studentID", application.getStudentId().toString());
+        applicationDetails.put("jobPostingID", application.getJobId().toString());
+        applicationDetails.put("coverLetter", application.getCoverLetter());
+        applicationDetails.put("accepted", application.getAccepted());
+        applicationDetails.put("application_date", ft.format(application.getApplicationDate()));
+        return applicationDetails;
     }
+
+    public static JSONObject getJobJSON(JobListing job) {
+        JSONObject jobDetails = new JSONObject();
+        jobDetails.put("id", job.getID().toString());
+        jobDetails.put("companyID", job.getCompanyID().toString());
+        jobDetails.put("title", job.getTitle());
+        jobDetails.put("minHours", job.getMinHours());
+        jobDetails.put("maxHours", job.getMaxHours());
+        jobDetails.put("pay", job.getPay());
+        jobDetails.put("numOpenings", job.getNumOpenings());
+        jobDetails.put("skillsReq", job.getSkillsReq());
+        jobDetails.put("duties", job.duties);
+        jobDetails.put("minExp", job.getMinExp());
+        jobDetails.put("numOpenings", job.getNumOpenings());
+        jobDetails.put("maxHours", job.getMaxHours());
+        jobDetails.put("open", job.open);
+        jobDetails.put("remote", job.remote);
+        jobDetails.put("volunteer", job.volunteer);
+        jobDetails.put("expDate", ft.format(job.getExpDate()));
+        jobDetails.put("description", job.getDescription());
+        jobDetails.put("location", job.getLocation());
+        return jobDetails;
+    }
+
 }

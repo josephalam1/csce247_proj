@@ -34,7 +34,6 @@ public class Resumes {
      * @return ArrayList<Resume> ArrayList containing all the resume objects
      */
     public ArrayList<Resume> getResumes() {
-        System.out.print(this.resumes);
         return this.resumes;
     }
     /**

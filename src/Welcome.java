@@ -142,10 +142,6 @@ public class Welcome {
                     }
                 } catch (java.security.NoSuchAlgorithmException e) {
                 }*/
-
-            byte[] bytesOfMessage = s.password.getBytes("UTF-8");
-            MessageDigest md = MessageDigest.getInstance("MD5");
-            byte[] theMD5digest = md.digest(bytesOfMessage);
             System.out.println("");
             String sDOB = null;
             while(true){
@@ -341,7 +337,7 @@ public class Welcome {
     public void loginCompany(Company c) {
     // public void loginCompany() {
 
-        JobListing job = new JobListing(null, null, null, null, 0, 0, 0.0, null, 0, null, null, null, false, true);
+        JobListing job = new JobListing(null, null, null, null, 0, 0, 0.0, null, 0, null, null, null, null, false, true);
         
         System.out.println("\n");
         System.out.println("**************************************");
@@ -373,7 +369,7 @@ public class Welcome {
             case "4":
                 System.out.println("View applicants for which Job Listing? ");
                 String cJob = input.nextLine();  
-                job.title = cJob;
+                //job.title = cJob;
                 c.viewApplications(job);
                 break;
             case "5":
@@ -394,11 +390,11 @@ public class Welcome {
         // System.out.println("");
         System.out.println("Please enter the title: ");
         String jTitle = input.nextLine();  
-        j.title = jTitle;
+        j.setTitle(jTitle);;
         System.out.println("");
         System.out.println("Please enter the location: ");
         String jLoc = input.nextLine();  
-        j.location = jLoc;
+        j.setLocation(jLoc);
         System.out.println("");
         int jMinHrs = 0;
         while(true){

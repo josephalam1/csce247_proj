@@ -7,7 +7,6 @@ public class Application {
     private UUID id;
     private UUID studentId;
     private UUID jobPostingId;
-    private int zipCode;
     private Date applicationDate;
     private String coverLetter;
     private boolean accepted;
@@ -25,6 +24,7 @@ public class Application {
                          Date applicationDate) {
         this.id = id;
         this.studentId = studentID;
+        this.accepted = accepted;
         this.jobPostingId = jobPostingID;
         this.applicationDate = applicationDate;
         this.coverLetter = coverLetter;
@@ -49,14 +49,6 @@ public class Application {
      */
     public Date getApplicationDate() {
         return applicationDate;
-    }
-
-    public int getZipCode() {
-        return zipCode;
-    }
-
-    public void setZipCode(int zipCode) {
-        this.zipCode = zipCode;
     }
     /**
      * Set cover letter for application
@@ -92,6 +84,13 @@ public class Application {
      */
     public boolean getAccepted() {
         return accepted;
+    }
+    /**
+     * Get the cover letter for this application
+     * @return String of cover letter
+     */
+    public String getCoverLetter() {
+        return this.coverLetter;
     }
     /**
      * Sets whether or not the user was accepted

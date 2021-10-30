@@ -91,7 +91,7 @@ public class DataLoader {
                 String title = (String)jobJSON.get("title");
                 int minHours = ((Long)jobJSON.get("minHours")).intValue();
                 int maxHours = ((Long)jobJSON.get("maxHours")).intValue();
-                double pay = ((Long)jobJSON.get("pay")).doubleValue();
+                double pay = (Double)jobJSON.get("pay");//((Long)jobJSON.get("pay")).doubleValue();
                 int numOpenings = ((Long)jobJSON.get("numOpenings")).intValue();
                 JSONArray skills = (JSONArray)jobJSON.get("skillsReq");
                 ArrayList<String> skillsReq = new ArrayList<String>();
@@ -111,7 +111,7 @@ public class DataLoader {
                 SimpleDateFormat ft = new SimpleDateFormat ("yyyy-MM-dd"); 
                 Date expirationDate = ft.parse((String)jobJSON.get("expDate"));
                 jobs.add(new JobListing(id, companyid, title, location, minHours, maxHours, pay, expirationDate,
-                             numOpenings, skillsReq, description, minExp, remote, open));
+                             numOpenings, skillsReq, duties, description, minExp, remote, open));
             }
 
             return jobs;

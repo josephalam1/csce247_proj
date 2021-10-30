@@ -5,17 +5,18 @@ import java.util.ArrayList;
 import java.util.UUID;
 
 public class JobListing {
-    public UUID id, companyId;
-    public String title, location, description, minExp;
+    private UUID id, companyId;
+    private String title, location, description, minExp;
     private int minHours, maxHours, numOpenings;
     private double pay;
     private Date expDate;
     public ArrayList<String> skillsReq;
-    public boolean remote, open;
+    public ArrayList<String> duties;
+    public boolean remote, open, volunteer;
     public ArrayList<Application> applications;
 
     public JobListing(UUID id, UUID companyID, String title, String location, int minHours, int maxHours,
-            double pay, Date expDate, int numOpenings, ArrayList<String> skillsReq, String description,
+            double pay, Date expDate, int numOpenings, ArrayList<String> skillsReq, ArrayList<String> duties, String description,
             String minExp, boolean remote, boolean open) {
         this.id = id;
         this.companyId = companyID;
@@ -27,13 +28,21 @@ public class JobListing {
         this.expDate = expDate;
         this.numOpenings = numOpenings;
         this.skillsReq = skillsReq;
+        this.duties = duties;
         this.description = description;
         this.minExp = minExp;
         this.remote = remote;
         this.open = open;
     }
 
-    
+    public UUID getID() {
+        return this.id;
+    }
+
+    public UUID getCompanyID() {
+        return this.companyId;
+    }
+
     public String getTitle() {
         return title;
     }

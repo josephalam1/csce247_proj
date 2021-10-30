@@ -1,6 +1,7 @@
 package src;
 
 import java.util.ArrayList;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.UUID;
 
@@ -55,10 +56,31 @@ public class Resume {
     public void deleteReference(){
         
     }
-    public String getJsonExperience() {
-        return "";
+    public ArrayList<Object> getJsonExperience() {
+        ArrayList<Object> jsonString = new ArrayList<Object>();
+        for (Experiences experience : experiences) {
+            ArrayList<Object> experienceArr = new ArrayList<Object>();
+            experienceArr.add(experience.companyName);
+            experienceArr.add(experience.pastJobTitle);
+            SimpleDateFormat ft = new SimpleDateFormat ("yyyy-MM-dd");
+            experienceArr.add(ft.format(experience.jobStartDate));
+            experienceArr.add(ft.format(experience.jobEndDate));
+            experienceArr.add(experience.jobDuties);
+            jsonString.add(experienceArr);
+        }
+        return jsonString;
     }
-    public String getJsonReference() {
-        return "";
+    public ArrayList<Object> getJsonReference() {
+        ArrayList<Object> jsonString = new ArrayList<Object>();
+        for (References reference : references) {
+            ArrayList<String> referenceArr = new ArrayList<String>();
+            referenceArr.add(reference.name);
+            referenceArr.add(reference.relationship);
+            referenceArr.add(reference.phoneNum);
+            referenceArr.add(reference.email);
+            jsonString.add(referenceArr);
+        }
+        return jsonString;
     }
+
 }
