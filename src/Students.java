@@ -99,7 +99,7 @@ public class Students {
      int currYear, String username) {
         if(haveUser(username))
             return false;
-        students.add( new Student(name, email, password, dateOfBirth, sex, gender, null, available, null,
+        students.add( new Student(name, email, password, dateOfBirth, sex, gender, available, null,
                                   gPA, campusLocation, currLevel, currMajor, currYear, 0.0, username));
 
         return true;

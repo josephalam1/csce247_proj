@@ -23,7 +23,7 @@ public class Welcome {
     private Students student = Students.getInstance();
     private Company c = new Company(null, null, null, null, null, null, null, null, null, 0.0);
                         // Student(name, email, password, dateOfBirth, sex, gender, openApplications, available, savedJobs, gPA, campusLocation, currLevel, currMajor, currYear, rating, username)
-    private Student s = new Student(null, null, null, null, null, null, null, true, null, 0.0, null, null, null, 0, 0.0, null);
+    private Student s = new Student(null, null, null, null, null, null, true, null, 0.0, null, null, null, 0, 0.0, null);
     public Scanner input = new Scanner(System.in);  // Create a Scanner object
     private static Welcome screen;
     public static Boolean logout;
@@ -370,7 +370,7 @@ public class Welcome {
                 System.out.println("View applicants for which Job Listing? ");
                 String cJob = input.nextLine();  
                 //job.title = cJob;
-                c.viewApplications(job);
+                // c.viewApplications(job);
                 break;
             case "5":
                 System.out.println("2. Search for Job Listing");
@@ -452,7 +452,7 @@ public class Welcome {
         System.out.println("");
         System.out.println("Is this job Remote true/false: ");
         Boolean jRemote = input.nextBoolean();  
-        j.setRemote(jRemote);
+        j.remote = jRemote;
         System.out.println("");
     }
 

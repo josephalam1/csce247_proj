@@ -30,13 +30,14 @@ public class DataLoader {
                 String gender = (String)studentJSON.get("gender");
                 boolean available = (boolean)studentJSON.get("available");
                 double gpa = (double)studentJSON.get("GPA");
-                int year = ((Long)studentJSON.get("year")).intValue();;
+                int year = ((Long)studentJSON.get("year")).intValue();
+                String level = (String)studentJSON.get("level");
                 String location = (String)studentJSON.get("campusLocation");
                 String major = (String)studentJSON.get("major");
                 double rating = (double)studentJSON.get("rating");
 
                 students.add(new Student(id, resumeId, name, email, password, dob, sex, gender,
-                     null, available, null, gpa, location, null, major, year, rating, username));
+                    available, gpa, location, level, major, year, rating, username));
             }
 
             return students;

@@ -116,7 +116,7 @@ public class DataWriter {
     public static JSONObject getStudentsJSON(Student student) {
         JSONObject studentDetails = new JSONObject();
         studentDetails.put("id", student.getId().toString());
-        studentDetails.put("resumeID", student.resumeId.toString());
+        studentDetails.put("resumeID", student.getResumeId().toString());
         studentDetails.put("name", student.name);
         studentDetails.put("username", student.username);
         studentDetails.put("gender", student.getGender());
@@ -128,6 +128,7 @@ public class DataWriter {
         studentDetails.put("campusLocation", student.campusLocation);
         studentDetails.put("year", student.currYear);
         studentDetails.put("major", student.currMajor);
+        studentDetails.put("level", student.currLevel);
         studentDetails.put("available", student.available);
         studentDetails.put("rating", student.getRating());
         return studentDetails;
@@ -177,7 +178,7 @@ public class DataWriter {
         jobDetails.put("maxHours", job.getMaxHours());
         jobDetails.put("pay", job.getPay());
         jobDetails.put("numOpenings", job.getNumOpenings());
-        jobDetails.put("skillsReq", job.getSkillsReq());
+        jobDetails.put("skillsReq", job.skillsReq);
         jobDetails.put("duties", job.duties);
         jobDetails.put("minExp", job.getMinExp());
         jobDetails.put("numOpenings", job.getNumOpenings());

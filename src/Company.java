@@ -18,9 +18,6 @@ public class Company implements User {
     public String webSite;
     private double rating;
 
-    //public Company(int id, String name, String email, String address, String hiringRecruiter, String contactInfo){
-        // COS added above params needed for companyProfile
-    //}
     /**
      * Initializes company object with pre-existing ID
      * @param id Company's ID
@@ -90,9 +87,6 @@ public class Company implements User {
     public String getPassword() {
         return password;
     }
-    public JobListing createJob(JobListing job){
-        return job;
-    }
 
     public void sort(ArrayList<Application> appList){
         for (int i = 0; i < appList.size(); i++) {
@@ -103,19 +97,10 @@ public class Company implements User {
             }
         }
     }
-    public ArrayList<String> filter(ArrayList<String> search, String level, String major, int year, String[] skills, double rating){
-        return search;
-    }
 
-    public void giveRating(Student s, double rating){
-        s.setRating(rating);
-    }
-
-    public double setRating(double rating) {
-        return rating;
-    }
-
-    // COS not in UML needed for CompanyProfile
+    /**
+     * Returns a String version of company object
+     */
     public String toString(){
         return "\nCompany account info: " + "\n" +
         "\nName: " + name + "\nEstablished: " + dateEstablished + 
@@ -126,9 +111,8 @@ public class Company implements User {
     public void deleteUser() {
 
     }
+
     public double getRating(){
         return this.rating;
-    }
-    public void viewApplications(JobListing job) {
     }
 }

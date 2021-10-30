@@ -13,8 +13,31 @@ public class JobListing {
     public ArrayList<String> skillsReq;
     public ArrayList<String> duties;
     public boolean remote, open, volunteer;
-    public ArrayList<Application> applications;
-
+    /**
+     * Initializes a Job Listing with only a company ID
+     */
+    public JobListing(UUID companyID) {
+        this.id = UUID.randomUUID();
+        this.companyId = companyID;
+    }
+    /**
+     * Initializes a Job Listing with the following parameters:
+     * @param id UUID of job posting
+     * @param companyID UUID of company
+     * @param title String of job title
+     * @param location String of location
+     * @param minHours int of minimum number of hours hiring for
+     * @param maxHours int of maximum number of hours hiring for
+     * @param pay double of pay rate/salary
+     * @param expDate Date of when the job listing expires
+     * @param numOpenings int of number of openings
+     * @param skillsReq ArrayList<String> of the required skills
+     * @param duties ArrayList<String> of the duties for the job
+     * @param description String of the description
+     * @param minExp String of the minimum experience required
+     * @param remote boolean of whether or not the job opportunity is remote
+     * @param open boolean of whether or not the job listing is open
+     */
     public JobListing(UUID id, UUID companyID, String title, String location, int minHours, int maxHours,
             double pay, Date expDate, int numOpenings, ArrayList<String> skillsReq, ArrayList<String> duties, String description,
             String minExp, boolean remote, boolean open) {
@@ -34,148 +57,164 @@ public class JobListing {
         this.remote = remote;
         this.open = open;
     }
-
+    /**
+     * Returns the ID of the job listing
+     * @return UUID of job listing
+     */
     public UUID getID() {
         return this.id;
     }
-
+    /**
+     * Returns the ID of the company tied to the job listing
+     * @return UUID of company's ID
+     */
     public UUID getCompanyID() {
         return this.companyId;
     }
-
+    /**
+     * Get job title
+     * @return String of job title
+     */
     public String getTitle() {
         return title;
     }
-
-
+    /**
+     * Set the job title
+     * @param title String of the job title
+     */
     public void setTitle(String title) {
         this.title = title;
     }
-
-
+    /**
+     * Get location of job
+     * @return String of location
+     */
     public String getLocation() {
         return location;
     }
-
-
+    /**
+     * Set the location for the job
+     * @param location String of location
+     */
     public void setLocation(String location) {
         this.location = location;
     }
-
-
+    /**
+     * Get the number of minimum hours for the job
+     * @return int of minimum hours
+     */
     public int getMinHours() {
         return minHours;
     }
-
-
-    public void setMinHours(int minHours) {
-        this.minHours = minHours;
+    /**
+     * Set the number of minimum hours for the job 
+     * @param hours int of minimum number of hours
+     */
+    public void setMinHours(int hours) {
+        this.minHours = hours;
     }
-
-
+    /**
+     * Get the number of maximum hours for the job 
+     * @return int of maximum hours
+     */
     public int getMaxHours() {
         return maxHours;
     }
-
-
-    public void setMaxHours(int maxHours) {
-        this.maxHours = maxHours;
+    /**
+     * Get the number of maximum hours for the job 
+     * @param hours int of maximum number of hours
+     */
+    public void setMaxHours(int hours) {
+        this.maxHours = hours;
     }
-
-
+    /**
+     * Get the pay rate for the job listing
+     * @return double of the pay rate
+     */
     public double getPay() {
         return pay;
     }
-
-
+    /**
+     * Set the pay rate for the job listing
+     * @param pay double of the pay rate
+     */
     public void setPay(double pay) {
         this.pay = pay;
     }
-
-
+    /**
+     * Get the expiration date for the job listing 
+     * @return Date of when the listing expires
+     */
     public Date getExpDate() {
         return expDate;
     }
-
-
+    /**
+     * Set the expiration date for the job listing
+     * @param expDate Date of when the job listing expires
+     */
     public void setExpDate(Date expDate) {
         this.expDate = expDate;
     }
-
-
+    /**
+     * Get the number of openings for the job listing
+     * @return int of number of openings
+     */
     public int getNumOpenings() {
         return numOpenings;
     }
-
-
+    /**
+     * Set the number of openings for the job listing
+     * @param numOpenings int of the number of openings
+     */
     public void setNumOpenings(int numOpenings) {
         this.numOpenings = numOpenings;
     }
-
-
-    public ArrayList<String> getSkillsReq() {
-        return skillsReq;
-    }
-
-
-    public void setSkillsReq(ArrayList<String> skillsReq) {
-        this.skillsReq = skillsReq;
-    }
-
-
+    /**
+     * Get the description for the job posting
+     * @return String of job description
+     */
     public String getDescription() {
         return description;
     }
-
-
+    /**
+     * Set the job description
+     * @param description String of job description
+     */
     public void setDescription(String description) {
         this.description = description;
     }
-
+    /**
+     * Get the minimum experience required for the job
+     * @return String of minimum experience required
+     */
     public String getMinExp() {
         return minExp;
     }
-
-
+    /**
+     * Set the minimum experience required for the job
+     * @param minExp String of minimum experience required
+     */
     public void setMinExp(String minExp) {
         this.minExp = minExp;
     }
-
-
+    /**
+     * Returns whether or not the job is remote
+     * @return boolean of whether or not the job is remote
+     */
     public boolean isRemote() {
         return remote;
     }
-
-
-    public void setRemote(boolean remote) {
-        if(remote == true){
-            remote = false;
-        }
-        else{
-            remote = true;
-        }
-    }
-
-
+    /**
+     * Returns whether or whether or not the job is open
+     * @return boolean of whether or not the job is open
+     */
     public boolean isOpen() {
-        if(expDate.before(new Date())){
+        if(expDate.before(new Date()) && open == true && numOpenings > 0){
             return true;
         }
-        else{
             return false;
-        }
     }
-
-
-    public void setOpen() {
-        if(this.open == true){
-          this.open = false;  
-        }
-        else{
-            this.open = true;
-        }
-    }
-
+    
     /**
      * Choose candidate for job posting based on application ID number
      * @param applicationId UUID of application ID that is selected
@@ -190,16 +229,9 @@ public class JobListing {
     
         return false;
    }
-   
-   public void addApplication(Application application) {
-       applications.add(application);
-   }
-
-   public void viewApplications() {
-       for (Application app : applications) {
-           System.out.println(app.toString());
-       }
-   }
+   /**
+    * Returns the job listing as a string
+    */
     public String toString(){
         return super.toString() + " Job Listing";
     }

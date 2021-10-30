@@ -7,7 +7,7 @@ import java.util.UUID;
 
 public class Student implements User {
     private UUID id;
-    public UUID resumeId;
+    private UUID resumeId;
     public String name;
     public String username;
     public String email;
@@ -15,7 +15,6 @@ public class Student implements User {
     private Date dateOfBirth;
     private String sex;
     private String gender;
-    public ArrayList<Application> openApplications;
     public Boolean available;
     public ArrayList<JobListing> savedJobs;
     private double GPA;
@@ -44,7 +43,7 @@ public class Student implements User {
      * @param username Student's username
      */
     public Student(String name, String email, String password, Date dateOfBirth, String sex,
-            String gender, ArrayList<Application> openApplications, Boolean available, ArrayList<JobListing> savedJobs,
+            String gender, Boolean available, ArrayList<JobListing> savedJobs,
             double gPA, String campusLocation, String currLevel, String currMajor, int currYear, double rating, String username) {
         this.id = UUID.randomUUID();
         this.name = name;
@@ -54,10 +53,9 @@ public class Student implements User {
         this.dateOfBirth = dateOfBirth;
         this.sex = sex;
         this.gender = gender;
-        this.openApplications = openApplications;
         this.available = available;
         this.savedJobs = savedJobs;
-        GPA = gPA;
+        this.GPA = gPA;
         this.campusLocation = campusLocation;
         this.currLevel = currLevel;
         this.currMajor = currMajor;
@@ -85,8 +83,7 @@ public class Student implements User {
      * @param username Student's username
      */
     public Student(UUID id, String name, String email, String password, Date dateOfBirth, String sex,
-            String gender, ArrayList<Application> openApplications, Boolean available, ArrayList<JobListing> savedJobs,
-            double gPA, String campusLocation, String currLevel, String currMajor, int currYear, double rating, String username) {
+            String gender, Boolean available, double gPA, String campusLocation, String currLevel, String currMajor, int currYear, double rating, String username) {
         this.id = id;
         this.name = name;
         this.username = username;
@@ -95,10 +92,8 @@ public class Student implements User {
         this.dateOfBirth = dateOfBirth;
         this.sex = sex;
         this.gender = gender;
-        this.openApplications = openApplications;
         this.available = available;
-        this.savedJobs = savedJobs;
-        GPA = gPA;
+        this.GPA = gPA;
         this.campusLocation = campusLocation;
         this.currLevel = currLevel;
         this.currMajor = currMajor;
@@ -114,7 +109,6 @@ public class Student implements User {
      * @param dateOfBirth Student's birthdate
      * @param sex Student's sex
      * @param gender Student's gender
-     * @param openApplications Student's applications
      * @param available If the student is available to work or not
      * @param savedJobs Student's saved jobs
      * @param gPA Student's GPA
@@ -126,7 +120,7 @@ public class Student implements User {
      * @param username Student's username
      */
     public Student(UUID id, UUID resumeID, String name, String email, String password, Date dateOfBirth, String sex,
-            String gender, ArrayList<Application> openApplications, Boolean available, ArrayList<JobListing> savedJobs,
+            String gender, Boolean available,
             double gPA, String campusLocation, String currLevel, String currMajor, int currYear, double rating, String username) {
         this.id = id;
         this.resumeId = resumeID;
@@ -137,9 +131,7 @@ public class Student implements User {
         this.dateOfBirth = dateOfBirth;
         this.sex = sex;
         this.gender = gender;
-        this.openApplications = openApplications;
         this.available = available;
-        this.savedJobs = savedJobs;
         GPA = gPA;
         this.campusLocation = campusLocation;
         this.currLevel = currLevel;
@@ -147,19 +139,19 @@ public class Student implements User {
         this.currYear = currYear;
         this.rating = rating;
     }
-    
+    /** 
+     * Get the Student's ID
+     * @return UUID of student ID
+     */
     public UUID getId() {
         return id;
     }
     /**
-     * Returns the student's password
-     * @return String of student password
+     * Return the student's resume ID
+     * @return UUId of resume ID
      */
-    public String getPassword() {
-        return this.password;
-    }
-    public void setId(UUID id) {
-        this.id = id;
+    public UUID getResumeId() {
+        return this.resumeId;
     }
     /**
      * Set the Resume ID for Student
@@ -167,144 +159,80 @@ public class Student implements User {
      */
     public void setResumeId(UUID id) {
         this.resumeId = id;
+    } 
+    /**
+     * Returns the student's password
+     * @return String of student password
+     */
+    public String getPassword() {
+        return this.password;
     }
-
+    /**
+     * Gets the student's date of birth
+     * @return Date of student's birth date
+     */
     public Date getDateOfBirth() {
         return dateOfBirth;
     }
-
+    /**
+     * Sets the student's date of birth
+     * @param dateOfBirth Date of student's birth date
+     */
     public void setDateOfBirth(Date dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
     }
-
+    /**
+     * Returns the student's sex
+     * @return String of student's sex
+     */
     public String getSex() {
         return sex;
     }
-
+    /**
+     * Set the student's sex
+     * @param sex String of student's sex
+     */
     public void setSex(String sex) {
         this.sex = sex;
     }
-
+    /**
+     * Get the student's gender
+     * @return String of student's gender
+     */
     public String getGender() {
         return gender;
     }
-
+    /**
+     * Set the student's gender
+     * @param gender String of student's gender
+     */ 
     public void setGender(String gender) {
         this.gender = gender;
     }
-
+    /**
+     * Get the student's GPA
+     * @return double of student's GPA
+     */
     public double getGPA() {
         return GPA;
     }
-
+    /**
+     * Sets the student's GPa
+     * @param gPA double of student's GPA
+     */
     public void setGPA(double gPA) {
         GPA = gPA;
     }
-
+    /**
+     * Get student's rating
+     * @return double of student's rating
+     */
     public double getRating() {
         return rating;
     }
-
-    public String setPreferredName(String name){
-        return "";
-    }
-    public Boolean setAvailable(){
-        return true;
-    }
-    public Application createApp(){
-        return null;
-    }
-    public ArrayList<Application> viewApps(){
-        return openApplications;
-    }
-    public void saveJobListing(JobListing job){
-        savedJobs.add(job);
-    }
-    public ArrayList<JobListing> viewSavedJobs(){
-        return savedJobs;
-    }
-    public ArrayList<String> search(){
-        return null;
-    }
-    public void sort(ArrayList<JobListing> jobList){
-        for (int i = 0; i < jobList.size(); i++){
-            for ( int j = 0; j < jobList.size(); j++){
-                if (jobList.get(i).getTitle().compareTo(jobList.get(j).getTitle()) > 0){
-                    Collections.swap(jobList, i, j);
-                }
-            }
-        }
-    }
-    // User needs to specify what they want to filter by
-    public ArrayList<JobListing> filter(ArrayList<JobListing> jobList, int search, String loc, int minHRS, int maxHRS, double pay, Boolean remote, boolean volunteer, ArrayList<String> skills, double rating){
-        ArrayList<JobListing> ret = new ArrayList<JobListing>();
-        if (search == 1) {
-            for (JobListing job : jobList) {
-                if (job.getLocation() == loc) {
-                    ret.add(job);
-                }
-            }
-        } else if (search == 2) {
-            for (JobListing job : jobList) {
-                if (job.getMinHours() == minHRS) {
-                    ret.add(job);
-                }
-            }
-        } else if (search == 3) {
-            for (JobListing job : jobList) {
-                if (job.getMaxHours() == maxHRS) {
-                    ret.add(job);
-                }
-            }
-        } else if (search == 4) {
-            for (JobListing job : jobList) {
-                if (job.getLocation() == loc) {
-                    ret.add(job);
-                }
-            }
-        } else if (search == 5) {
-            for (JobListing job : jobList) {
-                if (job.getPay() >= pay) {
-                    ret.add(job);
-                }
-            }
-        } else if (search == 6) {
-            for (JobListing job : jobList) {
-                if (remote = job.isRemote()) {
-                    ret.add(job);
-                }
-            }
-        } else if (search == 7) {
-            System.out.println("Under construction");
-            // jobs can't be rated but companies can
-            /* for (JobListing job : jobList) {
-                if (job.getRating() >= rating) {
-                    ret.add(job);
-                }
-            }*/
-            // below added so program compiles for scrum meeting
-            // delete after 0850 10/25/2021
-            for (JobListing job : jobList) {
-                ret.add(job);
-            }
-        } else if (search == 8) {
-            for (JobListing job : jobList) {
-                if (job.getPay() >= pay) {
-                    ret.add(job);
-                }
-            }
-        }
-        return ret;
-    }
-
-    public void giveRating(Company c, double rating){
-        c.setRating(rating);
-    }
-
-    public double setRating(double rating) {
-        return rating;
-    }
-
+    /**
+     * Returns the String equivalent for a student object
+     */
     public String toString(){
         return "Student Account info: " + "\n" +
         "\nName: " + name + "\nEmail: " + email + 
@@ -312,9 +240,8 @@ public class Student implements User {
         "\nGender: " + this.getGender() + 
         "\nGPA: " + this.getGPA() + " Level: " + currLevel + " Year: " + currYear + " Major: " + currMajor;
     }
-    
-    public void deleteUser() {
 
+    public void deleteUser() {
     }
     
 }
