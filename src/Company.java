@@ -17,7 +17,6 @@ public class Company implements User {
     public Date dateEstablished;
     public String webSite;
     private double rating;
-    public ArrayList<JobListing> jobListings;
 
     //public Company(int id, String name, String email, String address, String hiringRecruiter, String contactInfo){
         // COS added above params needed for companyProfile
@@ -37,7 +36,7 @@ public class Company implements User {
      * @param rating Rating
      */
     public Company(UUID id, String name, String recruiterUsername, String recruiterEmail, String password, String address, 
-            String hiringRecruiter, String contactInfo, Date dateEstablished, String webSite, double rating) {
+            String hiringRecruiter, String contactInfo, Date dateEstablished, String website, double rating) {
         this.id = id;
         this.name = name;
         this.recruiterEmail = recruiterEmail;
@@ -47,12 +46,11 @@ public class Company implements User {
         this.hiringRecruiter = hiringRecruiter;
         this.contactInfo = contactInfo;
         this.dateEstablished = dateEstablished;
-        this.webSite = webSite;
+        this.webSite = website;
         this.rating = rating;
     }
     /**
      * Initializes company object without a pre-existing ID
-     * @param id Company's ID
      * @param name Company's name
      * @param recruiterUsername Recruiter's username
      * @param recruiterEmail Recruiter's email
@@ -65,7 +63,7 @@ public class Company implements User {
      * @param rating Rating
      */
     public Company(String name, String recruiterUsername, String recruiterEmail, String password, String address, 
-            String hiringRecruiter, String contactInfo, Date dateEstablished, String webSite, double rating) {
+            String hiringRecruiter, String contactInfo, Date dateEstablished, String website, double rating) {
         this.id = UUID.randomUUID();
         this.name = name;
         this.recruiterEmail = recruiterEmail;
@@ -75,7 +73,7 @@ public class Company implements User {
         this.hiringRecruiter = hiringRecruiter;
         this.contactInfo = contactInfo;
         this.dateEstablished = dateEstablished;
-        this.webSite = webSite;
+        this.webSite = website;
         this.rating = rating;
     }
     /**
@@ -94,9 +92,6 @@ public class Company implements User {
     }
     public JobListing createJob(JobListing job){
         return job;
-    }
-    public ArrayList<JobListing> getJobListings(){
-        return jobListings;
     }
 
     public void sort(ArrayList<Application> appList){

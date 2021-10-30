@@ -30,6 +30,14 @@ public class Resumes {
         return instance;
     }
     /**
+     * Gets all resumes
+     * @return ArrayList<Resume> ArrayList containing all the resume objects
+     */
+    public ArrayList<Resume> getResumes() {
+        System.out.print(this.resumes);
+        return this.resumes;
+    }
+    /**
      * Get a Resume by its ID
      * @param id UUID of the resume
      * @return Resume object corresponding to the UUID

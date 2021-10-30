@@ -64,7 +64,7 @@ public class DataLoader {
                 String email = (String)companyJSON.get("recruiterEmail");
                 String address = (String)companyJSON.get("companyAddress");
                 String phone = (String)companyJSON.get("recruiterPhone");
-                String website = (String)companyJSON.get("recruiterWebsite");
+                String website = (String)companyJSON.get("companyWebsite");
                 double rating = (double)companyJSON.get("rating");
 
                 companies.add(new Company(id, companyName, username, email, password, address, 
@@ -157,6 +157,7 @@ public class DataLoader {
                 JSONObject resumeJSON = (JSONObject)resumesJSON.get(i);
                 UUID id = UUID.fromString((String)resumeJSON.get("ID"));
                 UUID studentID = UUID.fromString((String)resumeJSON.get("studentID"));
+                SimpleDateFormat ft = new SimpleDateFormat ("yyyy-MM-dd"); 
                 JSONArray experiences = (JSONArray)resumeJSON.get("experience");
                 ArrayList<Experiences> experienceList = new ArrayList<Experiences>();
                 if(experiences != null) {
@@ -164,15 +165,14 @@ public class DataLoader {
                         JSONArray experience = (JSONArray)experiences.get(j);
                         String companyName = (String)experience.get(0);
                         String jobTitle = (String)experience.get(1);
-                        SimpleDateFormat ft = new SimpleDateFormat ("yyyy-MM-dd"); 
-                        Date pastEduBeginDate = ft.parse((String)experience.get(2));
-                        Date pastEduEndDate = ft.parse((String)experience.get(3));
+                        Date pastJobStartDate = ft.parse((String)experience.get(2));
+                        Date pastJobEndDate = ft.parse((String)experience.get(3));
                         ArrayList<String> duties = new ArrayList<String>();
                         JSONArray dutiesJSON = (JSONArray)experience.get(4);
                         for(int k = 0; k < dutiesJSON.size(); k++) {
                             duties.add((String)dutiesJSON.get(k));
                         }
-                        experienceList.add(new Experiences(companyName, jobTitle, pastEduBeginDate, pastEduEndDate, duties));
+                        experienceList.add(new Experiences(companyName, jobTitle, pastJobStartDate, pastJobEndDate, duties));
                     }
                 }
                 JSONArray skillsJSON = (JSONArray)resumeJSON.get("skills");
@@ -191,8 +191,8 @@ public class DataLoader {
                     references.add(new References(referenceName, relationship, phoneNum, email));
                 }
                 resumes.add(new Resume(id, studentID, skills, experienceList, references));
+                
             }
-
             return resumes;
 
         } catch(Exception e) {

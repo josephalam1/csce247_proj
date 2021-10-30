@@ -15,7 +15,6 @@ public class Student implements User {
     private Date dateOfBirth;
     private String sex;
     private String gender;
-    // public StudentProfile profile;
     public ArrayList<Application> openApplications;
     public Boolean available;
     public ArrayList<JobListing> savedJobs;
@@ -49,6 +48,7 @@ public class Student implements User {
             double gPA, String campusLocation, String currLevel, String currMajor, int currYear, double rating, String username) {
         this.id = UUID.randomUUID();
         this.name = name;
+        this.username = username;
         this.email = email;
         this.password = password;
         this.dateOfBirth = dateOfBirth;
@@ -89,6 +89,7 @@ public class Student implements User {
             double gPA, String campusLocation, String currLevel, String currMajor, int currYear, double rating, String username) {
         this.id = id;
         this.name = name;
+        this.username = username;
         this.email = email;
         this.password = password;
         this.dateOfBirth = dateOfBirth;
@@ -130,6 +131,7 @@ public class Student implements User {
         this.id = id;
         this.resumeId = resumeID;
         this.name = name;
+        this.username = username;
         this.email = email;
         this.password = password;
         this.dateOfBirth = dateOfBirth;

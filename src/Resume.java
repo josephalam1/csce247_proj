@@ -13,6 +13,11 @@ public class Resume {
 
     public Resume(UUID id, UUID studentID, ArrayList<String> skills, ArrayList<Experiences> experiences,
                      ArrayList<References> references) {
+                         this.id = id;
+                         this.studentId = studentID;
+                         this.skills = skills;
+                         this.experiences = experiences;
+                         this.references = references;
     }
     /**
      * Returns the UUID of the resume
@@ -49,5 +54,11 @@ public class Resume {
     }
     public void deleteReference(){
         
+    }
+    public String getJsonExperience() {
+        return "";
+    }
+    public String getJsonReference() {
+        return "";
     }
 }
