@@ -117,10 +117,6 @@ public class Welcome {
                 s.name = sName;
             }
             System.out.println("");
-            System.out.println("Please enter your perferred name: ");
-            String sNewName = input.nextLine();  
-            s.setPreferredName(sNewName);
-            System.out.println("");
             System.out.println("Please enter your email: ");
             String sEmail = input.nextLine();  
             s.email = sEmail;
