@@ -251,7 +251,9 @@ public class Welcome {
     public void studentInfo(Student s) {
     System.out.println(s.toString()+"\n\n");
     }
-
+    /**
+     * Shows the lists of open job  listings for students
+     */
     public void jobListingScreen() {
         System.out.println("\n");
         System.out.println("**************************************");
@@ -259,7 +261,9 @@ public class Welcome {
         System.out.println("**************************************\n\n");
         ArrayList<JobListing> jobs = company.getOpenJobs();
     }
-
+    /**
+     * Handles creating a new company
+     */
     public void addCompany() {
         System.out.println("\n");
         System.out.println("**************************************");
