@@ -7,44 +7,31 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.nio.charset.StandardCharsets;
 import java.util.UUID;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import java.security.*;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.io.Console;
 import java.io.UnsupportedEncodingException;
 import java.util.Date;
+import java.util.Base64;
 
 public class Welcome {
-
-    private ArrayList<Student> studentUsers;
-    private ArrayList<Company> companyUsers;
     private Companies company = Companies.getInstance();
     private Students student = Students.getInstance();
-    private Company c = new Company(null, null, null, null, null, null, null, null, null, 0.0);
-                        // Student(name, email, password, dateOfBirth, sex, gender, openApplications, available, savedJobs, gPA, campusLocation, currLevel, currMajor, currYear, rating, username)
-    private Student s = new Student(null, null, null, null, null, null, true, null, 0.0, null, null, null, 0, 0.0, null);
     public Scanner input = new Scanner(System.in);  // Create a Scanner object
     private static Welcome screen;
     public static Boolean logout;
 
-    public Welcome() {
-        studentUsers = student.getStudents();
-        companyUsers = company.getCompanies();
+    private Welcome() {
         logout = false;
     }
-	  
-    public ArrayList<Student> studentAccess() {
-        return studentUsers;
-    }
-
-    public ArrayList<Company> CompanyAccess() {
-        return companyUsers;
-    }
-
     public static Welcome getInstance() {
-        logout = false;
 		if (screen == null) {
+            screen = new Welcome();
+            logout = false;
             System.out.println("**************************************");
             System.out.println("* Welcome to UofSC Intership System! *");
             System.out.println("**************************************");
@@ -52,11 +39,24 @@ public class Welcome {
             System.out.println("2. Make an Account: Student");
             System.out.println("3. Make an Account: Company");
             System.out.println("   Type X to exit program");
-            screen = new Welcome();
         }
 		return screen;
 	}
-
+    /**
+     * Secures the password by hashing it
+     * @param password String of password to encrypt
+     * @return String of encrypted password
+     */
+    public String getPassword(String password) {
+        try { 
+        MessageDigest digest = MessageDigest.getInstance("SHA-256");
+        byte[] hash = digest.digest(password.getBytes(StandardCharsets.UTF_8));
+        return Base64.getEncoder().encodeToString(hash);
+        } catch (NoSuchAlgorithmException e) {
+            System.out.println("Sorry, there was an error encrypting this password.");
+            return null;
+        }
+    }
     public void mainScreen() {
         System.out.println("**************************************");
         System.out.println("* Welcome to UofSC Intership System! *");
@@ -74,129 +74,130 @@ public class Welcome {
             String opt;
             opt = input.nextLine();
             if (opt.equals("1")) {
-                System.out.println("Enter user name: ");
-                String sUserName = input.nextLine();  
-                s.username= sUserName;
-                System.out.println("Enter user password: ");
-                String sPassword = input.nextLine();
-                s.password = sPassword;
-                Student logon = student.getStudent(sUserName, sPassword);
-                screen.loginStudent(logon);
+                Student currStudent = loginHandlerStudent();
+                if(currStudent == null) {
+                    mainScreen();
+                } else {
+                    screen.loginStudent(currStudent);
+                }
                 break;
-                // screen.loginStudent();
             } else if (opt.equals("2")) {
-            System.out.println("Enter user name: ");
-            String cUserName = input.nextLine();  
-            c.username= cUserName;
-            System.out.println("Enter user password: ");
-            String cPassword = input.nextLine();
-            c.password = cPassword;
-            Company logon = company.getCompany(cUserName, cPassword);
-            screen.loginCompany(logon);
-            // screen.loginCompany();
-            break;
+                Company currCompany = loginHandlerCompany();
+                if(currCompany == null) {
+                    mainScreen();
+                } else {
+                    screen.loginCompany(currCompany);
+                }
+                break;
             } else{
                 System.out.println("Please enter the number 1 or 2");
             }
         }
     }
-
-    public void addStudent() throws UnsupportedEncodingException, NoSuchAlgorithmException {
-        
+    public Student loginHandlerStudent() {
+        while(true) {
+            System.out.println("Please enter your username: (Enter X to go back to main screen)");
+            String username = input.nextLine();  
+            if(username.equalsIgnoreCase("X"))
+                break;
+            System.out.println("Please enter your password: ");
+            String password = getPassword(input.nextLine());
+            Student studentUser = student.getStudent(username, password);
+            if(studentUser != null) {
+                return studentUser;
+            }
+            System.out.println("Error!\nStudent not found with username and password combination.\n");
+        }
+        return null;
+    }
+    public Company loginHandlerCompany() {
+        while(true) {
+            System.out.println("Please enter your username: (Enter X to go back to main screen)");
+            String username = input.nextLine();  
+            if(username.equalsIgnoreCase("X"))
+                break;
+            System.out.println("Please enter your password: ");
+            String password = getPassword(input.nextLine());  
+            Company companyUser = company.getCompany(username, password);
+            if(companyUser != null) {
+                return companyUser;
+            }
+            System.out.println("Error!\nCompany not found with username and password combination.\n");
+        }
+        return null;
+    }
+    public void addStudent() {
             System.out.println("\n");
             System.out.println("**************************************");
             System.out.println("*       Welcome new Student!         *");
             System.out.println("**************************************");
-            System.out.println("\n");
-            // System.out.println("Enter L at any time to logout ");
-            // System.out.println("");
-            String sName = null;
-            while(sName == null){
-                System.out.println("Please enter your name: ");
-                sName = input.nextLine(); 
-                s.name = sName;
+            System.out.println("\nPlease enter your name: ");
+            String name = input.nextLine();  
+            System.out.println("\nPlease enter your email: ");
+            String email = input.nextLine();  
+            String username = new String();
+            while(true) {
+                System.out.println("\nPlease enter your username: ");
+                username = input.nextLine();
+                if(!student.haveUser(username)) {
+                    break;
+                }
+                System.out.println("Sorry! That username is already taken.\n");
             }
-            System.out.println("");
-            System.out.println("Please enter your email: ");
-            String sEmail = input.nextLine();  
-            s.email = sEmail;
-            System.out.println("");
-            System.out.println("Please enter your user name: ");
-            String sUserName = input.nextLine();  
-            s.username= sUserName;
-            System.out.println("");
-            System.out.println("Please enter your password: ");
-            String sPassword = input.nextLine();
-            s.password = sPassword;
-            
-                /*try {
-                    java.security.MessageDigest md = java.security.MessageDigest.getInstance("MD5");
-                    byte[] array = md.digest(MD5.getBytes());
-                    StringBuffer sb = new StringBuffer();
-                    for (int i = 0; i < array.length; ++i) {
-                    sb.append(Integer.toHexString((array[i] & 0xFF) | 0x100).substring(1,3));
-                    }
-                } catch (java.security.NoSuchAlgorithmException e) {
-                }*/
-            System.out.println("");
+            System.out.println("\nPlease enter your password: ");
+            String password = getPassword(input.nextLine());
             String sDOB = null;
             while(true){
-                System.out.println("Please enter your DOB \"yyyy/MM/dd\" ");
+                System.out.println("\nPlease enter your date of birth in the format \"yyyy/MM/dd\": ");
                 sDOB = input.nextLine();  
                 Pattern pattern = Pattern.compile("\\d{4}/\\d{2}/\\d{2}");
                 Matcher matcher = pattern.matcher(sDOB);
                 if(matcher.matches()){
                     break;
                 }
-            
-                DateFormat formatter = new SimpleDateFormat("yyyy/MM/dd");
-                Date date;
-                try {
-                    date = formatter.parse(sDOB);
-                    s.setDateOfBirth(date);
-                } catch (ParseException e) {
-                    // TODO Auto-generated catch block
-                    e.printStackTrace();
-                }
-
             }
-            
-            System.out.println("");
-            System.out.println("Please enter your sex: M/F ");
-            String sSex = input.nextLine();  
-            s.setSex(sSex);
-            System.out.println("");
-            System.out.println("Please enter your prefered gender: M/F/O");
-            String sGender = input.nextLine(); 
-            s.setGender(sGender);
-            System.out.println("");
+            DateFormat formatter = new SimpleDateFormat("yyyy/MM/dd");
+            try {
+                Date date = formatter.parse(sDOB);
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+            while(true) {
+            System.out.println("\nPlease enter your sex: (M/F) ");
+            String sex = input.nextLine();  
+            if (sex.equalsIgnoreCase("M") || sex.equalsIgnoreCase("F"))
+                break;
+            }
+            while(true) {
+            System.out.println("\nPlease enter your prefered gender: M/F/O");
+            String gender = input.nextLine(); 
+            if (gender.equalsIgnoreCase("M") || gender.equalsIgnoreCase("F") || gender.equals("0"))
+                break;
+            }
             double sGPA = 0.0;
             while(true){
-                System.out.println("Please enter your GPA: ");
+                System.out.println("\nPlease enter your GPA: ");
                 sGPA = input.nextDouble();  
-                s.setGPA(sGPA);
                 input.nextLine();
                 if(sGPA != 0.0){
                     break;
                 } 
-                System.out.println("");
             }
-            
-            System.out.println("Please enter your current level Freshman/sophomore/junior/senior: ");
-            String sLevel = input.nextLine();  
-            s.currLevel = sLevel;
-            System.out.println("");
-            System.out.println("Please enter your current year 1/2/3/4/5/6: ");
-            int sYear = input.nextInt();  
-            s.currYear = sYear;
+            System.out.println("\nPlease enter your current level Freshman/sophomore/junior/senior: ");
+            String level = input.nextLine();  
+            while(true) {
+            System.out.println("\nPlease enter your current year 1/2/3/4/5/6: ");
+            int year = input.nextInt();  
             input.nextLine(); 
+            if (year > 0 && year < 7)
+                break;
+            }
             System.out.println("");
             System.out.println("Please enter your current major: ");
             String sMajor = input.nextLine();  
-            s.currMajor = sMajor;
             System.out.println("");
-            studentUsers.add(s);
-            System.out.println(s.toString());
+            //studentUsers.add(s);
+            // System.out.println(s.toString());
             System.out.println("");
         
     }
@@ -265,26 +266,21 @@ public class Welcome {
         // System.out.println("");
         System.out.println("Please enter your name: ");
         String cName = input.nextLine();  
-        c.name = cName;
         System.out.println("");
         System.out.println("Please enter your email: ");
         String cEmail = input.nextLine();  
-        c.recruiterEmail = cEmail;
         System.out.println("");
         System.out.println("Please enter your password: ");
         System.out.println("> will set later");
         System.out.println("");
         System.out.println("Please enter your hiring recruiters name: ");
         String cRecruit = input.nextLine();  
-        c.hiringRecruiter = cRecruit;
         System.out.println("");
         System.out.println("Please enter their phone number: ");
         String cContact = input.nextLine();  
-        c.contactInfo = cContact;
         System.out.println("");
         System.out.println("Please enter the company's address: ");
         String cAddress = input.nextLine();  
-        c.address = cAddress;
         System.out.println("");
         // System.out.println("Please enter the company's date established: ");
         // String cDateEst = input.nextLine();  
@@ -312,7 +308,6 @@ public class Welcome {
                 Date date;
                 try {
                     date = formatter.parse(cDateEst);
-                    s.setDateOfBirth(date);
                 } catch (ParseException e) {
                     // TODO Auto-generated catch block
                     e.printStackTrace();
@@ -322,11 +317,9 @@ public class Welcome {
         System.out.println("");
         System.out.println("Please enter the company's website: ");
         String cWebsite = input.nextLine();  // Read user input
-        c.webSite = cWebsite;
-        companyUsers.add(c);
         // companyUsers.add(c);
 
-        System.out.println(c.toString());
+        // System.out.println(c.toString());
         
     }
 

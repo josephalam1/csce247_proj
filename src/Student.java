@@ -2,7 +2,6 @@ package src;
 
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.Collections;
 import java.util.UUID;
 
 public class Student implements User {
