@@ -70,7 +70,7 @@ public class Companies {
     public ArrayList<JobListing> getJobsByCompanyId(UUID id) {
         ArrayList<JobListing> sortedJobs = new ArrayList<JobListing>();
         for(JobListing job : jobs) {
-            if(job.getCompanyID() == id) {
+            if(job.getCompanyID().equals(id)) {
                 sortedJobs.add(job);
             }
         }

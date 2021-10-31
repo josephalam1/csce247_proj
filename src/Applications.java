@@ -78,7 +78,6 @@ public class Applications {
             }
         }
         applications.add(application);
-        // this is where method for notification will go
         return true;
     }
 }

@@ -22,6 +22,7 @@ public class Welcome {
     private Companies company = Companies.getInstance();
     private Students student = Students.getInstance();
     private Resumes resumes = Resumes.getInstance();
+    private Applications applications = Applications.getInstance();
     public Scanner input = new Scanner(System.in);  // Create a Scanner object
     public Boolean logout;
 
@@ -336,11 +337,31 @@ public class Welcome {
             } else if (option.equals("3")) {
                 chooseJobFromCompany(c.getId());
             } else if (option.equals("4")) {
-                chooseJobFromCompany(c.getId());
+                JobListing job = chooseJobFromCompany(c.getId());
+                if(job != null) {
+                    viewApplications(job.getID());
+                }
             } else if (option.equalsIgnoreCase("x")) {
                 break;
             }
         }
+    }
+    /**
+     * View list of applicants from job id
+     * @param id UUID of job posting's ID
+     */
+    public void viewApplications(UUID id) {
+        ArrayList<Application> applicants = applications.getOpenApplicationsByJob(id);
+        if(applicants.size() > 0) {
+            System.out.println("ID\tStudent\'s name\tDate Applied");
+            for (int i = 0; i < applicants.size(); i++) {
+                System.out.print(" "+i+"\t");
+                System.out.print(student.getStudent(applicants.get(i).getStudentId()).name+"\t");
+                SimpleDateFormat ft = new SimpleDateFormat ("yyyy-MM-dd");
+                System.out.print(ft.format(applicants.get(i).getApplicationDate())+"\t");
+            }
+        } else 
+            System.out.println("You do not have any applications for this job listing\n\n");
     }
     public void companyInfo(Company c) {
         System.out.println(c.toString());
@@ -352,13 +373,30 @@ public class Welcome {
      */
     public JobListing chooseJobFromCompany(UUID id){
         ArrayList<JobListing> jobs = company.getJobsByCompanyId(id);
+        if(jobs.size() == 0) {
+            System.out.println("You do not have any job listings.\n\n");
+            return null;
+        }
         for (int i = 0; i < jobs.size(); i++) {
             System.out.println("ID: "+i+" "+jobs.get(i)+" "+jobs.get(i).toString());
         }
-        System.out.println("Please enter the ID of the job listing you would like to view: ");
-        int index = input.nextInt();
+        int index = 0;
+        while(true) {
+            System.out.println("Please enter the ID of the job listing you would like to view: ");
+            if(input.hasNextInt()) {
+                index = input.nextInt();
+                if(index >= 0 && index < jobs.size()) {
+                    break;
+                }
+            }
+            System.out.println("Error! Invalid ID\n");
+        }
         return jobs.get(index);
     }
+    /**
+     * Handles creating a new job listing
+     * @param companyID ID of the company
+     */
     public void addJobListing(UUID companyID) {
         System.out.println("\n");
         System.out.println("**************************************");
