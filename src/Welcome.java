@@ -402,11 +402,9 @@ public class Welcome {
      * @param companyID ID of the company
      */
     public void addJobListing(UUID companyID) {
-        System.out.println("\n");
         System.out.println("**************************************");
         System.out.println("*         Create Job Listing         *");
-        System.out.println("**************************************");
-        System.out.println("\n");
+        System.out.println("**************************************\n\n");
         System.out.println("\nPlease enter the job title for the position: ");
         String title = input.nextLine();  
         System.out.println("\nPlease enter the location of the job site: ");
