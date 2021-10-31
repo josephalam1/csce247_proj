@@ -334,9 +334,9 @@ public class Welcome {
             } else if (option.equals("2")) {
                 addJobListing(c.getId());
             } else if (option.equals("3")) {
-                viewJobListings(c.getId());
+                chooseJobFromCompany(c.getId());
             } else if (option.equals("4")) {
-                viewJobListings(c.getId());
+                chooseJobFromCompany(c.getId());
             } else if (option.equalsIgnoreCase("x")) {
                 break;
             }
@@ -350,7 +350,7 @@ public class Welcome {
      * @param id UUID of the company's ID
      * @return JobListing object the user selects
      */
-    public JobListing viewJobListings(UUID id){
+    public JobListing chooseJobFromCompany(UUID id){
         ArrayList<JobListing> jobs = company.getJobsByCompanyId(id);
         for (int i = 0; i < jobs.size(); i++) {
             System.out.println("ID: "+i+" "+jobs.get(i)+" "+jobs.get(i).toString());
