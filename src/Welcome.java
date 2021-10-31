@@ -332,7 +332,7 @@ public class Welcome {
             if(option.equals("1")) {
                 companyInfo(c);
             } else if (option.equals("2")) {
-                jobListingScreen(c.getId());
+                addJobListing(c.getId());
             } else if (option.equals("3")) {
                 viewJobListings(c.getId());
             } else if (option.equals("4")) {
@@ -359,7 +359,7 @@ public class Welcome {
         int index = input.nextInt();
         return jobs.get(index);
     }
-    public void jobListingScreen(UUID companyID) {
+    public void addJobListing(UUID companyID) {
         System.out.println("\n");
         System.out.println("**************************************");
         System.out.println("*         Create Job Listing         *");
