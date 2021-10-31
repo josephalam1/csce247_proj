@@ -260,11 +260,14 @@ public class JobListing {
    public boolean chooseCandidate(UUID applicationId) {
         Applications applicationsList = Applications.getInstance();
         ArrayList<Application> applicants = applicationsList.getOpenApplicationsByJob(id);
-        for(Application application : applicants) {
+        Students studentInst = Students.getInstance();
+        for (Application application : applicants) {
+            if (numOpenings <= 0 || !studentInst.getStudent(applicationId).available)
+                return false;
             application.setAccepted(true);
             numOpenings--;
+            return true;
         }
-    
         return false;
    }
    /**

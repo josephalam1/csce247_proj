@@ -106,6 +106,7 @@ public class Welcome {
         }
         mainScreen();
     }
+//=============================     Student Functions   ============================
     /**
      * Handles Logging in for the Student
      * @return Student object of Student returned from login
