@@ -15,10 +15,47 @@ public class JobListing {
     public boolean remote, open, volunteer;
     /**
      * Initializes a Job Listing with only a company ID
+     * @param companyID UUID of company
      */
     public JobListing(UUID companyID) {
         this.id = UUID.randomUUID();
         this.companyId = companyID;
+    }
+    /**
+     * Initializes a Job Listing with the following parameters:
+     * @param companyID UUID of company
+     * @param title String of job title
+     * @param location String of location
+     * @param minHours int of minimum number of hours hiring for
+     * @param maxHours int of maximum number of hours hiring for
+     * @param pay double of pay rate/salary
+     * @param expDate Date of when the job listing expires
+     * @param numOpenings int of number of openings
+     * @param skillsReq ArrayList<String> of the required skills
+     * @param duties ArrayList<String> of the duties for the job
+     * @param description String of the description
+     * @param minExp String of the minimum experience required
+     * @param remote boolean of whether or not the job opportunity is remote
+     * @param open boolean of whether or not the job listing is open
+     */
+    public JobListing(UUID companyID, String title, String location, int minHours, int maxHours,
+            double pay, Date expDate, int numOpenings, ArrayList<String> skillsReq, ArrayList<String> duties, String description,
+            String minExp, boolean remote, boolean open) {
+        this.id = UUID.randomUUID();
+        this.companyId = companyID;
+        this.title = title;
+        this.location = location;
+        this.minHours = minHours;
+        this.maxHours = maxHours;
+        this.pay = pay;
+        this.expDate = expDate;
+        this.numOpenings = numOpenings;
+        this.skillsReq = skillsReq;
+        this.duties = duties;
+        this.description = description;
+        this.minExp = minExp;
+        this.remote = remote;
+        this.open = open;
     }
     /**
      * Initializes a Job Listing with the following parameters:

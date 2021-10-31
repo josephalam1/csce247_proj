@@ -101,7 +101,7 @@ public class Students {
             return false;
         students.add( new Student(name, email, password, dateOfBirth, sex, gender, available, null,
                                   gPA, campusLocation, currLevel, currMajor, currYear, 0.0, username));
-
+        DataWriter.saveStudents();
         return true;
     }
 }

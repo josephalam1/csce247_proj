@@ -66,6 +66,7 @@ public class Resumes {
         Student student = students.getStudent(newResume.getStudentId());
         student.setResumeId(newResume.getId());
         resumes.add(newResume);
+        DataWriter.saveResumes();
         return true;
     }
 }
