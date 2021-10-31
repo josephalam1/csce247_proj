@@ -47,6 +47,15 @@ public class Companies {
     public ArrayList<JobListing> getJobs() {
         return jobs;
     }
+    public ArrayList<JobListing> getJobsByCompanyId(UUID id) {
+        ArrayList<JobListing> sortedJobs = new ArrayList<JobListing>();
+        for(JobListing job : jobs) {
+            if(job.getCompanyID() == id) {
+                sortedJobs.add(job);
+            }
+        }
+        return sortedJobs;
+    }
     /**
      * Find a Company object by recruiter username and password
      * @param username Recruiter's username
