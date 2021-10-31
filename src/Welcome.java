@@ -18,6 +18,9 @@ import java.util.Date;
 import java.time.LocalDate;
 import java.util.Base64;
 
+/**
+ * Handles interacting with the user
+ */
 public class Welcome {
     private Companies company = Companies.getInstance();
     private Students student = Students.getInstance();
@@ -45,6 +48,9 @@ public class Welcome {
             return null;
         }
     }
+    /**
+     * First screen the user interacts with
+     */
     public void mainScreen() {
         System.out.println("**************************************");
         System.out.println("* Welcome to UofSC Intership System! *");
@@ -119,28 +125,6 @@ public class Welcome {
             System.out.println("Error!\nStudent not found with username and password combination.\n");
         }
         return null;
-    }
-    /**
-     * Handles logging in for companies
-     * @return Company object returned from logging in
-     */
-    public Company loginHandlerCompany() {
-        while(true) {
-            System.out.println("Please enter your username: (Enter X to go back to main screen)");
-            String username = input.nextLine();  
-            // Checks if the user wants to exit
-            if(username.equalsIgnoreCase("X"))
-                break;
-            System.out.println("Please enter your password: ");
-            String password = getPassword(input.nextLine());  
-            Company companyUser = company.getCompany(username, password);
-            // Returns the company if the log in is successful
-            if(companyUser != null) {
-                return companyUser;
-            }
-            System.out.println("Error!\nCompany not found with username and password combination.\n");
-        }
-        return null; // Returns null if no company is found and the user exits
     }
     /**
      * Handles creating a new student user
@@ -232,7 +216,6 @@ public class Welcome {
      * @param s Student object for logged in student
      */
     public void loginStudent(Student s) {
-    // public void loginStudent() {
         System.out.println("\n");
         System.out.println("**************************************");
         System.out.println("*          Welcome Student!          *");
@@ -274,7 +257,28 @@ public class Welcome {
         ArrayList<JobListing> jobs = company.getOpenJobs();
     }
 //==============================   Company Functions  =================================
-    
+    /**
+     * Handles logging in for companies
+     * @return Company object returned from logging in
+     */
+    public Company loginHandlerCompany() {
+        while(true) {
+            System.out.println("Please enter your username: (Enter X to go back to main screen)");
+            String username = input.nextLine();  
+            // Checks if the user wants to exit
+            if(username.equalsIgnoreCase("X"))
+                break;
+            System.out.println("Please enter your password: ");
+            String password = getPassword(input.nextLine());  
+            Company companyUser = company.getCompany(username, password);
+            // Returns the company if the log in is successful
+            if(companyUser != null) {
+                return companyUser;
+            }
+            System.out.println("Error!\nCompany not found with username and password combination.\n");
+        }
+        return null; // Returns null if no company is found and the user exits
+    }
     /**
      * Handles creating a new company
      */
@@ -332,6 +336,10 @@ public class Welcome {
             System.out.println("\nThere was an error creating your account!\n");
         }
     }
+    /** 
+     * Displays the options after a company logs in
+     * @param c Company object of current user
+     */
     public void loginCompany(Company c) {
         System.out.println("\n");
         System.out.println("**************************************");
@@ -377,6 +385,10 @@ public class Welcome {
         } else 
             System.out.println("You do not have any applications for this job listing\n\n");
     }
+    /**
+     * Displays the company info and gives the option to edit it
+     * @param c Company object
+     */
     public void companyInfo(Company c) {
         System.out.println(c.toString());
     }
@@ -514,9 +526,8 @@ public class Welcome {
     public ArrayList<String> dutiesEditor(UUID id) {
         ArrayList<String> duties = new ArrayList<String>();
         while(true) {
-            if(id != null) {
+            if(id != null) // If there is something to load
                 duties = company.getJobById(id).duties;
-            }
             System.out.println("1. View your current list of duties");
             System.out.println("2. Add a duty to your list of duties");
             System.out.println("3. Delete a duty from your current list of duties");
