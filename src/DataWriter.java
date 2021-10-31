@@ -6,9 +6,6 @@ import java.text.SimpleDateFormat;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import java.util.ArrayList;
-
-import javax.management.remote.JMXProviderException;
-
 /**
  * DataWriter class for writing data to JSON files
  * @author Joseph Alam
@@ -116,7 +113,11 @@ public class DataWriter {
     public static JSONObject getStudentsJSON(Student student) {
         JSONObject studentDetails = new JSONObject();
         studentDetails.put("id", student.getId().toString());
-        studentDetails.put("resumeID", student.getResumeId().toString());
+        if(student.getResumeId() == null ) {
+            studentDetails.put("resumeID", null);
+        } else { 
+            studentDetails.put("resumeID", student.getResumeId().toString());
+        }
         studentDetails.put("name", student.name);
         studentDetails.put("username", student.username);
         studentDetails.put("gender", student.getGender());

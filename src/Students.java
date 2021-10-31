@@ -45,7 +45,7 @@ public class Students {
      */
     public Student getStudent(String username, String password) {
         for(Student student : students) {
-            if(username == student.username && password == student.getPassword()) {
+            if(username.equals(student.username) && password.equals(student.getPassword())) {
                 return student;
             }
         }

@@ -261,7 +261,8 @@ public class JobListing {
         Applications applicationsList = Applications.getInstance();
         ArrayList<Application> applicants = applicationsList.getOpenApplicationsByJob(id);
         for(Application application : applicants) {
-            
+            application.setAccepted(true);
+            numOpenings--;
         }
     
         return false;

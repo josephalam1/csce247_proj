@@ -47,6 +47,26 @@ public class Companies {
     public ArrayList<JobListing> getJobs() {
         return jobs;
     }
+    /**
+     * Returns the list of open jobs
+     * @return ArrayList<Company>: Array of company objects
+     */
+    public ArrayList<JobListing> getOpenJobs() {
+        return jobs;
+    }
+    public JobListing getJobById(UUID id) {
+        for(JobListing job : jobs) {
+            if(job.getCompanyID() == id) {
+                return job;
+            }
+        }
+        return null;
+    }
+    /**
+     * Return list of jobs by the company
+     * @param id UUID of the company
+     * @return ArrayList<JobListing> of the jobs
+     */
     public ArrayList<JobListing> getJobsByCompanyId(UUID id) {
         ArrayList<JobListing> sortedJobs = new ArrayList<JobListing>();
         for(JobListing job : jobs) {
@@ -64,7 +84,7 @@ public class Companies {
      */
     public Company getCompany(String username, String password) {
         for(Company company : companies) {
-            if(username == company.username && password == company.getPassword()) {
+            if(username.equals(company.username) && password.equals(company.getPassword())) {
                 return company;
             }
         }
