@@ -240,7 +240,15 @@ public class Welcome {
                 break;
         }
     }
-
+    public JobListing viewJobListings(UUID id){
+        ArrayList<JobListing> jobs = company.getJobsByCompanyId(id);
+        for (int i = 0; i < jobs.size(); i++) {
+            System.out.println("Index: "+i+" "+jobs.get(i)+" "+jobs.get(i).toString());
+        }
+        System.out.println("Please enter the index of the job listing you would like to view: ");
+        int index = input.nextInt();
+        return jobs.get(index);
+    }
     public void jobListingScreen() {
         System.out.println("\n");
         System.out.println("**************************************");
