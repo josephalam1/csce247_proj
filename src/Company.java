@@ -109,16 +109,6 @@ public class Company implements User {
         "\nHiring Recruiter: " + hiringRecruiter + " Email: " + recruiterEmail + " Phone: " + contactInfo;
     }
 
-
-/**
-     * Returns the Applications for the job listing company wants to see
-     * @param Joblisting title
-     * @return Application of Joblisting ID
-     */
-    public Applications viewApplications(String jobTitle) {
-        public Applications app = app.getInstance();
-        return app;
-    }
     
     public void deleteUser() {
 
