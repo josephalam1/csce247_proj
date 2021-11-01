@@ -82,5 +82,12 @@ public class Resume {
         }
         return jsonString;
     }
-
+    /**
+     * returns a resume as a string
+     */
+    public String toString(){
+        return "Resume: " +
+        "\nID " + id + "\nSkills: " + skills +
+        "\nExperiences " + experiences + "\nReferences: " + references;
+    }
 }
