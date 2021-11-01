@@ -274,7 +274,13 @@ public class JobListing {
     * Returns the job listing as a string
     */
     public String toString(){
-        return super.toString() + " Job Listing";
+        return "Job Listing information: " + "\n" +
+        "\nTitle: " + title + "\nLocation: " + location + 
+        "\nDescription: \n" + this.description + "\nMinimum experience " + minExp + 
+        "\nMinimum hours: " + minHours + " Maximum hours: " + maxHours +
+        "\nPay: " + pay + "\nExpires by " + expDate + 
+        "\nSkills required: \n" + skillsReq + "\nDuties: \n" + duties +
+        "\nRemote? : " + remote + "\nOpen? : " + open + "\nVolunteer? : " + volunteer;  
     }
 
 }

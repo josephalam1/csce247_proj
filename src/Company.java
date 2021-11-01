@@ -17,6 +17,7 @@ public class Company implements User {
     public Date dateEstablished;
     public String webSite;
     private double rating;
+    
 
     /**
      * Initializes company object with pre-existing ID
@@ -106,6 +107,17 @@ public class Company implements User {
         "\nName: " + name + "\nEstablished: " + dateEstablished + 
         "\nLocation: " + address + "\nWebsite: " + webSite + 
         "\nHiring Recruiter: " + hiringRecruiter + " Email: " + recruiterEmail + " Phone: " + contactInfo;
+    }
+
+
+/**
+     * Returns the Applications for the job listing company wants to see
+     * @param Joblisting title
+     * @return Application of Joblisting ID
+     */
+    public Applications viewApplications(String jobTitle) {
+        public Applications app = app.getInstance();
+        return app;
     }
     
     public void deleteUser() {

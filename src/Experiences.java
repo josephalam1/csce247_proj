@@ -18,7 +18,13 @@ public class Experiences {
         this.pastJobTitle = pastJobTitle;
     }
     
+    /**
+     * Returns a string format of an Experience
+     */
     public String toString(){
-        return "Experiences: ";
+        return "Experiences: " + 
+        "\nTitle: " + pastJobTitle + "\nCompany Name: " + companyName +
+        "\nStart Date: " + jobStartDate + " End Date: " + jobEndDate +
+        "\nJob duties: \n" + jobDuties;
     }
 }
