@@ -37,8 +37,8 @@ public class Resume {
     public ArrayList<String> getSkills(){
         return skills;
     }
-    public void addSkills(){
-
+    public void addSkills(String skill){
+        skills.add(skill);
     }
     public ArrayList<Experiences> getExperiences(){
         return experiences;
@@ -50,11 +50,11 @@ public class Resume {
     public ArrayList<References> getRefrences(){
         return references;
     }
-    public void addReference(){
-        
+    public void addReference(References reference){
+        references.add(reference);
     }
-    public void deleteReference(){
-        
+    public void deleteReference(References reference){
+        references.remove(reference);
     }
     public ArrayList<Object> getJsonExperience() {
         ArrayList<Object> jsonString = new ArrayList<Object>();
