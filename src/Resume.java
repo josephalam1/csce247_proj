@@ -34,25 +34,57 @@ public class Resume {
     public UUID getStudentId() {
         return studentId;
     }
+    /**
+     * gets the skills from a students resume
+     * @return the array list of skills from the resume
+     */
     public ArrayList<String> getSkills(){
         return skills;
     }
+    /**
+     * adds a skill to the resume
+     * @param skill the skill to be added to the resume
+     */
     public void addSkills(String skill){
         skills.add(skill);
     }
+    /**
+     * returns the expereiences from the resume
+     * @return array list of experiences from the resume
+     */
     public ArrayList<Experiences> getExperiences(){
         return experiences;
     }
+    /**
+     * Adds an experience to the resume
+     * @param companyName the name of the compant previously worked at
+     * @param jobTitle the title of the previous job
+     * @param jobStartDate when the job started
+     * @param jobEndDate when the job ended
+     * @param jobDuties the duties of the job
+     */
     public void addExperience(String companyName, String jobTitle, Date jobStartDate, 
                                     Date jobEndDate, ArrayList<String> jobDuties ){
         experiences.add(new Experiences(companyName, jobTitle, jobStartDate, jobEndDate, jobDuties));
     }
+    /**
+     * returns the references
+     * @return the references from the resume
+     */
     public ArrayList<References> getRefrences(){
         return references;
     }
+    /**
+     * adds reference to the array
+     * @param reference the reference to be added to the resume
+     */
     public void addReference(References reference){
         references.add(reference);
     }
+    /**
+     * removes a reference from the resume
+     * @param reference the reference to be removed
+     */
     public void deleteReference(References reference){
         references.remove(reference);
     }
