@@ -474,7 +474,7 @@ public class Welcome {
         }
         Date date = new Date();
         String dateString;
-        while(true) { // Checks to see if the date is in the correct format
+        while(true) { // Checks to see if the entered date is in the correct format
             System.out.println(
                 "Please enter the job closing date in format MM/dd/yyyy:");
             System.out.println(
@@ -488,7 +488,7 @@ public class Welcome {
             }
             Pattern pattern = Pattern.compile("\\d{2}/\\d{2}/\\d{4}");
             Matcher matcher = pattern.matcher(dateString);
-            if(matcher.matches())
+            if(matcher.matches()) 
                 break;
         }
         DateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");
