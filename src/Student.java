@@ -251,7 +251,7 @@ public class Student implements User {
         resumeID = this.resumeId;
         
     }
-    public void deleteUser() {
+    public void deleteListing(JobListing job) {
     }
     
 }

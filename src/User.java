@@ -1,4 +1,5 @@
 package src;
 public interface User{
-    public void deleteUser();
+    public void deleteListing(JobListing job);
+    public void editListing(JobListing job);
 }

@@ -109,7 +109,7 @@ public class Company implements User {
     }
 
     
-    public void deleteUser() {
+    public void deleteListing(JobListing job) {
 
     }
 
