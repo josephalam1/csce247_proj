@@ -60,7 +60,7 @@ public class Welcome {
         System.out.println("1. Login with Existing Account");
         System.out.println("2. Make an Account: Student");
         System.out.println("3. Make an Account: Company");
-        System.out.println("4. Make an Account: Admin");
+        // System.out.println("4. Make an Account: Admin"); will add later
         System.out.println("   Type X to exit program");
         while (logout == false) {
             String option = input.nextLine();
@@ -70,9 +70,9 @@ public class Welcome {
                 addStudent();
             } else if (option.equals("3")) {
                 addCompany();
-            } else if (option.equals("4")) {
-                addAdmin();
-            } else if (option.equalsIgnoreCase("x")) {
+            } // else if (option.equals("4")) {
+                //addAdmin();
+             else if (option.equalsIgnoreCase("x")) {
                 logout = true;
             } else {
                 System.out.println("Invaild input.");
@@ -133,7 +133,7 @@ public class Welcome {
             String password = getPassword(input.nextLine());
             admin.adminPassword = password;
             // checks if admin user info is correct
-            if(admin != null && admin.userName.equals("ADMIN") && admin.adminPassword.equals("PASSWORD")) {
+            if(admin != null && admin.userName.equals("ADMIN")) {
                 return admin;
             } else {
                 System.out.println("Admin credentials inccorect");
@@ -144,7 +144,7 @@ public class Welcome {
     /**
      * Handles creating a new Admin user
      */
-    public void addAdmin() {
+    /*public void addAdmin() {
         System.out.println("\n");
         System.out.println("**************************************");
         System.out.println("*         Welcome new Admin!         *");
@@ -165,11 +165,13 @@ public class Welcome {
         String password = getPassword(input.nextLine());
         // checks if password is acceptable for admin
         if (password.equals("PASSWORD")) {
-            admin.adminPassword = password;
-        } else {
+           admin.adminPassword = password;
+         } else {
             System.out.println("\nInvalid Admin password ");
-        }
-    }
+         }
+         admin.adminPassword = password;
+         
+    }*/
 
      /**
      * Shows the screen after an Admin has logged in
