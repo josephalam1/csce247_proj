@@ -60,6 +60,7 @@ public class Welcome {
         System.out.println("1. Login with Existing Account");
         System.out.println("2. Make an Account: Student");
         System.out.println("3. Make an Account: Company");
+        System.out.println("4. Make an Account: Admin");
         System.out.println("   Type X to exit program");
         while (logout == false) {
             String option = input.nextLine();
@@ -69,6 +70,8 @@ public class Welcome {
                 addStudent();
             } else if (option.equals("3")) {
                 addCompany();
+            } else if (option.equals("4")) {
+                addAdmin();
             } else if (option.equalsIgnoreCase("x")) {
                 logout = true;
             } else {
