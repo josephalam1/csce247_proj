@@ -18,7 +18,6 @@ public class Company implements User {
     public String webSite;
     private double rating;
     
-
     /**
      * Initializes company object with pre-existing ID
      * @param id Company's ID
