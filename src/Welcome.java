@@ -286,19 +286,19 @@ public class Welcome {
             String location = input.nextLine();  
             System.out.println("\nPlease enter your current level Freshman/sophomore/junior/senior: ");
             String level = input.nextLine();  
-            int year = 0;
+            int gradYear = 0;
             // Checks to make sure user enters year correctly
             while(true) {
-            System.out.println("\nPlease enter your current year 1/2/3/4/5/6: ");
-            year = input.nextInt();  
+            System.out.println("\nPlease enter your expected graduation year: ");
+            gradYear = input.nextInt();  
             input.nextLine(); 
-            if (year > 0 && year < 7)
+            if (gradYear > 0 && gradYear < 7)
                 break;
             }
             System.out.println("\nPlease enter your current major: ");
             String major = input.nextLine();  
             if(student.addStudent(name, email, password, date, sex, gender, 
-                true, gpa, location, level, major, year, username)) {
+                true, gpa, location, level, major, gradYear, username)) {
                 loginStudent(student.getStudent(username, password));
             } else {
                 System.out.println("\nThere was an error in creating your account!\n");
