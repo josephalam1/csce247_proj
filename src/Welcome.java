@@ -591,6 +591,10 @@ public class Welcome {
                 SimpleDateFormat ft = new SimpleDateFormat ("yyyy-MM-dd");
                 System.out.print(ft.format(applicants.get(i).getApplicationDate())+"\t");
             }
+            System.out.println("\n\nEnter a student\'s ID to view their resume or accept their application");
+            // Check input to make sure it is a proper student ID
+            // Once user selects a student, have them input 1 to view resume or 2 to 
+            //  select the applicant  
         } else 
             System.out.println("You do not have any applications for this job listing\n\n");
     }
