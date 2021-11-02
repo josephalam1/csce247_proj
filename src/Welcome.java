@@ -287,14 +287,9 @@ public class Welcome {
             System.out.println("\nPlease enter your current level Freshman/sophomore/junior/senior: ");
             String level = input.nextLine();  
             int gradYear = 0;
-            // Checks to make sure user enters year correctly
-            while(true) {
             System.out.println("\nPlease enter your expected graduation year: ");
             gradYear = input.nextInt();  
             input.nextLine(); 
-            if (gradYear > 0 && gradYear < 7)
-                break;
-            }
             System.out.println("\nPlease enter your current major: ");
             String major = input.nextLine();  
             if(student.addStudent(name, email, password, date, sex, gender, 
