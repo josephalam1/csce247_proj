@@ -46,7 +46,7 @@ public class Admin implements User {
         admin = adminPrivilege;
         if (admin == true) {
             job.setTitle("Admin edit");
-            job.setLocation("Amind edit");
+            job.setLocation("Admin edit");
         }
     }
      
