@@ -361,8 +361,6 @@ public class Welcome {
         if (answer.equals("1")) {
             ArrayList<JobListing> jobs = company.getOpenJobs();
             for (int i = 0; i < jobs.size(); i++) {
-                System.out.println(jobs.get(i).getCompanyID());
-                System.out.println("company.getCompany("+jobs.get(i).getCompanyID()+")");
                 String companyName = company.getCompany(jobs.get(i).getCompanyID()).name;
                 System.out.println("ID: "+i+" "+jobs.get(i).getTitle()+" - "+companyName);
             }
