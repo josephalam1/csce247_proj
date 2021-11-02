@@ -17,6 +17,7 @@ public class Company implements User {
     public Date dateEstablished;
     public String webSite;
     private double rating;
+    private Boolean adminPrivilege = false;
     
     /**
      * Initializes company object with pre-existing ID
@@ -108,12 +109,32 @@ public class Company implements User {
         "\nHiring Recruiter: " + hiringRecruiter + " Email: " + recruiterEmail + " Phone: " + contactInfo;
     }
 
-    
-    public void deleteListing(JobListing job) {
+    /**
+     * checks for admin priviliage and deletes listing 
+     * @param job to delete and admin rights
+     */
+    @Override
+    public void deleteListing(JobListing job, Boolean admin) {
+        admin = adminPrivilege;
+        if (admin == true) {
+            //jobs.remove(job);
+        }
+    }
 
+    /**
+     * checks for admin priviliage and edits the listing 
+     * @param job to edit and admin rights
+     */
+    @Override
+    public void editListing(JobListing job, Boolean admin) {
+        admin = adminPrivilege;
+        if (admin == true) {
+            job.setTitle("Admin edit");
+        }
     }
 
     public double getRating(){
         return this.rating;
     }
+
 }
