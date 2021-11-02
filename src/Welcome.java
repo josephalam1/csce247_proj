@@ -287,44 +287,43 @@ public class Welcome {
             }
         }
     }
-    public void applyToListing(){
-    //     System.out.println("Would you like to apply from the list of all open jobs or filter by skill?\nPlease enter \"1\" for open jobs or \"2\" for filter.");
-    //     int num = input.nextInt();
-    //     System.out.println("");
-    //     if(num == 1){
-    //         ArrayList<JobListing> jobs = company.getOpenJobs();
-    //         for (int i = 0; i < jobs.size(); i++) {
-    //             System.out.println("ID: "+i+" "+jobs.get(i)+" "+jobs.get(i).toString());
-    //         }
-    //         System.out.println("Please enter the ID of the job you would like to apply to: ");
-    //         num = input.nextInt();
-    //         System.out.println("");
-    //         System.out.println("Please enter your cover letter: ");
-    //         Student. = input.nextLine();
-    //         System.out.println("Please enter the date you applied: ");
-    //         Date date = new Date();
-    //         while(true) { // Checks to make sure date is formatted correctly
-    //             System.out.println("\nPlease enter the date your company was established in the format dd/MM/yyyy: ");
-    //             System.out.println("  (ex: 31/12/2000)");
-    //             applicationDate = input.nextLine();  
-    //             Pattern pattern = Pattern.compile("\\d{2}/\\d{2}/\\d{4}");
-    //             Matcher matcher = pattern.matcher(applicationDate);
-    //             if(matcher.matches())
-    //                 break;
-    //         }
-    //         DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
-    //         try { date = formatter.parse(applicationDate); }
-    //         catch (ParseException e) {e.printStackTrace(); }
-    //         s.applicationDate = applicationDate;
-    //         s.accepted = false;
-            
-    //         System.out.println("Please enter the ID of the job you would like to apply to: ");
-    //         if(num >= 0 && num <= jobs.size()){
-    //             jobs.get(num).apply(this.student);
-    //         }
-    //     }
-    //     else if()
-    // 
+    public void applyToListing(Student s){
+        System.out.println("Would you like to apply from the list of all open jobs or filter by a skill?");
+        System.out.println("Please enter \"1\" for open jobs or \"2\" for filter.");
+        int num = input.nextInt();
+        System.out.println("");
+        if(num == 1){
+            ArrayList<JobListing> jobs = company.getOpenJobs();
+            for (int i = 0; i < jobs.size(); i++) {
+                System.out.println("ID: "+i+" "+jobs.get(i)+" "+jobs.get(i).toString());
+            }
+            System.out.println("Please enter the ID of the job you would like to apply to: ");
+            if(num >= 0 && num <= jobs.size()){
+                UUID jobId = jobs.get(num).getID();
+                // Creates a new application
+                Application application = new Application(s.getId(), jobId, null);
+                // Adds this application to this list of applications
+                applications.addApplication(application);
+            }
+        }
+        else if(num == 2) {
+            ArrayList<JobListing> jobs = company.getOpenJobs();
+            System.out.println("Which skill would you like to filter the results by?");
+            String skill = input.nextLine();
+            System.out.print("");
+            for (int i = 0; i < jobs.size(); i++) {
+                if(jobs.get(i).skillsReq.contains(skill)){
+                    System.out.println("Please enter the ID of the job you would like to apply to: ");
+                    if(num >= 0 && num <= jobs.size()){
+                        UUID jobId = jobs.get(num).getID();
+                        // Creates a new application
+                        Application application = new Application(s.getId(), jobId, null);
+                        // Adds this application to this list of applications
+                        applications.addApplication(application);
+                    }
+                }
+            }
+        }
     }
 //==============================   Company Functions  =================================
     /**
