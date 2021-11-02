@@ -22,15 +22,14 @@ public class Admin implements User {
     @Override
     public void deleteListing(JobListing job) {
         if (adminPrivilege == true)
-            for (JobListing j : jobs) {
                 jobs.remove(job);
-            }
-
     }
 
     @Override
     public void editListing(JobListing job) {
-        
+        if (adminPrivilege == true) {
+            job.setTitle("Admin edit");
+        }
     }
      
 }
