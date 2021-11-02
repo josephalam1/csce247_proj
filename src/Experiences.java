@@ -2,6 +2,7 @@ package src;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.text.SimpleDateFormat;
 
 public class Experiences {
     public String companyName;
@@ -22,9 +23,13 @@ public class Experiences {
      * Returns a string format of an Experience
      */
     public String toString(){
-        return "Experiences: " + 
-        "\nTitle: " + pastJobTitle + "\nCompany Name: " + companyName +
-        "\nStart Date: " + jobStartDate + " End Date: " + jobEndDate +
-        "\nJob duties: \n" + jobDuties;
+        SimpleDateFormat ft = new SimpleDateFormat ("dd/MM/yyyy");
+        String returnString =  "Job title: " + pastJobTitle + " for company: " 
+        + companyName + "\nEmployed from: " + ft.format(jobStartDate) + " - " + 
+        ft.format(jobEndDate) + "\nJob duties: \n";
+        for(String duty : jobDuties) {
+            returnString += " "+duty;
+        }
+        return returnString;
     }
 }

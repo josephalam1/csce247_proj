@@ -114,12 +114,19 @@ public class Resume {
         }
         return jsonString;
     }
-    /**
-     * returns a resume as a string
-     */
-    public String toString(){
-        return "Resume: " +
-        "\nID " + id + "\nSkills: " + skills +
-        "\nExperiences " + experiences + "\nReferences: " + references;
+    public String toString() {
+        String returnString = "=====================Skills:==========================";
+        for (String skill : this.skills) {
+            returnString +="\n "+skill;
+        }
+        returnString += "\n===================Experience:========================";
+        for (Experiences experience : this.experiences) {
+            returnString +="\n "+experience.toString();
+        }
+        returnString += "\n===================References:========================";
+        for (References reference : this.references) {
+            returnString += "\n "+reference.toString();
+        }
+        return returnString;
     }
 }

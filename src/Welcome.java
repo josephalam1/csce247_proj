@@ -230,7 +230,7 @@ public class Welcome {
             if(option.equals("1")) {
                 studentInfo(s);
             } else if(option.equals("2")) { 
-                System.out.println("To be implemented");
+                viewResume(s);
             } else if(option.equals("3")) {
                 jobListingScreen();
             } else if(option.equalsIgnoreCase("x")) {
@@ -287,6 +287,11 @@ public class Welcome {
             }
         }
     }
+    public void viewResume(Student s) {
+        Resume resume = resumes.getResumeById(s.getResumeId());
+        System.out.println("Name:\t"+s.name);
+        System.out.println(resume.toString());
+    }
     public void applyToListing(Student s){
         System.out.println("Would you like to apply from the list of all open jobs or filter by a skill?");
         System.out.println("Please enter \"1\" for open jobs or \"2\" for filter.");
@@ -306,7 +311,24 @@ public class Welcome {
                 applications.addApplication(application);
             }
         }
-        else if(num == 2) {}
+        else if(num == 2) {
+            ArrayList<JobListing> jobs = company.getOpenJobs();
+            System.out.println("Which skill would you like to filter the results by?");
+            String skill = input.nextLine();
+            System.out.print("");
+            for (int i = 0; i < jobs.size(); i++) {
+                if(jobs.get(i).skillsReq.contains(skill)){
+                    System.out.println("Please enter the ID of the job you would like to apply to: ");
+                    if(num >= 0 && num <= jobs.size()){
+                        UUID jobId = jobs.get(num).getID();
+                        // Creates a new application
+                        Application application = new Application(s.getId(), jobId, null);
+                        // Adds this application to this list of applications
+                        applications.addApplication(application);
+                    }
+                }
+            }
+        }
     }
 //==============================   Company Functions  =================================
     /**
@@ -501,7 +523,7 @@ public class Welcome {
                 input.nextLine();
                 break;
             } else
-            input.next(); // Resets the input
+                input.next(); // Resets the input
         }
         double pay = 0.0;
         while(true) { // Checks to see if the user enters a double
@@ -511,7 +533,7 @@ public class Welcome {
                 input.nextLine();
                 break;
             } else
-            input.next(); // Resets the input
+                input.next(); // Resets the input
         }
         int numOpenings = 0;  
         while(true){ // Checks to see if the user enters an interger
@@ -521,7 +543,7 @@ public class Welcome {
                 input.nextLine();
                 break;
             } else
-            input.next(); // Resets the input
+                input.next(); // Resets the input
         }
         Date date = new Date();
         String dateString;
@@ -562,7 +584,7 @@ public class Welcome {
                 remote = input.nextBoolean();
                 break;
             } else
-            input.next();
+                input.next();
         }
         System.out.println(
             "Please enter the minimum experience required for this position: ");
