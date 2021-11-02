@@ -99,8 +99,15 @@ public class Application {
     public void setAccepted(boolean accepted) {
         this.accepted = accepted;
     }
+    /**
+     * Returns the resume as a string
+     */
     public String toString() {
-        return "Application: ";
+        return "Application: " + 
+        "\nStudent ID: " + studentId + "\nJob ID: " + jobPostingId +
+        "\nApplication Date: " + applicationDate +
+        "\nCover Letter: " + coverLetter +
+        "\nAccepted?: " + accepted;
     }
 
 }
