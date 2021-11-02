@@ -984,9 +984,15 @@ public class Welcome {
                 } else // Shows this if the user does not currently have any duties
                     System.out.println("You do not currently have any duties.\n");
             } else if(option.equals("2")) {
-                System.out.println("Enter a duty to add for this position: ");
+                System.out.println("Enter a duty to add for this position: (or you can separate multiple by commas)");
                 String newDuty = input.nextLine();
-                duties.add(newDuty);
+                if(newDuty.contains(",")) {
+                    String [] items = newDuty.split("\\s*,\\s*");
+                    for (String item : items) {
+                        duties.add(item);
+                    }
+                } else
+                    duties.add(newDuty);
                 System.out.println("Duty successfully added!\n");
             } else if(option.equals("3")) {
                 if(duties.size() > 0) {
