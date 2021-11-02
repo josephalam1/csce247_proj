@@ -372,6 +372,7 @@ public class Welcome {
                     jobListingScreen(s);;
                 if(input.hasNextInt()) {
                         index = input.nextInt();
+                        input.nextLine();
                         if(index >= 0 && index < jobs.size())
                             break;
                     }
