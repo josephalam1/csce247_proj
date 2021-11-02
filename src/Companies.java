@@ -52,7 +52,13 @@ public class Companies {
      * @return ArrayList<Company>: Array of company objects
      */
     public ArrayList<JobListing> getOpenJobs() {
-        return jobs;
+        ArrayList<JobListing> openjobs = new ArrayList<JobListing>();
+        for (JobListing job : jobs) {
+            if (job.open && job.getNumOpenings() > 0) {
+                openjobs.add(job);
+            }
+        }
+        return openjobs;
     }
     public JobListing getJobById(UUID id) {
         for(JobListing job : jobs) {
