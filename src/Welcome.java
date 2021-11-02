@@ -724,9 +724,32 @@ public class Welcome {
                 System.out.print(ft.format(applicants.get(i).getApplicationDate())+"\t");
             }
             System.out.println("\n\nEnter a student\'s ID to view their resume or accept their application");
-            // Check input to make sure it is a proper student ID
-            // Once user selects a student, have them input 1 to view resume or 2 to 
-            //  select the applicant  
+            int index = 0;
+            while(true) {
+                System.out.println("Please enter the ID of the student to select: ");
+                if(input.hasNextInt()) {
+                    index = input.nextInt();
+                    if(index >= 0 && index < applicants.size())
+                        break;        
+                }
+            }
+            while(true) {
+                System.out.println("\n1. View this student\'s application");
+                System.out.println("2. Accept this student\'s application");
+                System.out.println("3. Exit (Or type X)");
+                String option = input.nextLine();
+                if(option.equals("1")) {
+                    viewResume(student.getStudent(applicants.get(index).getStudentId()));
+                } else if (option.equals("2")) {
+                    JobListing job = company.getJobById(id);
+                    job.chooseCandidate(applicants.get(index).getId());
+                    System.out.println("Candidate chosen successfully");
+                } else if (option.equals("3") || option.equalsIgnoreCase("x")) {
+                    break;
+                } else {
+                    System.out.println("Error! Invalid input");
+                }
+            }
         } else 
             System.out.println("You do not have any applications for this job listing\n\n");
     }
