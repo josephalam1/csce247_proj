@@ -281,12 +281,12 @@ public class JobListing {
         "\n-Location: " + location + 
         "\n-Description: \n" + this.description + "\n-Minimum experience required: " + minExp + 
         "\n-Minimum hours required: " + minHours + "\n-Maximum hours: " + maxHours +
-        "\nPay rate: $" + pay + "\nExpires by " + ft.format(expDate) + 
-        "\nSkills required:";
+        "\n-Pay rate: $" + pay + "\n-Expires by " + ft.format(expDate) + 
+        "\n-Skills required:\n";
         for(String skill : skillsReq) {
             returnString += "-"+skill+"\n";
         }
-         returnString += "\nDuties:";
+         returnString += "-Duties:\n";
          for(String duty : duties) {
              returnString += "-"+duty+"\n";
          }
