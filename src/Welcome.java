@@ -400,7 +400,7 @@ public class Welcome {
             filterBySkill();
         }
         else if(answer.equals("3")){
-            System.out.println("call applyToListing");
+            applyToListing(s);
         }
         else if(answer.equalsIgnoreCase("x")){
             mainScreen();
