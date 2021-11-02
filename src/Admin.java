@@ -10,6 +10,7 @@ public class Admin implements User {
     public String email;
     protected String adminPassword;
     private ArrayList<JobListing> jobs;
+    private Companies company = Companies.getInstance();
 
      /**
      * Initializes company object with pre-existing ID
@@ -23,6 +24,7 @@ public class Admin implements User {
         this.userName = userName;
         this.adminPassword = adminPassword;
         this.email = email;
+        this.adminPrivilege = true;
     } 
 
 
@@ -34,6 +36,9 @@ public class Admin implements User {
     public void deleteListing(JobListing job, Boolean admin) {
         admin = adminPrivilege;
         if (admin == true)
+        //for (JobListing jobListing : jobs) {
+            //company.getJobs()
+        //}
                 jobs.remove(job);
     }
 
@@ -46,7 +51,7 @@ public class Admin implements User {
         admin = adminPrivilege;
         if (admin == true) {
             job.setTitle("Admin edit");
-            job.setLocation("Amind edit");
+            job.setLocation("Admin edit");
         }
     }
      

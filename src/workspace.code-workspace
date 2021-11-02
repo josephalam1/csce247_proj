@@ -1,0 +1,19 @@
+{
+	"folders": [
+		{
+			"path": "..\\.."
+		}
+	],
+	"settings": {
+		"java.project.sourcePaths": [
+			"oldProject",
+			"design-patterns",
+			"CSCE416_Assignment1/CSCE416_Assignment1",
+			"csce247_proj"
+		],
+		"java.project.referencedLibraries": [
+			"lib/**/*.jar",
+			"csce247_proj/lib/json-simple-1.1.1.jar"
+		]
+	}
+}
