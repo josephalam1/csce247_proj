@@ -28,6 +28,7 @@ public class DataLoader {
                 String name = (String)studentJSON.get("name");
                 String username = (String)studentJSON.get("username");
                 String email = (String)studentJSON.get("email");
+                String phone = (String)studentJSON.get("phone");
                 String password = (String)studentJSON.get("password");
                 SimpleDateFormat ft = new SimpleDateFormat ("yyyy-MM-dd"); 
                 Date dob = ft.parse((String)studentJSON.get("dob"));
@@ -41,10 +42,10 @@ public class DataLoader {
                 String major = (String)studentJSON.get("major");
                 double rating = (double)studentJSON.get("rating");
                 if(resume) {
-                students.add(new Student(id, resumeId, name, email, password, dob, sex, gender,
+                students.add(new Student(id, resumeId, name, email, phone, password, dob, sex, gender,
                     available, gpa, location, level, major, year, rating, username));
                 } else { 
-                    students.add(new Student(id, name, email, password, dob, sex, gender,
+                    students.add(new Student(id, name, email, phone, password, dob, sex, gender,
                     available, gpa, location, level, major, year, rating, username));
                 }
             }

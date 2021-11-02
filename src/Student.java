@@ -10,6 +10,7 @@ public class Student implements User {
     public String name;
     public String username;
     public String email;
+    public String phone;
     protected String password;
     private Date dateOfBirth;
     private String sex;
@@ -28,6 +29,7 @@ public class Student implements User {
      * Initializes student object without pre-existing ID
      * @param name Student's name
      * @param email Student's email
+     * @param phone Student's phone number
      * @param password Student's password
      * @param dateOfBirth Student's birthdate
      * @param sex Student's sex
@@ -43,13 +45,14 @@ public class Student implements User {
      * @param rating Rating
      * @param username Student's username
      */
-    public Student(String name, String email, String password, Date dateOfBirth, String sex,
+    public Student(String name, String email, String phone, String password, Date dateOfBirth, String sex,
             String gender, Boolean available, ArrayList<JobListing> savedJobs,
             double gPA, String campusLocation, String currLevel, String currMajor, int currYear, double rating, String username) {
         this.id = UUID.randomUUID();
         this.name = name;
         this.username = username;
         this.email = email;
+        this.phone = phone;
         this.password = password;
         this.dateOfBirth = dateOfBirth;
         this.sex = sex;
@@ -68,6 +71,7 @@ public class Student implements User {
      * @param id Student's ID
      * @param name Student's name
      * @param email Student's email
+     * @param phone Student's phone number
      * @param password Student's password
      * @param dateOfBirth Student's birthdate
      * @param sex Student's sex
@@ -83,12 +87,13 @@ public class Student implements User {
      * @param rating Rating
      * @param username Student's username
      */
-    public Student(UUID id, String name, String email, String password, Date dateOfBirth, String sex,
+    public Student(UUID id, String name, String email, String phone, String password, Date dateOfBirth, String sex,
             String gender, Boolean available, double gPA, String campusLocation, String currLevel, String currMajor, int currYear, double rating, String username) {
         this.id = id;
         this.name = name;
         this.username = username;
         this.email = email;
+        this.phone = phone;
         this.password = password;
         this.dateOfBirth = dateOfBirth;
         this.sex = sex;
@@ -106,6 +111,7 @@ public class Student implements User {
      * @param id Student's ID
      * @param name Student's name
      * @param email Student's email
+     * @param phone Student's phone number
      * @param password Student's password
      * @param dateOfBirth Student's birthdate
      * @param sex Student's sex
@@ -120,14 +126,16 @@ public class Student implements User {
      * @param rating Rating
      * @param username Student's username
      */
-    public Student(UUID id, UUID resumeID, String name, String email, String password, Date dateOfBirth, String sex,
-            String gender, Boolean available,
-            double gPA, String campusLocation, String currLevel, String currMajor, int currYear, double rating, String username) {
+    public Student(UUID id, UUID resumeID, String name, String email, String phone,
+        String password, Date dateOfBirth, String sex, String gender, Boolean available, 
+        double gPA, String campusLocation, String currLevel, String currMajor, 
+        int currYear, double rating, String username) {
         this.id = id;
         this.resumeId = resumeID;
         this.name = name;
         this.username = username;
         this.email = email;
+        this.phone = phone;
         this.password = password;
         this.dateOfBirth = dateOfBirth;
         this.sex = sex;

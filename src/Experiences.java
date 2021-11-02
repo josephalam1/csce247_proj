@@ -29,7 +29,7 @@ public class Experiences {
             ft.format(jobStartDate) + " - " +  ft.format(jobEndDate) + 
             "\n-Job duties: \n";
         for(String duty : jobDuties) {
-            returnString += "  -"+duty;
+            returnString += "  -"+duty +"\n";
         }
         return returnString;
     }

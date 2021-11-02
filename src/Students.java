@@ -94,13 +94,14 @@ public class Students {
      * @param username Student's username
      * @return boolean of whether or not student was added
      */
-    public boolean addStudent(String name, String email, String password, Date dateOfBirth, String sex,
+    public boolean addStudent(String name, String email, String phone, String password, Date dateOfBirth, String sex,
     String gender, Boolean available, double gPA, String campusLocation, String currLevel, String currMajor,
      int currYear, String username) {
         if(haveUser(username))
             return false;
-        students.add( new Student(name, email, password, dateOfBirth, sex, gender, available, null,
-                                  gPA, campusLocation, currLevel, currMajor, currYear, 0.0, username));
+        students.add( new Student(name, email, phone, password, dateOfBirth, sex, 
+            gender, available, null, gPA, campusLocation, currLevel, currMajor, 
+            currYear, 0.0, username));
         DataWriter.saveStudents();
         return true;
     }

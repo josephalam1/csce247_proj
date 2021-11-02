@@ -123,6 +123,7 @@ public class DataWriter {
         studentDetails.put("gender", student.getGender());
         studentDetails.put("sex", student.getSex());
         studentDetails.put("email", student.email);
+        studentDetails.put("phone", student.phone);
         studentDetails.put("password", student.getPassword());
         studentDetails.put("dob", ft.format(student.getDateOfBirth()));
         studentDetails.put("GPA", student.getGPA());

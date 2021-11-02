@@ -1,7 +1,10 @@
 package src;
 
 // test
-
+import java.awt.Desktop;  
+import java.io.File;
+import java.io.IOException;
+import java.io.FileWriter;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -227,10 +230,6 @@ public class Welcome {
             System.out.println("**************************************");
             System.out.println("*       Welcome new Student!         *");
             System.out.println("**************************************");
-            System.out.println("\nPlease enter your name: ");
-            String name = input.nextLine();  
-            System.out.println("\nPlease enter your email: ");
-            String email = input.nextLine();  
             String username = new String();
             // Checks to see if the username is taken already
             while(true) {
@@ -243,6 +242,12 @@ public class Welcome {
             System.out.println("\nPlease enter your password: ");
             String password = getPassword(input.nextLine());
             String sDOB = new String();
+            System.out.println("\nPlease enter your name: ");
+            String name = input.nextLine();  
+            System.out.println("\nPlease enter your email: ");
+            String email = input.nextLine();  
+            System.out.println("\nPlease enter your phone number: ");
+            String phone = input.nextLine();  
             Date date = new Date();
             // Checks to make sure the user enters the birth date in the correct format
             while(true){
@@ -292,7 +297,7 @@ public class Welcome {
             input.nextLine(); 
             System.out.println("\nPlease enter your current major: ");
             String major = input.nextLine();  
-            if(student.addStudent(name, email, password, date, sex, gender, 
+            if(student.addStudent(name, email, phone, password, date, sex, gender, 
                 true, gpa, location, level, major, gradYear, username)) {
                 loginStudent(student.getStudent(username, password));
             } else {
@@ -310,19 +315,22 @@ public class Welcome {
         System.out.println("**************************************\n");
         while(true) { // Loops the log-in menu until the student exits
             System.out.println("1. View account information");
-            System.out.println("2. View resume");
-            System.out.println("3. View job listings");
+            System.out.println("2. View job listings");
+            System.out.println("3. View resume");
             System.out.println("4. Create a resume");
+            System.out.println("5. Print your resume to a text-file");
             System.out.println("   Enter X to logout");
             String option = input.nextLine();
             if(option.equals("1")) {
                 studentInfo(s);
             } else if(option.equals("2")) { 
-                viewResume(s);
-            } else if(option.equals("3")) {
                 jobListingScreen(s);
+            } else if(option.equals("3")) {
+                viewResume(s);
             } else if(option.equals("4")) {
-              addResume(s);  
+                addResume(s);  
+            } else if (option.equals("5")) {
+                printResume(s);
             } else if(option.equalsIgnoreCase("x")) {
                 mainScreen();
             } else {
@@ -380,12 +388,39 @@ public class Welcome {
     public void viewResume(Student s) {
         if(s.getResumeId() == null) {
             System.out.println("You do not currently have a resume\n\n");
-        } else {
-            Resume resume = resumes.getResumeById(s.getResumeId());
-            System.out.println(
-            "***********************************  "+s.name+"\'s resume ********************************\n");
-            System.out.println(resume.toString());
+            return;
+        } 
+        Resume resume = resumes.getResumeById(s.getResumeId());
+        System.out.println(
+        "***********************************  "+s.name+"\'s resume ********************************\n");
+        System.out.println("-Email: "+s.email);
+        System.out.println("-Phone number: "+s.phone);
+        System.out.println("-Major: "+s.currMajor);
+        System.out.println("-Expected graduation year: "+s.currYear);
+        System.out.println(resume.toString());
+    }
+    public void printResume(Student s) {
+        if(s.getResumeId() == null) {
+            System.out.println("You do not currently have a resume\n\n");
+            return;
+        } 
+        Resume resume = resumes.getResumeById(s.getResumeId());
+        File newFile = new File("resume.txt");
+        try (FileWriter file = new FileWriter("resume.txt")) {
+            file.write(""+s.name+"\'s resume");
+            file.write("\n-Email: "+s.email);
+            file.write("\n-Phone number: "+s.phone);
+            file.write("\n-Major: "+s.currMajor);
+            file.write("\n-Expected graduation year: "+s.currYear);
+            file.write("\n\n"+resume.toString());
+            file.flush();
+        } catch (IOException e) { e.printStackTrace(); }
+        if(Desktop.isDesktopSupported()) {
+            Desktop desktop = Desktop.getDesktop();
+            try {  desktop.open(newFile); } 
+            catch(Exception e) {}
         }
+        System.out.println("\n *** Resume successfully created. ***\n");
     }
     public void addResume(Student s) {
         System.out.println("\nPlease add some skills to your resume: ");
@@ -477,7 +512,7 @@ public class Welcome {
             System.out.println("\n1. View your current list of job references");
             System.out.println("2. Add a reference to your list of references");
             System.out.println("3. Delete a reference from your list of references");
-            System.out.println("4. Next category (Or type X)");
+            System.out.println("4. Finish resume (Or type X)");
             String option = input.nextLine();
             if (option.equals("1")) {
                 if(references.size() == 0){
@@ -841,7 +876,7 @@ public class Welcome {
             System.out.println("1. View your current list of duties");
             System.out.println("2. Add a duty to your list of duties");
             System.out.println("3. Delete a duty from your current list of duties");
-            System.out.println("4. Done with resume (Or enter X)");
+            System.out.println("4. Exit (Or enter X)");
             String option = input.nextLine();
             if(option.equals("1")) {
                 if(duties.size() > 0) {
@@ -909,7 +944,7 @@ public class Welcome {
                 System.out.println("2. Add a skill to your list of required skills");
                 System.out.println("3. Delete a skill from your list of required skills");
             }
-            System.out.println("4. Next category (Or type X)");
+            System.out.println("4. Exit (Or type X)");
             String option = input.nextLine();
             if(option.equals("1")) { // View skills
                 if(skills.size() > 0) {
