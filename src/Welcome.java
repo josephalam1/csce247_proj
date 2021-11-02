@@ -392,7 +392,7 @@ public class Welcome {
         } 
         Resume resume = resumes.getResumeById(s.getResumeId());
         System.out.println(
-        "***********************************  "+s.name+"\'s resume ********************************\n");
+        "***********************************  "+s.name+"\'s resume ********************************");
         System.out.println("-Email: "+s.email);
         System.out.println("-Phone number: "+s.phone);
         System.out.println("-Major: "+s.currMajor);
@@ -430,6 +430,7 @@ public class Welcome {
         System.out.println("Please add some references to your resume: ");
         ArrayList<References> references = referencesEditor();
         resumes.addResume(new Resume(s.getID(), skills, experiences, references));
+        System.out.println("\n **** Resume successfully created ****\n");
     }
     public ArrayList<Experiences> experienceEditor() {
         ArrayList<Experiences> experiences = new ArrayList<Experiences>();
@@ -957,11 +958,17 @@ public class Welcome {
                 }
             } if(option.equals("2")) { // Add skill
                 if(resumeSkills) // If this is for a resume
-                    System.out.println("Enter a skill to add: ");
+                    System.out.println("Enter a skill to add: (You can add multiple by separating with a comma) ");
                 else  // If this is for a job listing
-                    System.out.println("Enter a skill you are requiring: ");
+                    System.out.println("Enter a skill you are requiring: (You can add multiple by separating with a comma)");
                 String newSkill = input.nextLine();
-                skills.add(newSkill);
+                if(newSkill.contains(",")) {
+                    String [] items = newSkill.split("\\s*,\\s*");
+                    for (String item : items) {
+                        skills.add(item);
+                    }
+                } else 
+                    skills.add(newSkill);
             } if(option.equals("3")) { // Delete skill
                 if(skills.size() > 0) { // Checks if there are any skills to delete
                     while(true) { // Checks to see if user enters valid skill
