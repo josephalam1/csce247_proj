@@ -132,8 +132,9 @@ public class Welcome {
             // checks if admin user info is correct
             if(admin != null && admin.userName.equals("ADMIN") && admin.adminPassword.equals("PASSWORD")) {
                 return admin;
+            } else {
+                System.out.println("Admin credentials inccorect");
             }
-            System.out.println("Error!\nStudent not found with username and password combination.\n");
         }
         return null;
     }
