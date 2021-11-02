@@ -43,7 +43,7 @@ public class Resumes {
      */
     public Resume getResumeById(UUID id) {
         for(Resume resume : resumes) {
-            if(resume.getId() == id) {
+            if(resume.getId().equals(id)) {
                 return resume;
             }
         }
@@ -67,6 +67,7 @@ public class Resumes {
         student.setResumeId(newResume.getId());
         resumes.add(newResume);
         DataWriter.saveResumes();
+        DataWriter.saveStudents();
         return true;
     }
 }

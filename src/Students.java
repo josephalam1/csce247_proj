@@ -58,7 +58,7 @@ public class Students {
      */
     public Student getStudent(UUID id) {
         for(Student student : students) {
-            if(id == student.getId()) {
+            if(id.equals(student.getId())) {
                 return student;
             }
         }

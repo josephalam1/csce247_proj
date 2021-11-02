@@ -56,7 +56,7 @@ public class Companies {
     }
     public JobListing getJobById(UUID id) {
         for(JobListing job : jobs) {
-            if(job.getCompanyID() == id) {
+            if(job.getCompanyID().equals(id)) {
                 return job;
             }
         }
@@ -97,7 +97,7 @@ public class Companies {
      */
     public Company getCompany(UUID id) {
         for(Company company : companies) {
-            if(id == company.getId()) {
+            if(id.equals(company.getId())) {
                 return company;
             }
         }

@@ -14,7 +14,7 @@ public class References {
     }
     
     public String toString(){
-        return "Name " + name + "\tRelationship: " + relationship +
-        "\tPhone number " + phoneNum + "\tEmail: " + email;
+        return "Name: " + name + "\n-Relationship: " + relationship +
+        "\n-Phone number " + phoneNum + "\n-Email: " + email;
     }
 }

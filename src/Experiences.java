@@ -24,11 +24,12 @@ public class Experiences {
      */
     public String toString(){
         SimpleDateFormat ft = new SimpleDateFormat ("dd/MM/yyyy");
-        String returnString =  "Job title: " + pastJobTitle + " for company: " 
-        + companyName + "\nEmployed from: " + ft.format(jobStartDate) + " - " + 
-        ft.format(jobEndDate) + "\nJob duties: \n";
+        String returnString =  "Job Title: " + pastJobTitle + 
+            "\n-For company: " + companyName + "\n-Employed from: " + 
+            ft.format(jobStartDate) + " - " +  ft.format(jobEndDate) + 
+            "\n-Job duties: \n";
         for(String duty : jobDuties) {
-            returnString += " "+duty;
+            returnString += "  -"+duty;
         }
         return returnString;
     }

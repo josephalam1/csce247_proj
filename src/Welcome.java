@@ -77,7 +77,6 @@ public class Welcome {
         System.out.println("Goodbye");
         System.exit(0);
     }
-
     /**
      * Determines which types of log in the user is making and logs them in
      */
@@ -225,6 +224,7 @@ public class Welcome {
             System.out.println("1. View account information");
             System.out.println("2. View resume");
             System.out.println("3. View job listings");
+            System.out.println("4. Create a resume");
             System.out.println("   Enter X to logout");
             String option = input.nextLine();
             if(option.equals("1")) {
@@ -232,7 +232,9 @@ public class Welcome {
             } else if(option.equals("2")) { 
                 viewResume(s);
             } else if(option.equals("3")) {
-                jobListingScreen();
+                jobListingScreen(s);
+            } else if(option.equals("4")) {
+              addResume(s);  
             } else if(option.equalsIgnoreCase("x")) {
                 mainScreen();
             } else {
@@ -250,7 +252,7 @@ public class Welcome {
    /**
      * Shows the lists of open job  listings for students
      */
-    public void jobListingScreen() {
+    public void jobListingScreen(Student s) {
         System.out.println("\n");
         System.out.println("**************************************");
         System.out.println("*             Job Listing            *");
@@ -258,7 +260,7 @@ public class Welcome {
         System.out.println("1. View open jobs");
         System.out.println("2. Filter by skill");
         System.out.println("3. Apply for a job");
-        System.out.println("   Enter X to logout");
+        System.out.println("   Enter X to return to main screen");
         String answer = input.nextLine();
         if (answer.equals("1")) {
             ArrayList<JobListing> jobs = company.getOpenJobs();
@@ -288,10 +290,143 @@ public class Welcome {
         }
     }
     public void viewResume(Student s) {
-        Resume resume = resumes.getResumeById(s.getResumeId());
-        System.out.println("Name:\t"+s.name);
-        System.out.println(resume.toString());
+        if(s.getResumeId() == null) {
+            System.out.println("You do not currently have a resume\n\n");
+        } else {
+            Resume resume = resumes.getResumeById(s.getResumeId());
+            System.out.println(
+            "***********************************  "+s.name+"\'s resume ********************************\n");
+            System.out.println(resume.toString());
+        }
     }
+    public void addResume(Student s) {
+        System.out.println("\nPlease add some skills to your resume: ");
+        ArrayList<String> skills = skillsEditor(null, true);
+        System.out.println("Please add some experiences to your resume: ");
+        ArrayList<Experiences> experiences = experienceEditor();
+        System.out.println("Please add some references to your resume: ");
+        ArrayList<References> references = referencesEditor();
+        resumes.addResume(new Resume(s.getID(), skills, experiences, references));
+    }
+    public ArrayList<Experiences> experienceEditor() {
+        ArrayList<Experiences> experiences = new ArrayList<Experiences>();
+        while(true) {
+            System.out.println("\n1. View your current list of job experiences");
+            System.out.println("2. Add an experience to your list of job experience");
+            System.out.println("3. Delete an experience from your list of job experiences");
+            System.out.println("4. Exit (Or type X)");
+            String option = input.nextLine();
+            if (option.equals("1")) {
+                System.out.println("=================   Experiences   ====================");
+                for (Experiences experience : experiences) {
+                    System.out.println(experience.toString()); 
+                }             
+            } else if (option.equals("2")) {
+                System.out.println("Please enter your previous company\'s name: ");
+                String companyName = input.nextLine();
+                System.out.println("Please enter your previous job title:");
+                String pastJobTitle = input.nextLine();
+                String dateStart = new String();
+                Date jobStartDate = new Date();
+                while(true) { // Checks to make sure date is formatted correctly
+                    System.out.println("Please enter when you began employment: (in format dd/MM/yyyy)");                System.out.println("  (ex: 31/12/2000)");
+                    dateStart = input.nextLine();  
+                    Pattern pattern = Pattern.compile("\\d{2}/\\d{2}/\\d{4}");
+                    Matcher matcher = pattern.matcher(dateStart);
+                    if(matcher.matches())
+                        break;
+                }    
+                DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+                try { jobStartDate = formatter.parse(dateStart); }
+                catch (ParseException e) {e.printStackTrace(); }
+                Date jobEndDate = new Date();
+                String endDate = new String();
+                while(true) { // Checks to make sure date is formatted correctly
+                    System.out.println("Please enter when you stopped employment: (in format dd/MM/yyyy)");                System.out.println("  (ex: 31/12/2000)");
+                    endDate = input.nextLine();  
+                    Pattern pattern = Pattern.compile("\\d{2}/\\d{2}/\\d{4}");
+                    Matcher matcher = pattern.matcher(dateStart);
+                    if(matcher.matches())
+                        break;
+                }    
+                try { jobEndDate = formatter.parse(endDate); }
+                catch (ParseException e) {e.printStackTrace(); }    
+                System.out.println("Please enter duties for this job position");
+                ArrayList<String> jobDuties = dutiesEditor(null);
+                experiences.add(new Experiences(companyName, pastJobTitle, 
+                    jobStartDate, jobEndDate, jobDuties));
+            } else if (option.equals("3")) {
+                if(experiences.size() > 0) { // Checks if there are any experiences to delete
+                    while(true) { // Checks to see if user enters valid experience
+                        for(int i = 0; i < experiences.size(); i++) {
+                            System.out.println("ID:"+i+" - "+experiences.get(i).pastJobTitle+"at "+experiences.get(i).companyName);
+                        }
+                        System.out.println("Enter the ID of the experience you wish to delete: ");
+                        if(input.hasNextInt()) {
+                            int index = input.nextInt();
+                            if(index >= 0 && index < experiences.size()) {
+                                experiences.remove(index);
+                                System.out.println("Experience successfully removed.");
+                                break;
+                            }
+                        }
+                    }
+                } else 
+                    System.out.println("You do not have any experiences currently.");
+            } else if(option.equals("4") || option.equalsIgnoreCase("x")) {
+                break;
+            }
+        }
+        return experiences;
+    }
+    public ArrayList<References> referencesEditor() {
+        ArrayList<References> references = new ArrayList<References>();
+        while(true) {
+            System.out.println("\n1. View your current list of job references");
+            System.out.println("2. Add a reference to your list of references");
+            System.out.println("3. Delete a reference from your list of references");
+            System.out.println("4. Exit (Or type X)");
+            String option = input.nextLine();
+            if (option.equals("1")) {
+                System.out.println("=================   References   ===================");
+                for (References reference : references) {
+                    System.out.println(reference.toString()); 
+                } 
+            } else if (option.equals("2")) {
+                System.out.println("Please enter your reference\'s name: ");
+                String name = input.nextLine();
+                System.out.println("Please enter your reference\'s relationship to yourself:");
+                String relationship = input.nextLine();
+                System.out.println("Please enter your reference\'s phone number: ");
+                String phoneNum = input.nextLine();
+                System.out.println("Please enter your reference\'s e-mail address: ");
+                String email = input.nextLine();
+                references.add(new References(name, relationship, phoneNum, email));
+            } else if (option.equals("3")) {
+                if(references.size() > 0) { // Checks if there are any experiences to delete
+                    while(true) { // Checks to see if user enters valid experience
+                        for(int i = 0; i < references.size(); i++) {
+                            System.out.println("ID:"+i+" - "+references.get(i).name);
+                        }
+                        System.out.println("Enter the ID of the reference you wish to delete: ");
+                        if(input.hasNextInt()) {
+                            int index = input.nextInt();
+                            if(index >= 0 && index < references.size()) {
+                                references.remove(index);
+                                System.out.println("Reference successfully removed.");
+                                break;
+                            }
+                        }
+                    }
+                } else 
+                    System.out.println("You do not have any references currently.");
+            } else if(option.equals("4") || option.equalsIgnoreCase("x")) {
+                break;
+            }
+        }
+        return references;
+    }
+
     public void applyToListing(Student s){
         System.out.println("Would you like to apply from the list of all open jobs or filter by a skill?");
         System.out.println("Please enter \"1\" for open jobs or \"2\" for filter.");
@@ -574,6 +709,7 @@ public class Welcome {
         ArrayList<String> skills = new ArrayList<String>();
         if(option.equals("0") || option.equalsIgnoreCase("y") || option.equalsIgnoreCase("yes"))
             skills = skillsEditor(null, false); // See JavaDoc
+        System.out.println("Please add some duties for this job position.");
         ArrayList<String> duties = dutiesEditor(null); // See JavaDoc
         System.out.println("\nPlease enter the job description for this position: ");
         String description = input.nextLine();
@@ -640,7 +776,7 @@ public class Welcome {
                     }
                 } else // Shows this if the user does not have any duties
                     System.out.println("You do not currently have any duties.\n");
-            } else if(option.equals("4")) { // User chose to exit
+            } else if(option.equals("4") || option.equalsIgnoreCase("x")) { // User chose to exit
                 if(duties.size() > 0) // Checks to make sure there is at least 1 duty
                     break;
                 else 
@@ -665,11 +801,11 @@ public class Welcome {
                     skills = company.getJobById(id).skillsReq;
             }
             if(resumeSkills) {
-                System.out.println("1. View your current list of skills");
+                System.out.println("\n1. View your current list of skills");
                 System.out.println("2. Add a skill to your list of skills");
                 System.out.println("3. Delete a skill from your current list of skills");
             } else {
-                System.out.println("1. View your current list of required skills for this position");
+                System.out.println("\n1. View your current list of required skills for this position");
                 System.out.println("2. Add a skill to your list of required skills");
                 System.out.println("3. Delete a skill from your list of required skills");
             }

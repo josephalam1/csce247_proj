@@ -45,7 +45,7 @@ public class Applications {
     public ArrayList<Application> getOpenApplicationsByStudent(UUID studentId) {
         ArrayList<Application> openApplications  = new ArrayList<Application>();
         for(Application application: applications) {
-            if(studentId == application.getStudentId() && application.getAccepted() == false) {
+            if(studentId.equals(application.getStudentId()) && application.getAccepted() == false) {
                 openApplications.add(application);
             }
         }
@@ -59,7 +59,7 @@ public class Applications {
     public ArrayList<Application> getOpenApplicationsByJob(UUID jobId) {
         ArrayList<Application> openApplications  = new ArrayList<Application>();
         for(Application application: applications) {
-            if(jobId == application.getJobId() && application.getAccepted() == false) {
+            if(jobId.equals(application.getJobId()) && application.getAccepted() == false) {
                 openApplications.add(application);
             }
         }

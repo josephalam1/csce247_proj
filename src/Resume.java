@@ -20,6 +20,14 @@ public class Resume {
                          this.experiences = experiences;
                          this.references = references;
     }
+    public Resume(UUID studentID, ArrayList<String> skills, ArrayList<Experiences> experiences,
+        ArrayList<References> references) {
+            this.id = UUID.randomUUID();
+            this.studentId = studentID;
+            this.skills = skills;
+            this.experiences = experiences;
+            this.references = references;
+    }
     /**
      * Returns the UUID of the resume
      * @return UUID of resume
