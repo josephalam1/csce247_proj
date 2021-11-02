@@ -941,6 +941,7 @@ public class Welcome {
         String minExp = input.nextLine();
         company.addJob(companyID, title, loc, minHrs, maxHrs, pay, 
             date, numOpenings, skills, duties, description, minExp, remote, true);
+        System.out.println("\n   ****  Job posting successfully created   *****");
     }
     /**
      * Handles creating an interactive arraylist for the user to interact with
