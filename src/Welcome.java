@@ -406,6 +406,9 @@ public class Welcome {
             mainScreen();
         }
     }
+    /**
+     * Filters the job listing by skills
+     */
     public void filterBySkill(){
         ArrayList<JobListing> jobs = company.getOpenJobs();
         System.out.println("Which skill would you like to filter the results by?");
@@ -417,9 +420,17 @@ public class Welcome {
             }
         }
     }
+    /**
+     * View a job listing
+     * @param j JobListing to view
+     */
     public void viewJobListing(JobListing j) {
         System.out.println(j.toString());
     }
+    /**
+     * View a student's resume
+     * @param s Student whose resume to view
+     */
     public void viewResume(Student s) {
         if(s.getResumeId() == null) {
             System.out.println("You do not currently have a resume\n\n");
@@ -434,6 +445,10 @@ public class Welcome {
         System.out.println("-Expected graduation year: "+s.currYear);
         System.out.println(resume.toString());
     }
+    /**
+     * Print the student's resume to a file
+     * @param s Student whose resume to print
+     */
     public void printResume(Student s) {
         if(s.getResumeId() == null) {
             System.out.println("You do not currently have a resume\n\n");
@@ -936,7 +951,12 @@ public class Welcome {
         }
         System.out.println(
             "Please enter the minimum experience required for this position: ");
-        String minExp = input.nextLine();
+        String minExp = new String();
+        while(true) {
+            minExp = input.nextLine();
+            if(minExp.length() > 0)
+                break;
+        }
         company.addJob(companyID, title, loc, minHrs, maxHrs, pay, 
             date, numOpenings, skills, duties, description, minExp, remote, true);
         System.out.println("\n   ****  Job posting successfully created   *****");
