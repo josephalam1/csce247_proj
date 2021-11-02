@@ -361,7 +361,41 @@ public class Welcome {
         if (answer.equals("1")) {
             ArrayList<JobListing> jobs = company.getOpenJobs();
             for (int i = 0; i < jobs.size(); i++) {
-                System.out.println("ID: "+i+" "+jobs.get(i)+" "+jobs.get(i).toString());
+                System.out.println(jobs.get(i).getCompanyID());
+                System.out.println("company.getCompany("+jobs.get(i).getCompanyID()+")");
+                String companyName = company.getCompany(jobs.get(i).getCompanyID()).name;
+                System.out.println("ID: "+i+" "+jobs.get(i).getTitle()+" - "+companyName);
+            }
+            int index = 0;
+            while(true) {
+                System.out.println("Enter the ID of the job posting you wish to select or press X to exit");
+                String choice = input.nextLine();
+                if (choice.equalsIgnoreCase("x"))
+                    break;
+                if(input.hasNextInt()) {
+                        index = input.nextInt();
+                        if(index >= 0 && index < jobs.size())
+                            break;
+                    }
+            }
+            while(true) {
+                System.out.println("1. View the full job posting.");
+                System.out.println("2. Apply to this job listing.");
+                System.out.println("3. Exit (Or type X)");
+                String option = input.nextLine();
+                if(option.equals("1")) {
+                    viewJobListing(jobs.get(index));
+                } else if(option.equals("2")) {
+                    UUID jobId = jobs.get(index).getID();
+                    Application application = new Application(s.getId(), jobId, null);
+                    if(applications.addApplication(application))
+                        System.out.println("Successfully applied!");
+                    else
+                        System.out.println("Error! You have already applied to this listing.");
+                } else if(option.equals("3") || option.equalsIgnoreCase("x")) {
+                    break;
+                } else
+                    System.out.println("Error! Invalid input.");
             }
         }
         else if(answer.equals("2")){
@@ -384,6 +418,9 @@ public class Welcome {
                 System.out.print(jobs.get(i).toString());
             }
         }
+    }
+    public void viewJobListing(JobListing j) {
+        System.out.println(j.toString());
     }
     public void viewResume(Student s) {
         if(s.getResumeId() == null) {
@@ -422,6 +459,10 @@ public class Welcome {
         }
         System.out.println("\n *** Resume successfully created. ***\n");
     }
+    /**
+     * Interface for creating a resume
+     * @param s Student that is creating the resume
+     */
     public void addResume(Student s) {
         System.out.println("\nPlease add some skills to your resume: ");
         ArrayList<String> skills = skillsEditor(null, true);
@@ -432,6 +473,10 @@ public class Welcome {
         resumes.addResume(new Resume(s.getID(), skills, experiences, references));
         System.out.println("\n **** Resume successfully created ****\n");
     }
+    /**
+     * Interface for creating experiences
+     * @return ArrayList<Experiences> of experiences user created
+     */
     public ArrayList<Experiences> experienceEditor() {
         ArrayList<Experiences> experiences = new ArrayList<Experiences>();
         while(true) {
@@ -507,6 +552,10 @@ public class Welcome {
         }
         return experiences;
     }
+    /**
+     * Interface for creating references
+     * @return ArrayList<References> references the user created
+     */
     public ArrayList<References> referencesEditor() {
         ArrayList<References> references = new ArrayList<References>();
         while(true) {
@@ -558,7 +607,10 @@ public class Welcome {
         }
         return references;
     }
-
+    /**
+     * Allows the student to apply to a job listing
+     * @param s Student that is looking to apply
+     */
     public void applyToListing(Student s){
         System.out.println("Would you like to apply from the list of all open jobs or filter by a skill?");
         System.out.println("Please enter \"1\" for open jobs or \"2\" for filter.");
@@ -575,7 +627,10 @@ public class Welcome {
                 // Creates a new application
                 Application application = new Application(s.getId(), jobId, null);
                 // Adds this application to this list of applications
-                applications.addApplication(application);
+                if(applications.addApplication(application))
+                    System.out.println("Successfully applied!");
+                else
+                    System.out.println("Error! You have already applied to this listing.");
             }
         }
         else if(num == 2) {

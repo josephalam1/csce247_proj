@@ -97,7 +97,7 @@ public class Companies {
      */
     public Company getCompany(UUID id) {
         for(Company company : companies) {
-            if(id.equals(company.getId())) {
+            if(company.getId().equals(id)) {
                 return company;
             }
         }
