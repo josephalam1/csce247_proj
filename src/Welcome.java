@@ -369,7 +369,7 @@ public class Welcome {
                 System.out.println("Enter the ID of the job posting you wish to select or press X to exit");
                 String choice = input.nextLine();
                 if (choice.equalsIgnoreCase("x"))
-                    break;
+                    jobListingScreen(s);;
                 if(input.hasNextInt()) {
                         index = input.nextInt();
                         if(index >= 0 && index < jobs.size())
