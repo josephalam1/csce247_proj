@@ -270,13 +270,7 @@ public class JobListing {
         }
         return false;
    }
-//    public void apply(UUID studentID, UUID companyID, UUID jobPostingID, String coverLetter, Date applicationDate){
-//     this.studentId = studentID;
-//     this.companyId = companyID;
-//     this.jobPostingID = jobPostingID;
-//     this.coverLetter = coverLetter;
-//     this.applicationDate = applicationDate;
-// }
+
    /**
     * Returns the job listing as a string
     */

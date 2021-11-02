@@ -223,6 +223,13 @@ public class Student implements User {
         GPA = gPA;
     }
     /**
+     * gets the stundet's id
+     * @return id student's identifacation number
+     */
+    public UUID getID(){
+        return this.id;
+    }
+    /**
      * Get student's rating
      * @return double of student's rating
      */
@@ -239,7 +246,11 @@ public class Student implements User {
         "\nGender: " + this.getGender() + 
         "\nGPA: " + this.getGPA() + " Level: " + currLevel + " Year: " + currYear + " Major: " + currMajor;
     }
-
+    public void apply(UUID studentID, UUID resumeID, UUID jobPostingID, Date applicationDate){
+        studentID = this.id;
+        resumeID = this.resumeId;
+        
+    }
     public void deleteUser() {
     }
     
