@@ -24,6 +24,8 @@ import java.util.Base64;
 public class Welcome {
     private Companies company = Companies.getInstance();
     private Students student = Students.getInstance();
+    // private Admin admin = Admins.getInstance();
+    private Admin admin = new Admin(null, null, null, null);
     private Resumes resumes = Resumes.getInstance();
     private Applications applications = Applications.getInstance();
     public Scanner input = new Scanner(System.in);  // Create a Scanner object
@@ -84,6 +86,7 @@ public class Welcome {
         while(true) {
             System.out.println("1. Login Student");
             System.out.println("2. Login Company");
+            System.out.println("3. Login Admin");
             System.out.println("   Type X to return to the main screen");
             String opt = input.nextLine();
             if (opt.equals("1")) {
@@ -98,12 +101,96 @@ public class Welcome {
                 if(currCompany != null) 
                     loginCompany(currCompany);
                 break;
+            } else if (opt.equalsIgnoreCase("3")) {
+                Admin currAdmin = loginHandlerAdmin();
+                if(currAdmin != null)
+                    loginAdmin(currAdmin);
+                break;
             } else if (opt.equalsIgnoreCase("x")) {
                 break;
             }
-            System.out.println("Please enter the number 1 or 2 or X\n");
+            System.out.println("Please enter the number 1 or 2 or 3 or X\n");
         }
         mainScreen();
+    }
+
+//=============================     Admin Functions   ============================
+    /**
+     * Handles Logging in for the Admin
+     * @return Admin object of Admin returned from login
+     */
+    public Admin loginHandlerAdmin() {
+        while(true) {
+            System.out.println("Please enter your username: (Enter X to go back to main screen)");
+            String username = input.nextLine(); 
+            admin.userName = username; 
+            if(username.equalsIgnoreCase("X"))
+                break;
+            System.out.println("Please enter your password: ");
+            String password = getPassword(input.nextLine());
+            admin.adminPassword = password;
+            // checks if admin user info is correct
+            if(admin != null && admin.userName.equals("ADMIN") && admin.adminPassword.equals("PASSWORD")) {
+                return admin;
+            }
+            System.out.println("Error!\nStudent not found with username and password combination.\n");
+        }
+        return null;
+    }
+    /**
+     * Handles creating a new Admin user
+     */
+    public void addAdmin() {
+        System.out.println("\n");
+        System.out.println("**************************************");
+        System.out.println("*         Welcome new Admin!         *");
+        System.out.println("**************************************"); 
+        System.out.println("\nPlease enter your email: ");
+        String email = input.nextLine(); 
+        admin.email = email; 
+        String username = new String();
+        System.out.println("\nPlease enter your username: ");
+        username = input.nextLine();
+        // checks if username is accepable for admin
+        if (username.equals("ADMIN")) {
+            admin.userName = username;
+        } else {
+            System.out.println("\nInvalid Admin Username ");
+        }
+        System.out.println("\nPlease enter your password: ");
+        String password = getPassword(input.nextLine());
+        // checks if password is acceptable for admin
+        if (password.equals("PASSWORD")) {
+            admin.adminPassword = password;
+        } else {
+            System.out.println("\nInvalid Admin password ");
+        }
+    }
+
+     /**
+     * Shows the screen after an Admin has logged in
+     * @param a Admin object for logged in Admin user
+     */
+    public void loginAdmin(Admin a) {
+        System.out.println("\n");
+        System.out.println("**************************************");
+        System.out.println("*            Welcome Admin!          *");
+        System.out.println("**************************************\n");
+        while(true) { // Loops the log-in menu until the student exits
+            System.out.println("1. Delete Listing");
+            System.out.println("2. Edit Listing");
+            System.out.println("   Enter X to logout");
+            String option = input.nextLine();
+            if(option.equals("1")) {
+                // admin.deleteListing(job, admin);
+            } else if(option.equals("2")) { 
+                // admin.editListing(job, admin);
+            } else if(option.equalsIgnoreCase("x")) {
+                mainScreen();
+            } else {
+                System.out.println("Error! Invalid input.");
+            }
+        }
     }
 //=============================     Student Functions   ============================
     /**

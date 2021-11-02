@@ -10,8 +10,14 @@ public class Admin implements User {
     public String email;
     protected String adminPassword;
     private ArrayList<JobListing> jobs;
-    private Companies company = Companies.getInstance();
 
+     /**
+     * Initializes company object with pre-existing ID
+     * @param id admin's ID
+     * @param userName admin's username
+     * @param email the admin's email
+     * @param adminPassword Password for the admin
+     */
     public Admin(UUID id, String userName, String adminPassword, String email) {
         this.id = id;
         this.userName = userName;
@@ -40,6 +46,7 @@ public class Admin implements User {
         admin = adminPrivilege;
         if (admin == true) {
             job.setTitle("Admin edit");
+            job.setLocation("Amind edit");
         }
     }
      
