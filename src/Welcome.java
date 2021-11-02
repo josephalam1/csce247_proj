@@ -407,9 +407,13 @@ public class Welcome {
             System.out.println("\n1. View your current list of job experiences");
             System.out.println("2. Add an experience to your list of job experience");
             System.out.println("3. Delete an experience from your list of job experiences");
-            System.out.println("4. Exit (Or type X)");
+            System.out.println("4. Next (Or type X)");
             String option = input.nextLine();
             if (option.equals("1")) {
+                if(experiences.size() == 0){
+                    System.out.println("You do not have any experiences yet! Please add an experience.");
+                    continue;
+                }
                 System.out.println("=================   Experiences   ====================");
                 for (Experiences experience : experiences) {
                     System.out.println(experience.toString()); 
@@ -478,9 +482,13 @@ public class Welcome {
             System.out.println("\n1. View your current list of job references");
             System.out.println("2. Add a reference to your list of references");
             System.out.println("3. Delete a reference from your list of references");
-            System.out.println("4. Exit (Or type X)");
+            System.out.println("4. Next category (Or type X)");
             String option = input.nextLine();
             if (option.equals("1")) {
+                if(references.size() == 0){
+                    System.out.println("You do not have any experiences yet! Please add an experience.");
+                    continue;
+                }
                 System.out.println("=================   References   ===================");
                 for (References reference : references) {
                     System.out.println(reference.toString()); 
@@ -838,7 +846,7 @@ public class Welcome {
             System.out.println("1. View your current list of duties");
             System.out.println("2. Add a duty to your list of duties");
             System.out.println("3. Delete a duty from your current list of duties");
-            System.out.println("4. Exit (Or enter X)");
+            System.out.println("4. Done with resume (Or enter X)");
             String option = input.nextLine();
             if(option.equals("1")) {
                 if(duties.size() > 0) {
@@ -906,7 +914,7 @@ public class Welcome {
                 System.out.println("2. Add a skill to your list of required skills");
                 System.out.println("3. Delete a skill from your list of required skills");
             }
-            System.out.println("4. Exit (Or type X to exit)");
+            System.out.println("4. Next category (Or type X)");
             String option = input.nextLine();
             if(option.equals("1")) { // View skills
                 if(skills.size() > 0) {
