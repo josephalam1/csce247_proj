@@ -3,6 +3,7 @@ package src;
 import java.util.Date;
 import java.util.ArrayList;
 import java.util.UUID;
+import java.text.SimpleDateFormat;
 
 public class JobListing {
     private UUID id, companyId;
@@ -275,13 +276,25 @@ public class JobListing {
     * Returns the job listing as a string
     */
     public String toString(){
-        return "Job Listing information: " + "\n" +
-        "\nTitle: " + title + "\nLocation: " + location + 
-        "\nDescription: \n" + this.description + "\nMinimum experience " + minExp + 
-        "\nMinimum hours: " + minHours + " Maximum hours: " + maxHours +
-        "\nPay: " + pay + "\nExpires by " + expDate + 
-        "\nSkills required: \n" + skillsReq + "\nDuties: \n" + duties +
-        "\nRemote? : " + remote + "\nOpen? : " + open + "\nVolunteer? : " + volunteer;  
+        SimpleDateFormat ft = new SimpleDateFormat ("dd/MM/yyyy");
+        String returnString = "Job Listing for: " + title + 
+        "\n-Location: " + location + 
+        "\n-Description: \n" + this.description + "\n-Minimum experience required: " + minExp + 
+        "\n-Minimum hours required: " + minHours + "\n-Maximum hours: " + maxHours +
+        "\nPay rate: $" + pay + "\nExpires by " + ft.format(expDate) + 
+        "\nSkills required:";
+        for(String skill : skillsReq) {
+            returnString += "-"+skill+"\n";
+        }
+         returnString += "\nDuties:";
+         for(String duty : duties) {
+             returnString += "-"+duty+"\n";
+         }
+         if(isRemote())
+            returnString += "-Remote employment";
+        if(volunteer)
+            returnString += "-Volunteer opportunity"; 
+        return returnString; 
     }
 
 }
