@@ -779,7 +779,8 @@ public class Welcome {
             } else if (option.equals("4")) {
                 JobListing job = chooseJobFromCompany(c.getId());
                 if(job != null) { // If the user selected a job
-                    viewApplications(job.getID());
+                    System.out.println(job.getID());
+                    viewApplications(job);
                 }
             } else if (option.equalsIgnoreCase("x")) {
                 break;
@@ -790,9 +791,8 @@ public class Welcome {
      * View list of applicants from job id
      * @param id UUID of job posting's ID
      */
-    public void viewApplications(UUID id) {
-        ArrayList<Application> applicants = applications.getOpenApplicationsByJob(id);
-        System.out.println(applicants);
+    public void viewApplications(JobListing job) {
+        ArrayList<Application> applicants = applications.getOpenApplicationsByJob(job.getID());
         if (applicants.size() > 0) {
             System.out.println("ID\tStudent\'s name\tDate Applied");
             for (int i = 0; i < applicants.size(); i++) {
@@ -819,7 +819,6 @@ public class Welcome {
                 if(option.equals("1")) {
                     viewResume(student.getStudent(applicants.get(index).getStudentId()));
                 } else if (option.equals("2")) {
-                    JobListing job = company.getJobById(id);
                     job.chooseCandidate(applicants.get(index).getId());
                     System.out.println("Candidate chosen successfully");
                 } else if (option.equals("3") || option.equalsIgnoreCase("x")) {
@@ -1020,8 +1019,10 @@ public class Welcome {
                                 System.out.println("Duty successfully deleted!");
                                 break;
                             }
-                        } else if(input.nextLine().equalsIgnoreCase("x"))
+                        } else if(input.hasNext()) {
+                        if(input.nextLine().equalsIgnoreCase("x"))
                             break;
+                        }
                     }
                 } else // Shows this if the user does not have any duties
                     System.out.println("You do not currently have any duties.\n");

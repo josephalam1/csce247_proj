@@ -263,11 +263,13 @@ public class JobListing {
         ArrayList<Application> applicants = applicationsList.getOpenApplicationsByJob(id);
         Students studentInst = Students.getInstance();
         for (Application application : applicants) {
-            if (numOpenings <= 0 || !studentInst.getStudent(applicationId).available)
-                return false;
-            application.setAccepted(true);
-            numOpenings--;
-            return true;
+            if(this.id.equals(applicationId)) {
+                if (numOpenings <= 0 || !studentInst.getStudent(application.getStudentId()).available)
+                    return false;
+                application.setAccepted(true);
+                numOpenings--;
+                return true;
+            }
         }
         return false;
    }
