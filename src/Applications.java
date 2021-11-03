@@ -78,6 +78,7 @@ public class Applications {
             }
         }
         applications.add(application);
+        DataWriter.saveApplications();
         return true;
     }
 }

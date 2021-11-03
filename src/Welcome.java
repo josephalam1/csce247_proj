@@ -27,8 +27,6 @@ import java.util.Base64;
 public class Welcome {
     private Companies company = Companies.getInstance();
     private Students student = Students.getInstance();
-    // private Admin admin = Admins.getInstance();
-    private Admin admin = new Admin(null, null, null, null);
     private Resumes resumes = Resumes.getInstance();
     private Applications applications = Applications.getInstance();
     public Scanner input = new Scanner(System.in);  // Create a Scanner object
@@ -126,6 +124,7 @@ public class Welcome {
      * @return Admin object of Admin returned from login
      */
     public Admin loginHandlerAdmin() {
+        Admin admin = new Admin(null, null, null, null);
         while(true) {
             System.out.println("Please enter your username: (Enter X to go back to main screen)");
             String username = input.nextLine(); 
@@ -793,7 +792,8 @@ public class Welcome {
      */
     public void viewApplications(UUID id) {
         ArrayList<Application> applicants = applications.getOpenApplicationsByJob(id);
-        if(applicants.size() > 0) {
+        System.out.println(applicants);
+        if (applicants.size() > 0) {
             System.out.println("ID\tStudent\'s name\tDate Applied");
             for (int i = 0; i < applicants.size(); i++) {
                 System.out.print(" "+i+"\t");
@@ -850,7 +850,7 @@ public class Welcome {
             return null;
         }
         for (int i = 0; i < jobs.size(); i++) {
-            System.out.println("ID: "+i+" "+jobs.get(i)+" "+jobs.get(i).toString());
+            System.out.println("ID: "+i+" "+jobs.get(i).getTitle());
         }
         int index = 0;
         while(true) { // Checks if ID user enters is a valid index
