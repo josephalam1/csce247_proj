@@ -60,6 +60,14 @@ public class Companies {
         }
         return openjobs;
     }
+    public ArrayList<JobListing> filterBySkill(String skill) {
+        ArrayList<JobListing> filtered = new ArrayList<JobListing>();
+        for(JobListing job : jobs) {
+            if (job.skillsReq.contains(skill))
+                filtered.add(job);
+        }
+        return filtered;
+    }
     public JobListing getJobById(UUID id) {
         for(JobListing job : jobs) {
             if(job.getCompanyID().equals(id)) {

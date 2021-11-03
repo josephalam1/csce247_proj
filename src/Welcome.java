@@ -345,6 +345,45 @@ public class Welcome {
     public void studentInfo(Student s) {
         System.out.println(s.toString()+"\n\n");
     }
+    public void viewAndApplyJobs(ArrayList<JobListing> jobs, Student s) {
+        for (int i = 0; i < jobs.size(); i++) {
+            String companyName = company.getCompany(jobs.get(i).getCompanyID()).name;
+            System.out.println("ID: "+i+" "+jobs.get(i).getTitle()+" - "+companyName);
+        }
+        int index = 0;
+        while(true) {
+            System.out.println("\nEnter the ID of the job posting you wish to select or press X to exit");
+            if(input.hasNextInt()) {
+                    index = input.nextInt();
+                    input.nextLine();
+                    if(index >= 0 && index < jobs.size())
+                        break;
+            } else if(input.hasNext()) {
+                String choice = input.nextLine();
+                if (choice.equalsIgnoreCase("x"))
+                    break;
+            }
+        }
+        while(true) {
+            System.out.println("1. View the full job posting.");
+            System.out.println("2. Apply to this job listing.");
+            System.out.println("3. Exit (Or type X)");
+            String option = input.nextLine();
+            if(option.equals("1")) {
+                viewJobListing(jobs.get(index));
+            } else if(option.equals("2")) {
+                UUID jobId = jobs.get(index).getID();
+                Application application = new Application(s.getId(), jobId, null);
+                if(applications.addApplication(application))
+                    System.out.println("Successfully applied!\n");
+                else
+                    System.out.println("Error! You have already applied to this listing.\n");
+            } else if(option.equals("3") || option.equalsIgnoreCase("x")) {
+                break;
+            } else
+                System.out.println("Error! Invalid input.\n");
+        }
+    }
    /**
      * Shows the lists of open job  listings for students
      */
@@ -361,46 +400,10 @@ public class Welcome {
             String answer = input.nextLine();
             if (answer.equals("1")) {
                 ArrayList<JobListing> jobs = company.getOpenJobs();
-                for (int i = 0; i < jobs.size(); i++) {
-                    String companyName = company.getCompany(jobs.get(i).getCompanyID()).name;
-                    System.out.println("ID: "+i+" "+jobs.get(i).getTitle()+" - "+companyName);
-                }
-                int index = 0;
-                while(true) {
-                    System.out.println("\nEnter the ID of the job posting you wish to select or press X to exit");
-                    if(input.hasNextInt()) {
-                            index = input.nextInt();
-                            input.nextLine();
-                            if(index >= 0 && index < jobs.size())
-                                break;
-                    } else if(input.hasNext()) {
-                        String choice = input.nextLine();
-                        if (choice.equalsIgnoreCase("x"))
-                            break;
-                    }
-                }
-                while(true) {
-                    System.out.println("1. View the full job posting.");
-                    System.out.println("2. Apply to this job listing.");
-                    System.out.println("3. Exit (Or type X)");
-                    String option = input.nextLine();
-                    if(option.equals("1")) {
-                        viewJobListing(jobs.get(index));
-                    } else if(option.equals("2")) {
-                        UUID jobId = jobs.get(index).getID();
-                        Application application = new Application(s.getId(), jobId, null);
-                        if(applications.addApplication(application))
-                            System.out.println("Successfully applied!\n");
-                        else
-                            System.out.println("Error! You have already applied to this listing.\n");
-                    } else if(option.equals("3") || option.equalsIgnoreCase("x")) {
-                        break;
-                    } else
-                        System.out.println("Error! Invalid input.\n");
-                }
+                viewAndApplyJobs(jobs, s);
             }
             else if(answer.equals("2")){
-                filterBySkill();
+                filterBySkill(s);
             }
             else if(answer.equals("3")){
                 applyToListing(s);
@@ -414,16 +417,16 @@ public class Welcome {
     /**
      * Filters the job listing by skills
      */
-    public void filterBySkill(){
-        ArrayList<JobListing> jobs = company.getOpenJobs();
+    public void filterBySkill(Student s){
         System.out.println("Which skill would you like to filter the results by?");
         String skill = input.next();
         System.out.print("");
-        for (int i = 0; i < jobs.size(); i++) {
-            if(jobs.get(i).skillsReq.contains(skill)){
-                System.out.print(jobs.get(i).toString());
-            }
+        ArrayList<JobListing> jobs = company.filterBySkill(skill);
+        if(jobs.size() <= 0) {
+            System.out.println("No jobs found with that skill.\n\n");
+            return;
         }
+        viewAndApplyJobs(jobs, s);
     }
     /**
      * View a job listing
