@@ -768,7 +768,7 @@ public class Welcome {
             System.out.println("3. View Job Listings");
             System.out.println("4. View applicants");
             System.out.println("   Enter X to logout");
-            String option = input.nextLine();
+            String option = input.next();
             if(option.equals("1")) {
                 companyInfo(c);
             } else if (option.equals("2")) {
