@@ -1,0 +1,32 @@
+chloe's resume
+-Email: odessa@email.com
+-Phone number: 3522551661
+-Major: compsci
+-Expected graduation year: 2022
+
+=====================Skills:==========================
+ Python
+ Java
+ JavaScript
+ HTML
+ CSS
+===================Experience:========================
+ Job Title: Software Developer
+-For company: JP Morgan
+-Employed from: 01/05/2019 - 01/08/2019
+-Job duties: 
+  -Created a Python program to predict clients needs.
+  -Managed incoming customers and future predictions
+
+ Job Title: Test Engineer
+-For company: Bank of America
+-Employed from: 01/05/2020 - 01/08/2020
+-Job duties: 
+  -Created JUnit tests cases to test new features of the back end of the banks website
+  -Executed test cases and reported issues to engineering
+
+===================References:========================
+ Name: bob
+-Relationship: coworker
+-Phone number 1234567890
+-Email: email.com
