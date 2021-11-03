@@ -254,7 +254,7 @@ public class Student implements User {
         "\nName: " + name + "\nEmail: " + email + 
         "\nDOB: " + this.getDateOfBirth() + "\nSex: " + this.getSex() + 
         "\nGender: " + this.getGender() + 
-        "\nGPA: " + this.getGPA() + " Level: " + currLevel + " Year: " + currYear + " Major: " + currMajor;
+        "\nGPA: " + this.getGPA() + " Level: " + currLevel + " Expected Graduation Year: " + currYear + " Major: " + currMajor;
     }
     public void apply(UUID studentID, UUID resumeID, UUID jobPostingID, Date applicationDate){
         studentID = this.id;

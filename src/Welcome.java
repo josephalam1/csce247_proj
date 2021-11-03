@@ -289,7 +289,7 @@ public class Welcome {
             }
             System.out.println("\nPlease enter your U of SC campus location: ");
             String location = input.nextLine();  
-            System.out.println("\nPlease enter your current level Freshman/sophomore/junior/senior: ");
+            System.out.println("\nPlease enter your current level Freshman/Sophomore/Junior/Senior: ");
             String level = input.nextLine();  
             int gradYear = 0;
             System.out.println("\nPlease enter your expected graduation year: ");
