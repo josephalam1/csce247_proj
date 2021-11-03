@@ -449,8 +449,8 @@ public class Welcome {
         "***********************************  "+s.name+"\'s resume ********************************");
         System.out.println("-Email: "+s.email);
         System.out.println("-Phone number: "+s.phone);
-        System.out.println("-Major: "+s.currMajor);
         System.out.println("-Education: University of South Carolina "+s.campusLocation);
+        System.out.println(" -Major: "+s.currMajor);
         System.out.println(" -Expected graduation year: "+s.currYear);
         System.out.println(resume.toString());
     }
@@ -469,8 +469,9 @@ public class Welcome {
             file.write(""+s.name+"\'s resume");
             file.write("\n-Email: "+s.email);
             file.write("\n-Phone number: "+s.phone);
-            file.write("\n-Major: "+s.currMajor);
-            file.write("\n-Expected graduation year: "+s.currYear);
+            file.write("\n-Education: University of South Carolina "+s.campusLocation);
+            file.write("\n -Major: "+s.currMajor);
+            file.write("\n -Expected graduation year: "+s.currYear);
             file.write("\n\n"+resume.toString());
             file.flush();
         } catch (IOException e) { e.printStackTrace(); }
