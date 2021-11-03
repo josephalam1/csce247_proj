@@ -395,7 +395,7 @@ public class Welcome {
         while(true) {
             System.out.println("1. View open jobs");
             System.out.println("2. Filter by skill");
-            System.out.println("3. Apply for a job");
+            // System.out.println("3. Apply for a job");
             System.out.println("   Enter X to return to main screen");
             String answer = input.nextLine();
             if (answer.equals("1")) {
