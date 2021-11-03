@@ -450,7 +450,8 @@ public class Welcome {
         System.out.println("-Email: "+s.email);
         System.out.println("-Phone number: "+s.phone);
         System.out.println("-Major: "+s.currMajor);
-        System.out.println("-Expected graduation year: "+s.currYear);
+        System.out.println("-Education: University of South Carolina "+s.campusLocation);
+        System.out.println(" -Expected graduation year: "+s.currYear);
         System.out.println(resume.toString());
     }
     /**
