@@ -70,13 +70,13 @@ class CompaniesTest {
     }
     @Test 
     void testAddCompanyEmpty() {
-        assertTrue(
+        assertFalse(
             companies.addCompany("", "", "", "", "", "", "", new Date(), "")
         );
     }
     @Test 
     void testAddUserNull() {
-        assertTrue(
+        assertFalse(
             companies.addCompany(null, null, null, null, null, null, null, 
                 new Date(), null)
         );
