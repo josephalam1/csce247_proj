@@ -11,13 +11,13 @@ import java.util.Date;
 import java.util.UUID;
 
 public class StudentTest {
-    private UUID id;
-    private UUID resumeId;
+    UUID tStudentId = UUID.randomUUID();
+    UUID tresumeId = UUID.randomUUID();
     public String name;
     public String username;
     public String email;
     public String phone;
-    protected String password;
+    protected String password = "random";
     private Date dateOfBirth;
     private String sex;
     private String gender;
@@ -33,7 +33,8 @@ public class StudentTest {
 
     @BeforeEach
     public void setup() {
-        
+        Student s1 = new Student(tStudentId, "Odessa", "odessa.chloe@gmail.com", "3521234567", password, new Date(), "F", "F", true, 2.1, "columbia", "junior", "compsci", 3, 3, "odessa.c");
+        Student s2 = new Student(tStudentId, "crhis", "student.chris@gmail.com", "1234567890", password, new Date(), "M", "O", true, 2.8, "columbia", "Freshman", "compsci", 1, 4, "student_chris");
     }
 
     @AfterEach 
