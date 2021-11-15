@@ -9,6 +9,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.UUID;
 
+import javax.lang.model.type.NullType;
+
 public class ApplicationsTest {
 
     private static Applications app = Applications.getInstance();
@@ -34,13 +36,17 @@ public class ApplicationsTest {
         appList.clear();
         DataWriter.saveApplications();
     }
-   /*@Test 
-    void testAddAppNull() {
-        assertFalse(
-        app.addApplication(new Application(null, null, null, "", false, new Date())));
-    }*/
+   @Test 
+    void testAppNotAdded() {
+        for (Application pastApplications : appList) {
+            if(appList.get(0).getJobId() != pastApplications.getJobId() && appList.get(0).getStudentId() != pastApplications.getStudentId()) {
+                assertTrue(
+                    app.addApplication(new Application(null, null, null, "", false, new Date())));
+            }
+        }
+    }
     @Test 
-    void testAddAppNotExist() {
+    void testAppAdded() {
         assertFalse(
         app.addApplication(new Application(tAppID, tStudentID, tJobtID, "cover letter 3 ", true, new Date())));
     }
