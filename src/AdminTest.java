@@ -22,9 +22,9 @@ public class AdminTest {
 
     @Test
     void deleteJobListingTest(){
-    admin.jobs = new ArrayList<JobListing>();
     JobListing job = new JobListing(UUID.randomUUID(), "Boss", "New york", 0, 4, 100, new Date(), 1, null, null, "boss people around", "none", false, true);
     Admin admin = new Admin(UUID.randomUUID(), "Joe", "Joe", "joe@joe.com");
+    admin.jobs = new ArrayList<JobListing>();
     //admin.jobs.add(job);
     admin.jobs.add(job);
     admin.deleteListing(job, true);
