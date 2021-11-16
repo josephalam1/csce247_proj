@@ -30,4 +30,8 @@ public class AdminTest {
     admin.deleteListing(job, true);
     assertFalse(admin.jobs.contains(job));
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 281aa0edef5c15c31326dd61132e0c6949b54cb7
