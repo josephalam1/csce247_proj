@@ -97,7 +97,7 @@ class CompaniesTest {
         assertEquals(company, companyList.get(0));
     }
     @Test
-    void testGetStudentNotExistsById() {
+    void testGetCompanyNotExistsById() {
         Company company = companies.getCompany(UUID.randomUUID());
         assertEquals(company, null);
     }

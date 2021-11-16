@@ -9,7 +9,7 @@ public class Admin implements User {
     public String userName;
     public String email;
     protected String adminPassword;
-    private ArrayList<JobListing> jobs;
+    public ArrayList<JobListing> jobs;
     private Companies company = Companies.getInstance();
 
      /**
