@@ -47,7 +47,7 @@ public class ApplicationsTest {
     }
     @Test 
     void testAppAdded() {
-        assertFalse(
+        assertTrue(
         app.addApplication(new Application(tAppID, tStudentID, tJobtID, "cover letter 3 ", true, new Date())));
     }
     @Test
